@@ -43,16 +43,17 @@
 
         .banner {
             position: relative;
-            height: 60vh; /* Aumentado para que el banner sea más grande */
+            height: 60vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             margin-top: 60px;
-            background-image: url('https://th.bing.com/th/id/R.81f4a429035e1c8faec2078257a2eb7f?rik=wjmOIAbHat41Pw&pid=ImgRaw&r=0'); /* IMAGEN DE FONDO */
+            /* Banner de fondo actualizado con la URL proporcionada */
+            background-image: url('https://th.bing.com/th/id/R.81f4a429035e1c8faec2078257a2eb7f?rik=wjmOIAbHat41Pw&pid=ImgRaw&r=0');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Efecto parallax */
+            background-attachment: fixed;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -241,12 +242,12 @@
         }
 
         .product-grid {
-            display: flex; /* CAMBIO CLAVE: Usamos flexbox para el scroll horizontal */
-            overflow-x: auto; /* Permite el desplazamiento horizontal */
+            display: flex;
+            overflow-x: auto;
             gap: 20px;
             margin-top: 20px;
-            padding: 10px; /* Para que el scroll se vea mejor */
-            justify-content: flex-start; /* Alinea los elementos al inicio */
+            padding: 10px;
+            justify-content: flex-start;
         }
 
         .product-item {
@@ -255,8 +256,8 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s ease;
-            min-width: 200px; /* Ancho mínimo para cada producto */
-            flex-shrink: 0; /* Evita que los elementos se encojan */
+            min-width: 200px;
+            flex-shrink: 0;
         }
 
         .product-item:hover {
@@ -596,4 +597,3 @@
     </script>
 </body>
 </html>
-
