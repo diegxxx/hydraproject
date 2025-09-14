@@ -6,7 +6,6 @@
     <title>Hydra Projects</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Estilos CSS aquí */
         body {
             background-color: #121212;
             color: #f0f0f0;
@@ -291,6 +290,69 @@
         .buy-btn:hover {
             background-color: #8b0000;
         }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-section h2 {
+            color: #cc0000;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            transition: color 0.3s;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding-left: 10px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-top: 15px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            color: #ccc;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
@@ -375,11 +437,37 @@
             </div>
         </div>
     </div>
+    <div class="faq-section">
+        <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo puedo comprar un producto?</div>
+            <div class="faq-answer">
+                <p>Puedes comprar cualquier producto haciendo clic en el icono de la <strong>Tienda</strong> en el menú principal. Luego, selecciona el producto que desees y haz clic en el botón de <strong>Comprar</strong>.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Qué métodos de pago aceptan?</div>
+            <div class="faq-answer">
+                <p>Actualmente aceptamos los siguientes métodos de pago: PayPal, tarjetas de crédito (Visa, Mastercard) y algunas criptomonedas. Puedes ver las opciones exactas al finalizar la compra.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Dónde puedo encontrar ayuda si tengo un problema?</div>
+            <div class="faq-answer">
+                <p>Si tienes algún problema, te recomendamos unirte a nuestro servidor de <strong>Discord</strong>. Ahí, nuestro equipo de soporte y la comunidad te ayudarán a resolver cualquier duda o inconveniente.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo descargo la aplicación después de comprarla?</div>
+            <div class="faq-answer">
+                <p>Después de realizar el pago, recibirás un correo electrónico con un enlace de descarga y las instrucciones detalladas. También podrás acceder a la descarga desde tu panel de usuario una vez que inicies sesión.</p>
+            </div>
+        </div>
+    </div>
     <div class="footer-text">
         <p>© HydraProjects All rights reserved</p>
     </div>
     <script>
-        // Código JavaScript aquí
         function showLoginPopup() {
             document.getElementById('login-popup').style.display = 'block';
         }
@@ -466,6 +554,20 @@
         }
 
         document.querySelector('.sections .section:nth-child(4)').addEventListener('click', renderProducts);
+
+        // Lógica para el FAQ
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const faqItem = item.parentNode;
+                faqItem.classList.toggle('active');
+                const answer = faqItem.querySelector('.faq-answer');
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
+                }
+            });
+        });
     </script>
 </body>
 </html>
