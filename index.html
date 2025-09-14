@@ -374,7 +374,6 @@
             <span onclick="showProductPopup()"><i class="fas fa-shopping-cart"></i> TIENDA</span> |
             <span onclick="showDiscordPopup()"><i class="fab fa-discord"></i> DISCORD</span> |
             <span onclick="showLoginPopup()"><i class="fas fa-sign-in-alt"></i> INICIAR SESIÓN</span> |
-            <span onclick="showDownloadPopup()"><i class="fas fa-download"></i> DESCARGAR</span> |
             <span onclick="showFaqSection()"><i class="fas fa-question-circle"></i> FAQ</span>
         </div>
     </header>
@@ -391,11 +390,6 @@
             <i class="fas fa-sign-in-alt"></i>
             <h2>Iniciar sesión</h2>
             <p>Accede a tu cuenta.</p>
-        </div>
-        <div class="section" onclick="showDownloadPopup()">
-            <i class="fas fa-download"></i>
-            <h2>Descargar</h2>
-            <p>¡Obtén nuestra aplicación!</p>
         </div>
         <div class="section" onclick="showDiscordPopup()">
             <i class="fab fa-discord"></i>
@@ -424,14 +418,6 @@
                 </div>
                 <button type="submit" class="btn">ENTRAR</button>
             </form>
-        </div>
-    </div>
-    <div class="popup" id="download-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('download-popup')">&times;</span>
-            <i class="fas fa-download" style="color: #f0f0f0; font-size: 3rem;"></i>
-            <br>
-            <a href="#" target="_blank" rel="noopener noreferrer">¡Haz clic para descargar!</a>
         </div>
     </div>
     <div class="popup" id="discord-popup">
@@ -483,10 +469,6 @@
     <script>
         function showLoginPopup() {
             document.getElementById('login-popup').style.display = 'flex';
-        }
-
-        function showDownloadPopup() {
-            document.getElementById('download-popup').style.display = 'flex';
         }
 
         function showDiscordPopup() {
