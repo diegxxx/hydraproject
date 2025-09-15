@@ -54,7 +54,7 @@
         <button id="load-more-users" class="btn">Cargar más usuarios</button>
     </div>
 
-    <div class="popup" id="login-popup">
+        <div class="popup" id="login-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('login-popup')">&times;</span>
             <i class="fas fa-sign-in-alt" style="color: #f0f0f0; font-size: 3rem;"></i>
@@ -70,8 +70,61 @@
                 </div>
                 <button type="submit" class="btn">ENTRAR</button>
             </form>
+                <div class="account-link">
+                    <p>¿No tienes una cuenta? <span class="link-text" onclick="showRegisterPopup()">Regístrate</span></p>
+                </div>
         </div>
     </div>
+
+    <div class="popup" id="register-popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="hidePopup('register-popup')">&times;</span>
+            <i class="fas fa-user-plus" style="color: #f0f0f0; font-size: 3rem;"></i>
+            <h2>CREAR CUENTA</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-username">Usuario</label>
+                    <input type="text" id="reg-username" name="reg-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Correo Electrónico</label>
+                    <input type="email" id="reg-email" name="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Contraseña</label>
+                    <input type="password" id="reg-password" name="reg-password" required>
+                </div>
+                <button type="submit" class="btn">REGISTRARSE</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="profile-popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="hidePopup('profile-popup')">&times;</span>
+            <i class="fas fa-user-circle" style="color: #f0f0f0; font-size: 3rem;"></i>
+            <h2>MI PERFIL</h2>
+            <div class="profile-info">
+                <div class="profile-avatar-container">
+                    <img id="profile-avatar" src="" alt="Avatar de usuario">
+                    <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                    <button onclick="document.getElementById('avatar-upload').click()" class="btn">Cambiar Foto</button>
+                </div>
+                <p><strong>Usuario:</strong> <span id="profile-username"></span></p>
+                <p><strong>Correo:</strong> <span id="profile-email"></span></p>
+            </div>
+            
+            <form id="update-profile-form">
+                <h3>Actualizar Datos</h3>
+                <div class="form-group">
+                    <label for="update-email">Nuevo Correo</label>
+                    <input type="email" id="update-email" name="update-email">
+                </div>
+                <button type="submit" class="btn">ACTUALIZAR</button>
+            </form>
+        </div>
+    </div>
+
     <div class="popup" id="discord-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
@@ -124,7 +177,13 @@
     <div class="footer-text">
         <p>© HydraProjects All rights reserved</p>
     </div>
-    <script>
+
+        <script>
+        // VARIABLES DE GESTIÓN DE CUENTAS (Simulación en memoria)
+        let currentUser = null;
+        const registeredUsers = [];
+
+        // FUNCIONES EXISTENTES
         function showLoginPopup() {
             document.getElementById('login-popup').style.display = 'flex';
         }
@@ -146,19 +205,95 @@
             window.location.href = '#faq-section'; // Navega a la sección FAQ
         }
 
+        // Nuevas funciones para la gestión de cuentas
+        function showRegisterPopup() {
+            hidePopup('login-popup');
+            document.getElementById('register-popup').style.display = 'flex';
+        }
+
+        function showProfilePopup() {
+            if (currentUser) {
+                // Rellenar datos del perfil antes de mostrarlo
+                document.getElementById('profile-username').textContent = currentUser.username;
+                document.getElementById('profile-email').textContent = currentUser.email;
+                document.getElementById('profile-avatar').src = currentUser.avatar;
+                document.getElementById('profile-popup').style.display = 'flex';
+            } else {
+                alert('Debes iniciar sesión para ver tu perfil.');
+                showLoginPopup();
+            }
+        }
+
+        // Manejadores de eventos de formularios
         document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            
+            const user = registeredUsers.find(u => u.username === username && u.password === password);
 
-            if (username === 'hydra' && password === 'hydra123') {
-                alert('¡Inicio de sesión exitoso!');
-                hidePopup('login-popup');
-            } else {
-                alert('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
-            }
+            if (user) {
+                currentUser = user;
+                alert(`¡Bienvenido, ${currentUser.username}!`);
+                hidePopup('login-popup');
+                // Aquí podrías cambiar el menú de "Iniciar sesión" a "Mi perfil"
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
         });
 
+        document.getElementById('register-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            const existingUser = registeredUsers.find(u => u.username === username);
+
+            if (existingUser) {
+                alert('El usuario ya existe. Por favor, elige otro nombre de usuario.');
+            } else {
+                const newUser = {
+                    username: username,
+                    email: email,
+                    password: password,
+                    avatar: `https://i.pravatar.cc/150?u=${username}`
+                };
+                registeredUsers.push(newUser);
+                alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
+                hidePopup('register-popup');
+                showLoginPopup();
+                console.log('Usuarios registrados:', registeredUsers);
+            }
+        });
+
+        document.getElementById('update-profile-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const newEmail = document.getElementById('update-email').value;
+            
+            if (newEmail) {
+                currentUser.email = newEmail;
+                document.getElementById('profile-email').textContent = currentUser.email;
+                alert('Correo actualizado con éxito.');
+            } else {
+                alert('Por favor, ingresa un nuevo correo para actualizar.');
+            }
+        });
+
+        document.getElementById('avatar-upload').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    currentUser.avatar = e.target.result;
+                    document.getElementById('profile-avatar').src = currentUser.avatar;
+                    alert('Foto de perfil actualizada.');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Resto de tu código (productos, FAQ, etc.)
         const products = [
             {
                 id: 1,
