@@ -349,3 +349,117 @@ header {
     color: #ccc;
     font-size: 1em;
 }
+/* Estilos generales del cuerpo */
+body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #f0f0f0; /* Color de texto claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos de la sección del popup */
+.popup {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo semitransparente oscuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Contenido del popup */
+.popup-content {
+    background-color: #222; /* Fondo del cuadro del popup */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    border: 1px solid #e03400ff; /* Borde rojo */
+}
+
+/* Botón para cerrar el popup */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #e03400ff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.popup-close:hover {
+    transform: scale(1.1);
+}
+
+/* Título dentro del popup */
+.popup-content h2 {
+    color: #f0f0f0;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos del formulario */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Grupo de etiquetas y campos de entrada */
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #f0f0f0;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #f0f0f0;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #e03400ff; /* Borde rojo al enfocar */
+}
+
+/* Estilo del botón de enviar */
+.btn {
+    padding: 12px 20px;
+    background-color: #e03400ff; /* Fondo del botón rojo */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #c92f00; /* Un rojo más oscuro al pasar el cursor */
+    transform: translateY(-2px);
+}
