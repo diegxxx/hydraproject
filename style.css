@@ -463,3 +463,105 @@ body {
     background-color: #c92f00; /* Un rojo más oscuro al pasar el cursor */
     transform: translateY(-2px);
 }
+/* Estilos para el panel de usuarios */
+.users-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #1a1a1a;
+    border-top: 2px solid #e03400ff;
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.users-section h2 {
+    font-size: 2.5rem;
+    color: #f0f0f0;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos para el contenedor de las tarjetas de usuario */
+.user-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Estilos para cada tarjeta de usuario */
+.user-card {
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.user-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #e03400ff;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #e03400ff;
+    object-fit: cover;
+    margin-right: 1rem;
+    float: left;
+}
+
+.user-info {
+    overflow: hidden;
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #e03400ff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.user-info p {
+    margin: 0.5rem 0 0;
+    color: #aaa;
+}
+
+.user-status {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.status-online {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-offline {
+    background-color: #777;
+    color: white;
+}
+
+.status-busy {
+    background-color: #e03400ff;
+    color: white;
+}
