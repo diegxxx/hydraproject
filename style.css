@@ -463,8 +463,182 @@ body {
     background-color: #c92f00; /* Un rojo más oscuro al pasar el cursor */
     transform: translateY(-2px);
 }
-/* Estilos para el panel de usuarios */
-.users-section {
+/* Estilos generales */
+body {
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    border: 2px solid #e03400ff;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: #f0f0f0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.popup-close:hover {
+    color: #e03400ff;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #222;
+    border: 1px solid #333;
+    color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #e03400ff;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c92f00;
+}
+
+.link-text {
+    color: #e03400ff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Header */
+header {
+    background-color: #1a1a1a;
+    padding: 1.5rem 2rem;
+    text-align: right;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-text span {
+    color: #f0f0f0;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header-text span:hover {
+    color: #e03400ff;
+}
+
+/* Banner */
+.banner {
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: #111;
+    border-bottom: 2px solid #e03400ff;
+}
+
+.logo-container {
+    perspective: 800px;
+}
+
+.logo-3d {
+    animation: rotate-3d 5s infinite ease-in-out;
+}
+
+.logo-3d img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #e03400ff;
+    box-shadow: 0 0 20px #e03400ff, 0 0 40px #e03400ff;
+}
+
+@keyframes rotate-3d {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(180deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotateY(360deg) scale(1);
+    }
+}
+
+/* Secciones principales */
+.sections {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background-color: #0d0d0d;
+    flex-wrap: wrap;
+}
+
+.section {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Sección FAQ */
+.faq-section {
     padding: 4rem 2rem;
     text-align: center;
     background-color: #1a1a1a;
@@ -472,7 +646,7 @@ body {
     box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-.users-section h2 {
+.faq-section h2 {
     font-size: 2.5rem;
     color: #f0f0f0;
     margin-bottom: 2rem;
@@ -480,88 +654,95 @@ body {
     letter-spacing: 1px;
 }
 
-/* Estilos para el contenedor de las tarjetas de usuario */
-.user-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+.faq-item {
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
 }
 
-/* Estilos para cada tarjeta de usuario */
-.user-card {
+.faq-question {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #444;
+}
+
+.faq-answer {
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    padding: 0 2rem;
+}
+
+.faq-item.active .faq-answer {
+    padding: 1rem 2rem;
+    transition: max-height 0.3s ease-in;
+}
+
+/* Sección de productos */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.product-item {
     background-color: #222;
     border: 1px solid #333;
     border-radius: 10px;
     padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
+    text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.user-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+.product-item:hover {
+    transform: translateY(-5px);
 }
 
-.user-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background-color: #e03400ff;
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
-.user-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #e03400ff;
-    object-fit: cover;
-    margin-right: 1rem;
-    float: left;
-}
-
-.user-info {
-    overflow: hidden;
-}
-
-.user-info h3 {
-    margin: 0;
+.product-price {
     font-size: 1.5rem;
     color: #e03400ff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.user-info p {
-    margin: 0.5rem 0 0;
-    color: #aaa;
-}
-
-.user-status {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 5px;
-    font-size: 0.8rem;
     font-weight: bold;
-    margin-top: 0.5rem;
+    margin: 1rem 0;
 }
 
-.status-online {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.status-offline {
-    background-color: #777;
-    color: white;
-}
-
-.status-busy {
+.buy-btn {
     background-color: #e03400ff;
     color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #c92f00;
+}
+
+/* Footer */
+.footer-text {
+    padding: 2rem;
+    text-align: center;
+    color: #888;
+    border-top: 1px solid #333;
+    background-color: #1a1a1a;
 }
