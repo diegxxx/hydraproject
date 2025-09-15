@@ -2,428 +2,232 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydra Projects</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="header-text">
-            <span onclick="showProductPopup()"><i class="fas fa-shopping-cart"></i> TIENDA</span> |
-            <span onclick="showDiscordPopup()"><i class="fab fa-discord"></i> DISCORD</span> |
-            <span onclick="showLoginPopup()"><i class="fas fa-sign-in-alt"></i> INICIAR SESIÓN</span> |
-            <span onclick="showFaqSection()"><i class="fas fa-question-circle"></i> FAQ</span>
-        </div>
-    </header>
-    <div class="banner">
-        <div class="logo-container">
-            <div class="logo-3d">
-                <img src="https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2020/07/31/Quai-vat-dang-so-nhat-trong-than-thoai-Hy-Lap_7.jpg"
-                    alt="Hydra Logo">
-            </div>
-        </div>
-        <h1>Bienvenido a Hydra Projects</h1>
-    </div>
-    <div class="sections">
-        <div class="section" onclick="showLoginPopup()">
-            <i class="fas fa-sign-in-alt"></i>
-            <h2>Iniciar sesión</h2>
-            <p>Accede a tu cuenta.</p>
-        </div>
-        <div class="section" onclick="showDiscordPopup()">
-            <i class="fab fa-discord"></i>
-            <h2>Discord</h2>
-            <p>¡Únete a nuestra comunidad!</p>
-        </div>
-        <div class="section" onclick="showProductPopup()">
-            <i class="fas fa-shopping-cart"></i>
-            <h2>Tienda</h2>
-            <p>¡Adquiere tu producto ahora!</p>
-        </div>
-    </div>
-    
-        <div class="users-section" id="users-section">
-        <h2><i class="fas fa-users-cog"></i> Panel de Usuarios</h2>
-        
-        <div class="user-card-container">
-                    </div>
-    
-        <button id="load-more-users" class="btn">Cargar más usuarios</button>
-    </div>
-
-        <div class="popup" id="login-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('login-popup')">&times;</span>
-            <i class="fas fa-sign-in-alt" style="color: #f0f0f0; font-size: 3rem;"></i>
-            <h2>INICIAR SESIÓN</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="username">Usuario</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn">ENTRAR</button>
-            </form>
-                <div class="account-link">
-                    <p>¿No tienes una cuenta? <span class="link-text" onclick="showRegisterPopup()">Regístrate</span></p>
-                </div>
-        </div>
-    </div>
-
-    <div class="popup" id="register-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('register-popup')">&times;</span>
-            <i class="fas fa-user-plus" style="color: #f0f0f0; font-size: 3rem;"></i>
-            <h2>CREAR CUENTA</h2>
-            <form id="register-form">
-                <div class="form-group">
-                    <label for="reg-username">Usuario</label>
-                    <input type="text" id="reg-username" name="reg-username" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-email">Correo Electrónico</label>
-                    <input type="email" id="reg-email" name="reg-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-password">Contraseña</label>
-                    <input type="password" id="reg-password" name="reg-password" required>
-                </div>
-                <button type="submit" class="btn">REGISTRARSE</button>
-            </form>
+    <header>
+        <div class="header-text">
+            <span onclick="showProductPopup()"><i class="fas fa-shopping-cart"></i> TIENDA</span> |
+            <span onclick="showDiscordPopup()"><i class="fab fa-discord"></i> DISCORD</span> |
+            <span onclick="showLoginPopup()"><i class="fas fa-sign-in-alt"></i> INICIAR SESIÓN</span> |
+            <span onclick="showFaqSection()"><i class="fas fa-question-circle"></i> FAQ</span>
         </div>
-    </div>
-
-    <div class="popup" id="profile-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('profile-popup')">&times;</span>
-            <i class="fas fa-user-circle" style="color: #f0f0f0; font-size: 3rem;"></i>
-            <h2>MI PERFIL</h2>
-            <div class="profile-info">
-                <div class="profile-avatar-container">
-                    <img id="profile-avatar" src="" alt="Avatar de usuario">
-                    <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
-                    <button onclick="document.getElementById('avatar-upload').click()" class="btn">Cambiar Foto</button>
-                </div>
-                <p><strong>Usuario:</strong> <span id="profile-username"></span></p>
-                <p><strong>Correo:</strong> <span id="profile-email"></span></p>
+    </header>
+    <div class="banner">
+        <div class="logo-container">
+            <div class="logo-3d">
+                <img src="https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2020/07/31/Quai-vat-dang-so-nhat-trong-than-thoai-Hy-Lap_7.jpg"
+                    alt="Hydra Logo">
             </div>
-            
-            <form id="update-profile-form">
-                <h3>Actualizar Datos</h3>
+        </div>
+        <h1>Bienvenido a Hydra Projects</h1>
+    </div>
+    <div class="sections">
+        <div class="section" onclick="showLoginPopup()">
+            <i class="fas fa-sign-in-alt"></i>
+            <h2>Iniciar sesión</h2>
+            <p>Accede a tu cuenta.</p>
+        </div>
+        <div class="section" onclick="showDiscordPopup()">
+            <i class="fab fa-discord"></i>
+            <h2>Discord</h2>
+            <p>¡Únete a nuestra comunidad!</p>
+        </div>
+        <div class="section" onclick="showProductPopup()">
+            <i class="fas fa-shopping-cart"></i>
+            <h2>Tienda</h2>
+            <p>¡Adquiere tu producto ahora!</p>
+        </div>
+    </div>
+    <div class="popup" id="login-popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="hidePopup('login-popup')">&times;</span>
+            <i class="fas fa-sign-in-alt" style="color: #f0f0f0; font-size: 3rem;"></i>
+            <h2>INICIAR SESIÓN</h2>
+            <form id="login-form">
                 <div class="form-group">
-                    <label for="update-email">Nuevo Correo</label>
-                    <input type="email" id="update-email" name="update-email">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required>
                 </div>
-                <button type="submit" class="btn">ACTUALIZAR</button>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">ENTRAR</button>
             </form>
         </div>
     </div>
-
-    <div class="popup" id="discord-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
-            <i class="fab fa-discord" style="color: #e03400ff; font-size: 3rem;"></i>
-            <br>
-            <a href="https://discord.gg/KWshUtryKK" target="_blank" rel="noopener noreferrer">¡Haz clic para unirte!</a>
-        </div>
-    </div>
-    <div class="popup" id="product-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('product-popup')">&times;</span>
-            <h2 class="popup-title">NUESTROS PRODUCTOS</h2>
-            <div id="product-grid" class="product-grid">
-            </div>
-        </div>
-    </div>
-    <div class="faq-section">
-        <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
-        <div class="faq-item">
-            <div class="faq-question">¿Cómo puedo comprar un producto?</div>
-            <div class="faq-answer">
-                <p>Puedes comprar cualquier producto haciendo clic en el icono de la <strong>Tienda</strong> en el menú
-                    principal. Luego, selecciona el producto que desees y haz clic en el botón de
-                    <strong>Comprar</strong>.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">¿Qué métodos de pago aceptan?</div>
-            <div class="faq-answer">
-                <p>Actualmente aceptamos los siguientes métodos de pago: PayPal, tarjetas de crédito (Visa, Mastercard)
-                    y algunas criptomonedas. Puedes ver las opciones exactas al finalizar la compra.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">¿Dónde puedo encontrar ayuda si tengo un problema?</div>
-            <div class="faq-answer">
-                <p>Si tienes algún problema, te recomendamos unirte a nuestro servidor de <strong>Discord</strong>. Ahí,
-                    nuestro equipo de soporte y la comunidad te ayudarán a resolver cualquier duda o inconveniente.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">¿Cómo descargo la aplicación después de comprarla?</div>
-            <div class="faq-answer">
-                <p>Después de realizar el pago, recibirás un correo electrónico con un enlace de descarga y las
-                    instrucciones detalladas. También podrás acceder a la descarga desde tu panel de usuario una vez que
-                    inicies sesión.</p>
-            </div>
-        </div>
-    </div>
-    <div class="footer-text">
-        <p>© HydraProjects All rights reserved</p>
-    </div>
-
-        <script>
-        // VARIABLES DE GESTIÓN DE CUENTAS (Simulación en memoria)
-        let currentUser = null;
-        const registeredUsers = [];
-
-        // FUNCIONES EXISTENTES
-        function showLoginPopup() {
-            document.getElementById('login-popup').style.display = 'flex';
-        }
-
-        function showDiscordPopup() {
-            document.getElementById('discord-popup').style.display = 'flex';
-        }
-
-        function showProductPopup() {
-            document.getElementById('product-popup').style.display = 'flex';
-            renderProducts();
-        }
-
-        function hidePopup(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        function showFaqSection() {
-            window.location.href = '#faq-section'; // Navega a la sección FAQ
-        }
-
-        // Nuevas funciones para la gestión de cuentas
-        function showRegisterPopup() {
-            hidePopup('login-popup');
-            document.getElementById('register-popup').style.display = 'flex';
+    <div class="popup" id="discord-popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
+            <i class="fab fa-discord" style="color: #e03400ff; font-size: 3rem;"></i>
+            <br>
+            <a href="https://discord.gg/KWshUtryKK" target="_blank" rel="noopener noreferrer">¡Haz clic para unirte!</a>
+        </div>
+    </div>
+    <div class="popup" id="product-popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="hidePopup('product-popup')">&times;</span>
+            <h2 class="popup-title">NUESTROS PRODUCTOS</h2>
+            <div id="product-grid" class="product-grid">
+            </div>
+        </div>
+    </div>
+    <div class="faq-section">
+        <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo puedo comprar un producto?</div>
+            <div class="faq-answer">
+                <p>Puedes comprar cualquier producto haciendo clic en el icono de la <strong>Tienda</strong> en el menú
+                    principal. Luego, selecciona el producto que desees y haz clic en el botón de
+                    <strong>Comprar</strong>.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Qué métodos de pago aceptan?</div>
+            <div class="faq-answer">
+                <p>Actualmente aceptamos los siguientes métodos de pago: PayPal, tarjetas de crédito (Visa, Mastercard)
+                    y algunas criptomonedas. Puedes ver las opciones exactas al finalizar la compra.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Dónde puedo encontrar ayuda si tengo un problema?</div>
+            <div class="faq-answer">
+                <p>Si tienes algún problema, te recomendamos unirte a nuestro servidor de <strong>Discord</strong>. Ahí,
+                    nuestro equipo de soporte y la comunidad te ayudarán a resolver cualquier duda o inconveniente.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo descargo la aplicación después de comprarla?</div>
+            <div class="faq-answer">
+                <p>Después de realizar el pago, recibirás un correo electrónico con un enlace de descarga y las
+                    instrucciones detalladas. También podrás acceder a la descarga desde tu panel de usuario una vez que
+                    inicies sesión.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-text">
+        <p>© HydraProjects All rights reserved</p>
+    </div>
+    <script>
+        function showLoginPopup() {
+            document.getElementById('login-popup').style.display = 'flex';
         }
 
-        function showProfilePopup() {
-            if (currentUser) {
-                // Rellenar datos del perfil antes de mostrarlo
-                document.getElementById('profile-username').textContent = currentUser.username;
-                document.getElementById('profile-email').textContent = currentUser.email;
-                document.getElementById('profile-avatar').src = currentUser.avatar;
-                document.getElementById('profile-popup').style.display = 'flex';
-            } else {
-                alert('Debes iniciar sesión para ver tu perfil.');
-                showLoginPopup();
-            }
+        function showDiscordPopup() {
+            document.getElementById('discord-popup').style.display = 'flex';
         }
 
-        // Manejadores de eventos de formularios
-        document.getElementById('login-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            const user = registeredUsers.find(u => u.username === username && u.password === password);
+        function showProductPopup() {
+            document.getElementById('product-popup').style.display = 'flex';
+            renderProducts();
+        }
 
-            if (user) {
-                currentUser = user;
-                alert(`¡Bienvenido, ${currentUser.username}!`);
+        function hidePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showFaqSection() {
+            window.location.href = '#faq-section'; // Navega a la sección FAQ
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'hydra' && password === 'hydra123') {
+                alert('¡Inicio de sesión exitoso!');
                 hidePopup('login-popup');
-                // Aquí podrías cambiar el menú de "Iniciar sesión" a "Mi perfil"
             } else {
-                alert('Usuario o contraseña incorrectos.');
-            }
-        });
-
-        document.getElementById('register-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const username = document.getElementById('reg-username').value;
-            const email = document.getElementById('reg-email').value;
-            const password = document.getElementById('reg-password').value;
-
-            const existingUser = registeredUsers.find(u => u.username === username);
-
-            if (existingUser) {
-                alert('El usuario ya existe. Por favor, elige otro nombre de usuario.');
-            } else {
-                const newUser = {
-                    username: username,
-                    email: email,
-                    password: password,
-                    avatar: `https://i.pravatar.cc/150?u=${username}`
-                };
-                registeredUsers.push(newUser);
-                alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
-                hidePopup('register-popup');
-                showLoginPopup();
-                console.log('Usuarios registrados:', registeredUsers);
+                alert('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
             }
         });
 
-        document.getElementById('update-profile-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const newEmail = document.getElementById('update-email').value;
-            
-            if (newEmail) {
-                currentUser.email = newEmail;
-                document.getElementById('profile-email').textContent = currentUser.email;
-                alert('Correo actualizado con éxito.');
-            } else {
-                alert('Por favor, ingresa un nuevo correo para actualizar.');
+        const products = [
+            {
+                id: 1,
+                name: 'MegaPack Hydra',
+                price: '€49.99',
+                description: 'Todo en un solo paquete.',
+                image: 'https://img.freepik.com/fotos-premium/hydra-o-monstro-mitologico-imortal-1_1107970-2202.jpg'
+            },
+            {
+                id: 2,
+                name: 'Suscripción Hydra',
+                price: '€8.00/mes',
+                description: 'Acceso completo y exclusivo.',
+                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7382.jpg'
+            },
+            {
+                id: 3,
+                name: 'Suscripción Hydra+',
+                price: '€12.00/mes',
+                description: 'Mejor alternativa para no gastar tanto.',
+                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7370.jpg'
+            },
+            {
+                id: 4,
+                name: 'Mega Hydra',
+                price: '€17.99',
+                description: 'Todo lo que podemos ofrecerte.',
+                image: 'https://images6.alphacoders.com/107/1076107.jpg'
+            },
+            {
+                id: 5,
+                name: 'Producto Extra 1',
+                price: '€20.00',
+                description: 'Descripción del producto extra.',
+                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7382.jpg'
+            },
+            {
+                id: 6,
+                name: 'Producto Extra 2',
+                price: '€25.00',
+                description: 'Descripción del segundo producto extra.',
+                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7370.jpg'
             }
-        });
+        ];
 
-        document.getElementById('avatar-upload').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    currentUser.avatar = e.target.result;
-                    document.getElementById('profile-avatar').src = currentUser.avatar;
-                    alert('Foto de perfil actualizada.');
+        function renderProducts() {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p class="product-price">${product.price}</p>
+                    <button class="buy-btn" onclick="buyProduct(${product.id})">COMPRAR</button>
+                `;
+                productGrid.appendChild(productItem);
+            });
+        }
+
+        function buyProduct(productId) {
+            alert(`Producto con ID ${productId} comprado. ¡Gracias por tu compra!`);
+        }
+
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const faqItem = item.parentNode;
+                faqItem.classList.toggle('active');
+                const answer = faqItem.querySelector('.faq-answer');
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
                 }
-                reader.readAsDataURL(file);
-            }
+            });
         });
-
-        // Resto de tu código (productos, FAQ, etc.)
-        const products = [
-            {
-                id: 1,
-                name: 'MegaPack Hydra',
-                price: '€49.99',
-                description: 'Todo en un solo paquete.',
-                image: 'https://img.freepik.com/fotos-premium/hydra-o-monstro-mitologico-imortal-1_1107970-2202.jpg'
-            },
-            {
-                id: 2,
-                name: 'Suscripción Hydra',
-                price: '€8.00/mes',
-                description: 'Acceso completo y exclusivo.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7382.jpg'
-            },
-            {
-                id: 3,
-                name: 'Suscripción Hydra+',
-                price: '€12.00/mes',
-                description: 'Mejor alternativa para no gastar tanto.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7370.jpg'
-            },
-            {
-                id: 4,
-                name: 'Mega Hydra',
-                price: '€17.99',
-                description: 'Todo lo que podemos ofrecerte.',
-                image: 'https://images6.alphacoders.com/107/1076107.jpg'
-            },
-            {
-                id: 5,
-                name: 'Producto Extra 1',
-                price: '€20.00',
-                description: 'Descripción del producto extra.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7382.jpg'
-            },
-            {
-                id: 6,
-                name: 'Producto Extra 2',
-                price: '€25.00',
-                description: 'Descripción del segundo producto extra.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7370.jpg'
-            }
-        ];
-
-        function renderProducts() {
-            const productGrid = document.getElementById('product-grid');
-            productGrid.innerHTML = '';
-            products.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.className = 'product-item';
-                productItem.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p class="product-price">${product.price}</p>
-                    <button class="buy-btn" onclick="buyProduct(${product.id})">COMPRAR</button>
-                `;
-                productGrid.appendChild(productItem);
-            });
-        }
-
-        function buyProduct(productId) {
-            alert(`Producto con ID ${productId} comprado. ¡Gracias por tu compra!`);
-        }
-
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', event => {
-                const faqItem = item.parentNode;
-                faqItem.classList.toggle('active');
-                const answer = faqItem.querySelector('.faq-answer');
-                if (faqItem.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                } else {
-                    answer.style.maxHeight = '0';
-                }
-            });
-        });
-
-        // Código JavaScript para el apartado de usuarios
-        const usersData = [
-            { name: 'Hydra_Admin', role: 'Administrador', status: 'online', avatar: 'https://i.pravatar.cc/150?u=1' },
-            { name: 'RedKnight', role: 'Miembro', status: 'busy', avatar: 'https://i.pravatar.cc/150?u=2' },
-            { name: 'Shadow_User', role: 'Miembro', status: 'offline', avatar: 'https://i.pravatar.cc/150?u=3' },
-            { name: 'Phoenix_Reborn', role: 'Miembro', status: 'online', avatar: 'https://i.pravatar.cc/150?u=4' },
-            { name: 'DarkSorcerer', role: 'Miembro', status: 'busy', avatar: 'https://i.pravatar.cc/150?u=5' },
-            { name: 'GhostWalker', role: 'Miembro', status: 'online', avatar: 'https://i.pravatar.cc/150?u=6' },
-        ];
-
-        let usersToShow = 3;
-
-        function renderUserCards() {
-            const userCardContainer = document.querySelector('.user-card-container');
-            userCardContainer.innerHTML = '';
-            
-            usersData.slice(0, usersToShow).forEach(user => {
-                const userCard = document.createElement('div');
-                userCard.className = 'user-card';
-                const statusClass = `status-${user.status}`;
-                
-                userCard.innerHTML = `
-                    <img class="user-avatar" src="${user.avatar}" alt="Avatar de ${user.name}">
-                    <div class="user-info">
-                        <h3>${user.name}</h3>
-                        <p>${user.role}</p>
-                        <span class="user-status ${statusClass}">${user.status.charAt(0).toUpperCase() + user.status.slice(1)}</span>
-                    </div>
-                `;
-                userCardContainer.appendChild(userCard);
-            });
-        
-            const loadMoreBtn = document.getElementById('load-more-users');
-            if (usersToShow >= usersData.length) {
-                loadMoreBtn.style.display = 'none';
-            } else {
-                loadMoreBtn.style.display = 'block';
-            }
-        }
-
-        document.getElementById('load-more-users').addEventListener('click', () => {
-            usersToShow += 3;
-            renderUserCards();
-        });
-
-        window.addEventListener('load', renderUserCards);
-
-        function showUserSection() {
-            window.location.href = '#users-section';
-        }
-    </script>
+    </script>
 </body>
 
 </html>
