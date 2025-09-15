@@ -7,6 +7,20 @@
     <title>Hydra Projects</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS for the cascading effect */
+        .faq-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: 0s;
+        }
+
+        .faq-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body>
@@ -15,9 +29,10 @@
             <span onclick="showProductPopup()"><i class="fas fa-shopping-cart"></i> TIENDA</span> |
             <span onclick="showDiscordPopup()"><i class="fab fa-discord"></i> DISCORD</span> |
             <span onclick="showLoginPopup()"><i class="fas fa-sign-in-alt"></i> INICIAR SESIÓN</span> |
-            <span onclick="showFaqSection()"><i class="fas fa-question-circle"></i> FAQ</span>
+            <a href="#faq-section"><i class="fas fa-question-circle"></i> FAQ</a>
         </div>
     </header>
+
     <div class="banner">
         <div class="logo-container">
             <div class="logo-3d">
@@ -27,6 +42,7 @@
         </div>
         <h1>Bienvenido a Hydra Projects</h1>
     </div>
+
     <div class="sections">
         <div class="section" onclick="showLoginPopup()">
             <i class="fas fa-sign-in-alt"></i>
@@ -44,6 +60,7 @@
             <p>¡Adquiere tu producto ahora!</p>
         </div>
     </div>
+
     <div class="popup" id="login-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('login-popup')">&times;</span>
@@ -62,14 +79,16 @@
             </form>
         </div>
     </div>
+
     <div class="popup" id="discord-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
             <i class="fab fa-discord" style="color: #e03400ff; font-size: 3rem;"></i>
-            <br>
+            <br><br>
             <a href="https://discord.gg/KWshUtryKK" target="_blank" rel="noopener noreferrer">¡Haz clic para unirte!</a>
         </div>
     </div>
+
     <div class="popup" id="product-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('product-popup')">&times;</span>
@@ -78,7 +97,8 @@
             </div>
         </div>
     </div>
-    <div class="faq-section">
+
+    <div class="faq-section" id="faq-section">
         <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
         <div class="faq-item">
             <div class="faq-question">¿Cómo puedo comprar un producto?</div>
@@ -111,9 +131,11 @@
             </div>
         </div>
     </div>
+
     <div class="footer-text">
         <p>© HydraProjects All rights reserved</p>
     </div>
+
     <script>
         function showLoginPopup() {
             document.getElementById('login-popup').style.display = 'flex';
@@ -130,10 +152,6 @@
 
         function hidePopup(id) {
             document.getElementById(id).style.display = 'none';
-        }
-
-        function showFaqSection() {
-            window.location.href = '#faq-section'; // Navega a la sección FAQ
         }
 
         document.getElementById('login-form').addEventListener('submit', function (event) {
@@ -226,6 +244,33 @@
                     answer.style.maxHeight = '0';
                 }
             });
+        });
+
+        // New JavaScript for the cascading effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqSection = document.querySelector('.faq-section');
+            if (faqSection) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const faqItems = faqSection.querySelectorAll('.faq-item');
+                            faqItems.forEach((item, index) => {
+                                item.style.transitionDelay = `${index * 0.1}s`;
+                                item.classList.add('in-view');
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                observer.observe(faqSection);
+            }
         });
     </script>
 </body>
