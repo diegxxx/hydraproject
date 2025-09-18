@@ -51,8 +51,7 @@
 
         .sections .section,
         .popup-content,
-        .faq-section,
-        .image-gallery {
+        .faq-section {
             background-color: #2a2a2a;
         }
         
@@ -68,15 +67,15 @@
             background-color: #00CED1;
             color: #1a1a1a;
         }
-        
-        .faq-item, .image-item {
+
+        .faq-item {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             transition-delay: 0s;
         }
 
-        .faq-item.in-view, .image-item.in-view {
+        .faq-item.in-view {
             opacity: 1;
             transform: translateY(0);
         }
@@ -88,7 +87,6 @@
         <div class="header-text">
             <span class="normal-btn" onclick="showProductPopup()" title="Tienda"><i class="fas fa-shopping-cart"></i>TIENDA</span> |
             <span class="normal-btn" onclick="showDiscordPopup()" title="Discord"><i class="fab fa-discord"></i>DISCORD</span> |
-            <span class="normal-btn" onclick="showLoginPopup()" title="Iniciar sesión"><i class="fas fa-sign-in-alt"></i>INICIAR SESIÓN</span> |
             <a class="faq-link" href="#faq-section" title="Preguntas Frecuentes"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
         </div>
     </header>
@@ -103,10 +101,6 @@
     </div>
 
     <div class="sections">
-        <div class="section" onclick="showLoginPopup()">
-            <i class="fas fa-sign-in-alt"></i>
-            <h2>Iniciar sesión</h2>
-        </div>
         <div class="section" onclick="showDiscordPopup()">
             <i class="fab fa-discord"></i>
             <h2>Discord</h2>
@@ -114,25 +108,6 @@
         <div class="section" onclick="showProductPopup()">
             <i class="fas fa-shopping-cart"></i>
             <h2>Tienda</h2>
-        </div>
-    </div>
-
-    <div class="popup" id="login-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('login-popup')">&times;</span>
-            <i class="fas fa-sign-in-alt" style="color: #00CED1; font-size: 3rem;"></i>
-            <h2>INICIAR SESIÓN</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="username">Usuario</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn">ENTRAR</button>
-            </form>
         </div>
     </div>
 
@@ -153,27 +128,6 @@
             </div>
         </div>
     </div>
-    
-    <div class="image-gallery" id="image-gallery-section">
-        <h2>Galería de Imágenes ✨</h2>
-        <div class="image-item">
-            <img src="https://images.unsplash.com/photo-1628173499427-b5b62b1a1c32?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Creatura Mítica">
-            <p>La bestia de mil cabezas.</p>
-        </div>
-        <div class="image-item">
-            <img src="https://images.unsplash.com/photo-1549419137-ef7c7247a836?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Un monstruo en la oscuridad">
-            <p>El poder de Hydra en la oscuridad.</p>
-        </div>
-        <div class="image-item">
-            <img src="https://images.unsplash.com/photo-1628173499427-b5b62b1a1c32?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Un dragón acuático">
-            <p>Un ser invencible y antiguo.</p>
-        </div>
-        <div class="image-item">
-            <img src="https://images.unsplash.com/photo-1549419137-ef7c7247a836?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="La hidra mitológica">
-            <p>Un monstruo mitológico que regresa.</p>
-        </div>
-    </div>
-    
 
     <div class="faq-section" id="faq-section">
         <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
@@ -214,10 +168,6 @@
     </div>
 
     <script>
-        function showLoginPopup() {
-            document.getElementById('login-popup').style.display = 'flex';
-        }
-
         function showDiscordPopup() {
             document.getElementById('discord-popup').style.display = 'flex';
         }
@@ -230,19 +180,6 @@
         function hidePopup(id) {
             document.getElementById(id).style.display = 'none';
         }
-
-        document.getElementById('login-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === 'hydra' && password === 'hydra123') {
-                alert('¡Inicio de sesión exitoso!');
-                hidePopup('login-popup');
-            } else {
-                alert('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
-            }
-        });
 
         const products = [
             {
@@ -316,3 +253,39 @@
                 faqItem.classList.toggle('active');
                 const answer = faqItem.querySelector('.faq-answer');
                 if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqSection = document.querySelector('.faq-section');
+            if (faqSection) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const faqItems = faqSection.querySelectorAll('.faq-item');
+                            faqItems.forEach((item, index) => {
+                                item.style.transitionDelay = `${index * 0.1}s`;
+                                item.classList.add('in-view');
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                observer.observe(faqSection);
+            }
+        });
+    </script>
+</body>
+
+</html>
