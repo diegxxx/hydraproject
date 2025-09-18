@@ -22,6 +22,41 @@
             color: #f0f0f0;
         }
 
+        /* Estilo para el nuevo banner */
+        .banner {
+            background-image: url('https://r2.guns.lol/fa72834d-b486-4aee-86ae-3e5a604a274e.webp');
+            background-size: cover;
+            background-position: center;
+            height: 300px; /* Ajusta la altura según necesites */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white; /* Color del texto del banner */
+            position: relative;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Capa oscura para mejor contraste del texto */
+            z-index: 1;
+        }
+
+        .banner > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
         .header-text a.faq-link,
         .header-text span {
             display: inline-flex;
