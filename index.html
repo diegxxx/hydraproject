@@ -13,16 +13,13 @@
             scroll-behavior: smooth;
         }
 
-        .faq-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            transition-delay: 0s;
+        body {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
         }
 
-        .faq-item.in-view {
-            opacity: 1;
-            transform: translateY(0);
+        .banner h1 {
+            color: #f0f0f0;
         }
 
         .header-text a.faq-link,
@@ -30,11 +27,11 @@
             display: inline-flex;
             align-items: center;
         }
-            
+
         .header-text .faq-link i {
             color: #fff;
             background-color: transparent;
-            border: 2px solid #e03400ff;
+            border: 2px solid #00CED1;
             border-radius: 50%;
             width: 25px;
             height: 25px;
@@ -44,11 +41,44 @@
         }
 
         .header-text .faq-link span {
-            color: #e03400ff;
+            color: #00CED1;
             margin-left: 5px;
         }
+
         .header-text .normal-btn i {
             margin-right: 5px;
+        }
+
+        .sections .section,
+        .popup-content,
+        .faq-section,
+        .image-gallery {
+            background-color: #2a2a2a;
+        }
+        
+        .section i, .popup h2, .buy-btn, .faq-question, .faq-section h2 i {
+            color: #00CED1;
+        }
+
+        .popup-title {
+            color: #00CED1;
+        }
+
+        .buy-btn {
+            background-color: #00CED1;
+            color: #1a1a1a;
+        }
+        
+        .faq-item, .image-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: 0s;
+        }
+
+        .faq-item.in-view, .image-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -66,8 +96,7 @@
     <div class="banner">
         <div class="logo-container">
             <div class="logo-3d">
-                <img src="https://github.com/diegxxx/hydraproject/blob/main/hydraprojects.png"
-                    alt="Hydra Logo">
+                <img src="https://github.com/diegxxx/hydraproject/blob/main/hydraprojects.png" alt="Hydra Logo">
             </div>
         </div>
         <h1>Bienvenido a Hydra Projects</h1>
@@ -91,7 +120,7 @@
     <div class="popup" id="login-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('login-popup')">&times;</span>
-            <i class="fas fa-sign-in-alt" style="color: #f0f0f0; font-size: 3rem;"></i>
+            <i class="fas fa-sign-in-alt" style="color: #00CED1; font-size: 3rem;"></i>
             <h2>INICIAR SESIÓN</h2>
             <form id="login-form">
                 <div class="form-group">
@@ -110,7 +139,7 @@
     <div class="popup" id="discord-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
-            <i class="fab fa-discord" style="color: #e03400ff; font-size: 3rem;"></i>
+            <i class="fab fa-discord" style="color: #00CED1; font-size: 3rem;"></i>
             <br><br>
             <a href="https://discord.gg/KWshUtryKK" target="_blank" rel="noopener noreferrer">¡Haz clic para unirte!</a>
         </div>
@@ -124,6 +153,27 @@
             </div>
         </div>
     </div>
+    
+    <div class="image-gallery" id="image-gallery-section">
+        <h2>Galería de Imágenes ✨</h2>
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1628173499427-b5b62b1a1c32?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Creatura Mítica">
+            <p>La bestia de mil cabezas.</p>
+        </div>
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1549419137-ef7c7247a836?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Un monstruo en la oscuridad">
+            <p>El poder de Hydra en la oscuridad.</p>
+        </div>
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1628173499427-b5b62b1a1c32?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Un dragón acuático">
+            <p>Un ser invencible y antiguo.</p>
+        </div>
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1549419137-ef7c7247a836?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="La hidra mitológica">
+            <p>Un monstruo mitológico que regresa.</p>
+        </div>
+    </div>
+    
 
     <div class="faq-section" id="faq-section">
         <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
@@ -266,39 +316,3 @@
                 faqItem.classList.toggle('active');
                 const answer = faqItem.querySelector('.faq-answer');
                 if (faqItem.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                } else {
-                    answer.style.maxHeight = '0';
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqSection = document.querySelector('.faq-section');
-            if (faqSection) {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const faqItems = faqSection.querySelectorAll('.faq-item');
-                            faqItems.forEach((item, index) => {
-                                item.style.transitionDelay = `${index * 0.1}s`;
-                                item.classList.add('in-view');
-                            });
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                observer.observe(faqSection);
-            }
-        });
-    </script>
-</body>
-
-</html>
