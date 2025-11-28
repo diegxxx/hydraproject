@@ -1,16 +1,3 @@
-¡Mil disculpas nuevamente\! Entiendo perfectamente. El banner de imagen y el video de fondo son elementos distintos que deseas conservar, pero el video debe actuar como fondo en la sección del encabezado.
-
-El problema era que el video sobrescribía el `background-image` del banner.
-
-He ajustado el código para:
-
-1.  **Mantener el Banner de Imagen:** La imagen `pf.png` es la imagen de fondo principal del `<header>`.
-2.  **Poner el Video en el Fondo Total de la Página (`<body>`):** Para evitar conflictos, pondremos el video como fondo del `<body>` para que se vea en toda la pantalla, y ajustaremos el `opacity` de la imagen del banner para que el video se note detrás.
-3.  **Asegurar el Color Verde:** Mantendremos el `main-content` verde.
-
-Aquí está el código `index.html` actualizado. **El video ahora cubre toda la página detrás del contenido.**
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,7 +10,7 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
     <style>
         /*
             -------------------------------------------
-            GENERALES Y VIDEO DE FONDO GLOBAL
+            GENERALES Y TIPOGRAFÍA
             -------------------------------------------
         */
         body {
@@ -35,34 +22,8 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /* Necesario para posicionar el video de fondo absoluto */
-            position: relative;
+            position: relative; /* Asegura que el body no interfiera con el video del main */
             z-index: 1; 
-        }
-
-        /* ESTILOS DEL VIDEO DE FONDO GLOBAL */
-        .video-background {
-            position: fixed; /* Fijo para cubrir todo el viewport */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Detrás de todo el contenido de la página */
-            overflow: hidden;
-        }
-        
-        .video-background iframe {
-            /* Técnica para asegurar que el video siempre cubra el fondo manteniendo 16:9 */
-            min-width: 100vw; 
-            min-height: 56.25vw; /* Altura = Ancho * (9/16) */
-            height: 100vh;
-            width: 177.77vh; /* Ancho = Altura * (16/9) */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none; /* Inhabilita interacciones */
-            opacity: 0.2; /* Lo hace muy sutil para que no moleste */
         }
 
         /*
@@ -93,14 +54,14 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
 
         /*
             -------------------------------------------
-            BANNER PRINCIPAL (HEADER) - Mantiene la imagen del banner
+            BANNER PRINCIPAL (HEADER) - Solo Imagen Estática
             -------------------------------------------
         */
         .header-banner {
             position: relative;
             width: 100%;
             height: 400px; 
-            /* URL DEL BANNER PROPORCIONADO - RESTAURADO */
+            /* URL DEL BANNER PROPORCIONADO - IMAGEN */
             background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -136,7 +97,7 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
 
         /*
             -------------------------------------------
-            CONTENIDO PRINCIPAL Y BOTONES
+            CONTENIDO PRINCIPAL (MAIN) - Contiene el video de fondo
             -------------------------------------------
         */
         .main-content {
@@ -146,10 +107,48 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
             justify-content: flex-start;
             align-items: center; 
             padding: 40px 20px;
-            background-color: #32CD32; /* Fondo verde solicitado */
+            /* El color verde ahora es un fallback/superposición */
+            background-color: #32CD32; 
             gap: 30px; 
-            z-index: 5; /* Asegura que el main-content esté encima del video */
-            position: relative;
+            position: relative; /* Esencial para que el video se posicione relativo a él */
+            overflow: hidden; /* Oculta cualquier parte del video que se desborde */
+        }
+        
+        /* Contenedor del video dentro de main-content */
+        .main-content .video-background-local {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Detrás del contenido */
+            overflow: hidden;
+            opacity: 0.25; /* Opacidad para que el verde y el contenido se vean mejor */
+        }
+        
+        .main-content .video-background-local iframe {
+            /* Técnica para asegurar que el video cubra el área del main-content */
+            min-width: 100%;
+            min-height: 100%;
+            width: 177.77vh; 
+            height: 56.25vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        /* Superposición de color verde sobre el video */
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(50, 205, 50, 0.7); /* Verde lima con transparencia */
+            z-index: 2;
         }
 
         .main-container {
@@ -157,6 +156,8 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
             flex-direction: column;
             align-items: center;
             gap: 30px;
+            position: relative; /* Asegura que el contenido esté encima de la capa verde */
+            z-index: 3;
         }
 
         .action-button {
@@ -185,11 +186,8 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
         }
 
         .action-button .icon {
-            font-size: 2.5em;
-        }
-
-        .action-button.discord .icon {
             color: #7289da; 
+            font-size: 2.5em;
         }
         
         .price-info {
@@ -226,16 +224,6 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
     </style>
 </head>
 <body>
-    <div class="video-background">
-        <iframe 
-            src="https://www.youtube.com/embed/jPZEGEuBK1Y?modestbranding=1&autohide=1&showinfo=0&controls=0&autoplay=1&mute=1&loop=1&playlist=jPZEGEuBK1Y" 
-            title="Video de Fondo" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-        </iframe>
-    </div>
-
     <nav class="navbar">
         <a href="#">DISCORD</a>
     </nav>
@@ -247,6 +235,16 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
     </header>
 
     <main class="main-content">
+        <div class="video-background-local">
+            <iframe 
+                src="https://www.youtube.com/embed/jPZEGEuBK1Y?modestbranding=1&autohide=1&showinfo=0&controls=0&autoplay=1&mute=1&loop=1&playlist=jPZEGEuBK1Y" 
+                title="Video de Fondo" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
         <div class="main-container">
             <div class="price-info">
                 <h3>💰 Tabla de precios</h3>
@@ -267,4 +265,3 @@ Aquí está el código `index.html` actualizado. **El video ahora cubre toda la 
     </main>
 </body>
 </html>
-```
