@@ -1,382 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to ! Heavxn portfolio</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <title>Hydra Projects - Bienvenido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --color-background-cream: #fffaf0; 
-            --color-background-light: #ffffff; 
-            --color-text-dark: #1a1a1a;
-            --color-accent-yellow: #ffc107; 
-            --color-border-dark: #cccccc;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            /* Fondo blanco amarillento */
-            background-color: var(--color-background-cream);
-            /* Texto oscuro/negro */
-            color: var(--color-text-dark);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Fondo claro */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .banner h1 {
-            /* Texto blanco sobre la capa oscura del banner */
-            color: #f0f0f0;
+        .navbar {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .banner {
-            background-image: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true');
-            background-size: cover;
-            background-position: center;
-            height: 700px;
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffd700; /* Dorado para hover */
+        }
+
+        .header-banner {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Altura del banner */
+            background: url('https://via.placeholder.com/1920x400/000000/FFFFFF?text=Banner+Hydra+Projects') no-repeat center center/cover; /* Imagen de fondo del banner */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             color: white;
-            position: relative;
+            text-align: center;
+            overflow: hidden; /* Para contener la imagen del personaje */
         }
 
-        .banner::before {
+        .header-banner::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            /* Capa oscura (mantenida para contraste del texto H1) */
-            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Capa oscura semitransparente */
             z-index: 1;
         }
 
-        .banner > * {
+        .header-content {
             position: relative;
             z-index: 2;
         }
 
-        .logo-container {
+        .minecraft-character {
+            position: absolute;
+            bottom: 0; /* Ajusta para posicionar el personaje */
+            left: 10%; /* Ajusta la posición izquierda */
+            height: 100%; /* El personaje ocupa toda la altura del banner */
+            max-width: 300px; /* Ancho máximo del personaje */
+            object-fit: contain; /* Para que la imagen se ajuste sin distorsionarse */
+            z-index: 2;
+            transform: translateX(-50%); /* Centra el personaje horizontalmente */
+            image-rendering: pixelated; /* Mantiene el estilo pixelado */
+        }
+
+        .site-logo {
+            max-width: 400px; /* Tamaño del logo */
             margin-bottom: 20px;
+            image-rendering: pixelated; /* Mantiene el estilo pixelado */
         }
 
-        .header-text a.faq-link,
-        .header-text span {
-            display: inline-flex;
-            align-items: center;
-            /* Color de texto oscuro para la cabecera */
-            color: var(--color-text-dark);
+        .welcome-text {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
 
-        .header-text .faq-link i {
-            /* Color del icono oscuro */
-            color: var(--color-text-dark);
-            background-color: transparent;
-            /* Borde del color de acento (Amarillo) */
-            border: 2px solid var(--color-accent-yellow);
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            display: inline-flex;
+        .main-content {
+            flex-grow: 1;
+            display: flex;
             justify-content: center;
+            align-items: flex-start; /* Alinea los botones al inicio del contenedor */
+            padding: 40px 20px;
+            background-color: #f0f2f5;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px; /* Espacio entre los botones */
+        }
+
+        .action-button {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px 30px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            gap: 10px;
         }
 
-        .header-text .faq-link span {
-            /* Texto del color de acento (Amarillo) */
-            color: var(--color-accent-yellow);
-            margin-left: 5px;
+        .action-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            color: #007bff; /* Color de hover para el texto */
         }
 
-        .header-text .normal-btn i {
-            margin-right: 5px;
-        }
-        
-        /* --- Estilos de Secciones y Popups --- */
-        .sections .section,
-        .popup-content,
-        .faq-section {
-            /* Fondo blanco para secciones y popups */
-            background-color: var(--color-background-light);
-            /* Borde ligero para delimitar */
-            border: 1px solid var(--color-border-dark);
-        }
-        
-        .section i, .popup h2, .buy-btn, .faq-section h2 i {
-            /* Iconos y títulos de color de acento (Amarillo) */
-            color: var(--color-accent-yellow);
+        .action-button .icon {
+            font-size: 2.5em;
+            color: #007bff; /* Color por defecto del icono */
         }
 
-        /* Cambiado: El texto de la pregunta del FAQ también es amarillo ahora */
-        .faq-question {
-            color: var(--color-accent-yellow);
+        .action-button.discord .icon {
+            color: #7289da; /* Color de Discord */
         }
 
-        .popup-title {
-            color: var(--color-accent-yellow);
-        }
-
-        .buy-btn {
-            /* Botón de COMPRAR con fondo de color de acento (Amarillo) */
-            background-color: var(--color-accent-yellow);
-            /* Texto del botón oscuro para contraste */
-            color: var(--color-text-dark); 
-        }
-
-        .faq-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            transition-delay: 0s;
-        }
-
-        .faq-item.in-view {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Estilo para la pregunta activa/abierta */
-        .faq-item.active .faq-question {
-             /* La pregunta activa se mantiene de color de acento (Amarillo) */
-            color: var(--color-accent-yellow);
-        }
-        
-        /* Estilo para el fondo del footer */
-        .footer-text {
-            background-color: var(--color-background-light);
-            color: var(--color-text-dark);
-            border-top: 1px solid var(--color-border-dark);
-        }
-        
-        /* Estilo para el botón de cerrar el popup */
-        .popup-close {
-            color: var(--color-text-dark);
-        }
-
-        .popup-content a {
-            /* Enlace en el popup de Discord */
-            color: var(--color-accent-yellow);
+        .action-button.tienda .icon {
+            color: #ffaa00; /* Color de tienda/carrito */
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <div class="header-text">
-            <span class="normal-btn" onclick="showProductPopup()" title="Tienda"><i class="fas fa-shopping-cart"></i>TIENDA</span> |
-            <span class="normal-btn" onclick="showDiscordPopup()" title="Discord"><i class="fab fa-discord"></i>DISCORD</span> |
-            <a class="faq-link" href="#faq-section" title="Preguntas Frecuentes"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+    <nav class="navbar">
+        <a href="#">TIENDA</a>
+        <a href="#">DISCORD</a>
+        <a href="#">FAQ</a>
+    </nav>
+
+    <header class="header-banner">
+        <img src="https://via.placeholder.com/200x400/808080/FFFFFF?text=MC+Character" alt="Minecraft Character" class="minecraft-character">
+        <div class="header-content">
+            <img src="https://via.placeholder.com/400x100/32CD32/FFFFFF?text=HERYXN+DEV" alt="Heryxn Dev Logo" class="site-logo">
+            <h1 class="welcome-text">Bienvenido a Hydra Projects</h1>
         </div>
     </header>
 
-    <div class="banner">
-        <div class="logo-container">
-            <div class="logo-3d">
-                <img src="https://ibb.co/My4zSKz8" alt="Hydra Logo">
-            </div>
+    <main class="main-content">
+        <div class="button-container">
+            <a href="#" class="action-button discord">
+                <i class="fab fa-discord icon"></i>
+                <span>Discord</span>
+            </a>
+            <a href="#" class="action-button tienda">
+                <i class="fas fa-shopping-cart icon"></i>
+                <span>Tienda</span>
+            </a>
         </div>
-        <h1>Bienvenido a Hydra Projects</h1>
-    </div>
-
-    <div class="sections">
-        <div class="section" onclick="showDiscordPopup()">
-            <i class="fab fa-discord"></i>
-            <h2>Discord</h2>
-        </div>
-        <div class="section" onclick="showProductPopup()">
-            <i class="fas fa-shopping-cart"></i>
-            <h2>Tienda</h2>
-        </div>
-    </div>
-
-    <div class="popup" id="discord-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
-            <i class="fab fa-discord" style="color: var(--color-accent-yellow); font-size: 3rem;"></i>
-            <br><br>
-            <a href="https://discord.gg/KWshUtryKK" target="_blank" rel="noopener noreferrer">¡Haz clic para unirte!</a>
-        </div>
-    </div>
-
-    <div class="popup" id="product-popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="hidePopup('product-popup')">&times;</span>
-            <h2 class="popup-title">NUESTROS PRODUCTOS</h2>
-            <div id="product-grid" class="product-grid">
-            </div>
-        </div>
-    </div>
-
-    <div class="faq-section" id="faq-section">
-        <h2><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
-        <div class="faq-item">
-            <div class="faq-question">¿Cómo puedo comprar un producto?</div>
-            <div class="faq-answer">
-                <p>Puedes comprar cualquier producto haciendo clic en el icono de la <strong>Tienda</strong> en el menú
-                    principal. Luego, selecciona el producto que desees y haz clic en el botón de
-                    <strong>Comprar</strong>.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">¿Qué métodos de pago aceptan?</div>
-            <div class="faq-answer">
-                <p>Actualmente aceptamos los siguientes métodos de pago: PayPal, tarjetas de crédito (Visa, Mastercard)
-                    y algunas criptomonedas. Puedes ver las opciones exactas al finalizar la compra.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">¿Dónde puedo encontrar ayuda si tengo un problema?</div>
-            <div class="faq-answer">
-                <p>Si tienes algún problema, te recomendamos unirte a nuestro servidor de <strong>Discord</strong>. Ahí,
-                    nuestro equipo de soporte y la comunidad te ayudarán a resolver cualquier duda o inconveniente.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">¿Cómo descargo la aplicación después de comprarla?</div>
-            <div class="faq-answer">
-                <p>Después de realizar el pago, recibirás un correo electrónico con un enlace de descarga y las
-                    instrucciones detalladas. También podrás acceder a la descarga desde tu panel de usuario una vez que
-                    inicies sesión.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-text">
-        <p>© HydraProjects All rights reserved</p>
-    </div>
-
-    <script>
-        function showDiscordPopup() {
-            document.getElementById('discord-popup').style.display = 'flex';
-        }
-
-        function showProductPopup() {
-            document.getElementById('product-popup').style.display = 'flex';
-            renderProducts();
-        }
-
-        function hidePopup(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        const products = [
-            {
-                id: 1,
-                name: 'MegaPack Hydra',
-                price: '€49.99',
-                description: 'Todo en un solo paquete.',
-                image: 'https://img.freepik.com/fotos-premium/hydra-o-monstro-mitologico-imortal-1_1107970-2202.jpg'
-            },
-            {
-                id: 2,
-                name: 'Suscripción Hydra',
-                price: '€8.00/mes',
-                description: 'Acceso completo y exclusivo.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7382.jpg'
-            },
-            {
-                id: 3,
-                name: 'Suscripción Hydra+',
-                price: '€12.00/mes',
-                description: 'Mejor alternativa para no gastar tanto.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7370.jpg'
-            },
-            {
-                id: 4,
-                name: 'Mega Hydra',
-                price: '€17.99',
-                description: 'Todo lo que podemos ofrecerte.',
-                image: 'https://images6.alphacoders.com/107/1076107.jpg'
-            },
-            {
-                id: 5,
-                name: 'Producto Extra 1',
-                price: '€20.00',
-                description: 'Descripción del producto extra.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7382.jpg'
-            },
-            {
-                id: 6,
-                name: 'Producto Extra 2',
-                price: '€25.00',
-                description: 'Descripción del segundo producto extra.',
-                image: 'https://img.freepik.com/premium-photo/hydra-greek-mythology-generative-ai_656174-7370.jpg'
-            }
-        ];
-
-        function renderProducts() {
-            const productGrid = document.getElementById('product-grid');
-            productGrid.innerHTML = '';
-            products.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.className = 'product-item';
-                productItem.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p class="product-price">${product.price}</p>
-                    <button class="buy-btn" onclick="buyProduct(${product.id})">COMPRAR</button>
-                `;
-                productGrid.appendChild(productItem);
-            });
-        }
-
-        function buyProduct(productId) {
-            alert(`Producto con ID ${productId} comprado. ¡Gracias por tu compra!`);
-        }
-
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', event => {
-                const faqItem = item.parentNode;
-                faqItem.classList.toggle('active');
-                const answer = faqItem.querySelector('.faq-answer');
-                if (faqItem.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                } else {
-                    answer.style.maxHeight = '0';
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqSection = document.querySelector('.faq-section');
-            if (faqSection) {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const faqItems = faqSection.querySelectorAll('.faq-item');
-                            faqItems.forEach((item, index) => {
-                                item.style.transitionDelay = `${index * 0.1}s`;
-                                item.classList.add('in-view');
-                            });
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                observer.observe(faqSection);
-            }
-        });
-    </script>
+    </main>
 </body>
-
 </html>
-
-
-
-
-
