@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            position: relative; /* Asegura que el body no interfiera con el video del main */
+            position: relative; 
             z-index: 1; 
         }
 
@@ -80,7 +80,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Capa oscura para legibilidad */
+            background: rgba(0, 0, 0, 0.4); /* Capa oscura para legibilidad del texto en el header */
             z-index: 2;
         }
 
@@ -107,11 +107,10 @@
             justify-content: flex-start;
             align-items: center; 
             padding: 40px 20px;
-            /* El color verde ahora es un fallback/superposición */
-            background-color: #32CD32; 
+            background-color: #32CD32; /* Color de fallback para el main-content */
             gap: 30px; 
-            position: relative; /* Esencial para que el video se posicione relativo a él */
-            overflow: hidden; /* Oculta cualquier parte del video que se desborde */
+            position: relative; 
+            overflow: hidden; 
         }
         
         /* Contenedor del video dentro de main-content */
@@ -121,13 +120,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Detrás del contenido */
+            z-index: 1; 
             overflow: hidden;
-            opacity: 0.25; /* Opacidad para que el verde y el contenido se vean mejor */
+            opacity: 1; /* Eliminada la transparencia del video */
         }
         
         .main-content .video-background-local iframe {
-            /* Técnica para asegurar que el video cubra el área del main-content */
             min-width: 100%;
             min-height: 100%;
             width: 177.77vh; 
@@ -139,25 +137,20 @@
             pointer-events: none;
         }
 
-        /* Superposición de color verde sobre el video */
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(50, 205, 50, 0.7); /* Verde lima con transparencia */
-            z-index: 2;
-        }
+        /* Eliminada la superposición verde semi-transparente */
+        /* .main-content::before ya no existe */
 
         .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
-            position: relative; /* Asegura que el contenido esté encima de la capa verde */
-            z-index: 3;
+            position: relative; 
+            z-index: 3; /* Asegura que el contenido esté encima del video */
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente para el contenedor de precios/botón */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .action-button {
@@ -191,7 +184,7 @@
         }
         
         .price-info {
-            background-color: #ffffff;
+            background-color: #ffffff; /* Sigue siendo blanco */
             border: 2px solid #32CD32; 
             border-radius: 8px;
             padding: 25px;
@@ -265,3 +258,4 @@
     </main>
 </body>
 </html>
+```http://googleusercontent.com/image_generation_content/7
