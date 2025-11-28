@@ -9,31 +9,46 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- Colores de la paleta --- */
+        /* Fondo claro */
+        :root {
+            --color-background-light: #ffffff;
+            --color-background-medium: #f0f0f0; /* Fondo de secciones/popups */
+            --color-text-dark: #1a1a1a;
+            --color-accent-blue: #007bff; /* Un azul vibrante como acento, similar al cian */
+            --color-accent-yellow: #ffc107; /* Amarillo como alternativa, si lo prefieres */
+            --color-border-dark: #cccccc;
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            /* Fondo blanco */
+            background-color: var(--color-background-light);
+            /* Texto oscuro/negro */
+            color: var(--color-text-dark);
         }
 
+        /* --- Estilos de Cabecera y Banner --- */
         .banner h1 {
+            /* Texto blanco sobre la capa oscura del banner */
             color: #f0f0f0;
         }
 
-        /* Estilo para el nuevo banner */
+        /* Estilo para el nuevo banner (mantiene la imagen) */
         .banner {
             background-image: url('https://th-test-11.slatic.net/p/c3d9d062166cbbb12be81d9e05a747ea.jpg');
             background-size: cover;
             background-position: center;
-            height: 300px; /* Ajusta la altura según necesites */
+            height: 300px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white; /* Color del texto del banner */
+            color: white;
             position: relative;
         }
 
@@ -44,7 +59,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Capa oscura para mejor contraste del texto */
+            /* Capa oscura (mantenida para contraste del texto H1) */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
@@ -61,12 +77,16 @@
         .header-text span {
             display: inline-flex;
             align-items: center;
+            /* Color de texto oscuro para la cabecera */
+            color: var(--color-text-dark);
         }
 
         .header-text .faq-link i {
-            color: #fff;
+            /* Color del icono oscuro */
+            color: var(--color-text-dark);
             background-color: transparent;
-            border: 2px solid #00CED1;
+            /* Borde del color de acento (azul/cian) */
+            border: 2px solid var(--color-accent-blue);
             border-radius: 50%;
             width: 25px;
             height: 25px;
@@ -76,7 +96,8 @@
         }
 
         .header-text .faq-link span {
-            color: #00CED1;
+            /* Texto del color de acento (azul/cian) */
+            color: var(--color-accent-blue);
             margin-left: 5px;
         }
 
@@ -84,26 +105,44 @@
             margin-right: 5px;
         }
 
+        /* --- Estilos de Secciones y Popups --- */
         .sections .section,
         .popup-content,
         .faq-section {
-            background-color: #2a2a2a;
+            /* Fondo gris claro para secciones y popups */
+            background-color: var(--color-background-medium);
+            /* Borde ligero para delimitar */
+            border: 1px solid var(--color-border-dark);
         }
         
         .section i, .popup h2, .buy-btn, .faq-question, .faq-section h2 i {
-            color: #00CED1;
+            /* Iconos y títulos de color de acento (azul/cian) */
+            color: var(--color-accent-blue);
+        }
+        
+        /* Ajuste para el texto dentro de los botones de la cabecera */
+        .header-text span {
+            color: var(--color-text-dark);
+        }
+        
+        /* El texto del botón 'TIENDA' y 'DISCORD' */
+        .header-text .normal-btn {
+            cursor: pointer;
         }
 
         .popup-title {
-            color: #00CED1;
+            color: var(--color-accent-blue);
         }
 
         .buy-btn {
-            background-color: #00CED1;
-            color: #1a1a1a;
+            /* Botón de COMPRAR con fondo de color de acento (azul/cian) */
+            background-color: var(--color-accent-blue);
+            /* Texto del botón oscuro para contraste */
+            color: var(--color-background-light);
         }
 
         .faq-item {
+            /* Mantiene la animación */
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -114,6 +153,35 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Estilo para la pregunta activa/abierta */
+        .faq-item.active .faq-question {
+             /* La pregunta activa se mantiene de color de acento (azul/cian) */
+            color: var(--color-accent-blue);
+        }
+        
+        /* Estilo para el fondo del footer */
+        .footer-text {
+            background-color: var(--color-background-medium);
+            color: var(--color-text-dark);
+            border-top: 1px solid var(--color-border-dark);
+        }
+        
+        /* Estilo para el botón de cerrar el popup */
+        .popup-close {
+            color: var(--color-text-dark);
+        }
+
+        .popup-content a {
+            /* Enlace en el popup de Discord */
+            color: var(--color-accent-blue);
+        }
+
+        /* --- Opcional: Para usar amarillo como color de acento principal --- */
+        /* Si quieres amarillo, reemplaza las líneas anteriores con 'var(--color-accent-blue)' por 'var(--color-accent-yellow)' */
+        /* Y cambia el color del texto del H1 del banner si lo deseas, para más contraste: */
+        /* .banner h1 { color: var(--color-text-dark); } */
+        
     </style>
 </head>
 
@@ -149,7 +217,7 @@
     <div class="popup" id="discord-popup">
         <div class="popup-content">
             <span class="popup-close" onclick="hidePopup('discord-popup')">&times;</span>
-            <i class="fab fa-discord" style="color: #00CED1; font-size: 3rem;"></i>
+            <i class="fab fa-discord" style="color: var(--color-accent-blue); font-size: 3rem;"></i>
             <br><br>
             <a href="https://discord.gg/KWshUtryKK" target="_blank" rel="noopener noreferrer">¡Haz clic para unirte!</a>
         </div>
@@ -324,6 +392,3 @@
 </body>
 
 </html>
-
-
-
