@@ -4,9 +4,167 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydra Projects - Bienvenido</title>
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/css/all.min.css">
+    
+    <style>
+        /*
+            -------------------------------------------
+            GENERALES Y TIPOGRAFÍA
+            -------------------------------------------
+        */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Fondo claro */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /*
+            -------------------------------------------
+            BARRA DE NAVEGACIÓN (NAVBAR)
+            -------------------------------------------
+        */
+        .navbar {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffd700; /* Dorado para hover */
+        }
+
+        /*
+            -------------------------------------------
+            BANNER PRINCIPAL (HEADER)
+            -------------------------------------------
+        */
+        .header-banner {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Altura del banner */
+            /* URL DEL BANNER PROPORCIONADO */
+            background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Capa oscura semitransparente */
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .site-logo {
+            max-width: 400px; /* Tamaño del logo */
+            margin-bottom: 20px;
+            image-rendering: pixelated; /* Mantiene el estilo pixelado de Minecraft */
+        }
+
+        .welcome-text {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        /* Personaje de Minecraft */
+        .minecraft-character {
+            position: absolute;
+            bottom: 0;
+            left: 10%; 
+            height: 100%;
+            max-width: 300px;
+            object-fit: contain;
+            z-index: 2;
+            transform: translateX(-50%); 
+            image-rendering: pixelated;
+        }
+
+
+        /*
+            -------------------------------------------
+            CONTENIDO PRINCIPAL Y BOTONES
+            -------------------------------------------
+        */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            background-color: #f0f2f5;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px; /* Espacio entre los botones */
+        }
+
+        .action-button {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px 30px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            color: #007bff; /* Color de hover para el texto */
+        }
+
+        .action-button .icon {
+            font-size: 2.5em;
+        }
+
+        .action-button.discord .icon {
+            color: #7289da; /* Color de Discord */
+        }
+
+        .action-button.tienda .icon {
+            color: #ffaa00; /* Color de tienda/carrito */
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
