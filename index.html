@@ -97,7 +97,7 @@
 
         /*
             -------------------------------------------
-            CONTENIDO PRINCIPAL (MAIN) - Con efecto de estelas
+            CONTENIDO PRINCIPAL (MAIN) - Con efecto de estelas MEJORADO
             -------------------------------------------
         */
         .main-content {
@@ -113,7 +113,7 @@
             overflow: hidden; 
         }
         
-        /* ESTILOS PARA LAS ESTELAS VERDES */
+        /* ESTILOS PARA LAS ESTELAS VERDES MEJORADO */
         .green-trails-background {
             position: absolute;
             top: 0;
@@ -123,17 +123,18 @@
             z-index: 1; /* Detrás del contenido */
             background-image: repeating-linear-gradient(
                 45deg,
-                rgba(0, 255, 0, 0.1) 0px,
-                rgba(0, 255, 0, 0.1) 10px,
-                transparent 10px,
-                transparent 20px
+                rgba(0, 255, 0, 0.2) 0px, /* Estela más opaca */
+                rgba(0, 255, 0, 0.2) 15px, /* Más gruesa */
+                transparent 15px,
+                transparent 30px
             );
-            background-size: 40px 40px; /* Tamaño de las "celdas" de las estelas */
-            transition: background-position 0.5s ease-out; /* Transición suave */
+            background-size: 60px 60px; /* Tamaño de las "celdas" de las estelas más grande */
+            background-position: 0 0; /* Posición inicial */
+            transition: background-position 0.8s ease-out; /* Transición más larga y suave */
         }
 
         .main-content:hover .green-trails-background {
-            background-position: 20px 20px; /* Efecto de movimiento al pasar el cursor */
+            background-position: 60px 60px; /* Efecto de movimiento más pronunciado */
         }
 
         .main-container {
