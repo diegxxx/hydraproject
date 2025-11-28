@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -97,7 +97,7 @@
 
         /*
             -------------------------------------------
-            CONTENIDO PRINCIPAL (MAIN) - Contiene el video de fondo
+            CONTENIDO PRINCIPAL (MAIN) - Con efecto de estelas
             -------------------------------------------
         */
         .main-content {
@@ -107,38 +107,34 @@
             justify-content: flex-start;
             align-items: center; 
             padding: 40px 20px;
-            background-color: #32CD32; /* Color de fallback para el main-content */
+            background-color: #32CD32; /* Color verde sólido de base */
             gap: 30px; 
             position: relative; 
             overflow: hidden; 
         }
         
-        /* Contenedor del video dentro de main-content */
-        .main-content .video-background-local {
+        /* ESTILOS PARA LAS ESTELAS VERDES */
+        .green-trails-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; 
-            overflow: hidden;
-            opacity: 1; /* Eliminada la transparencia del video */
-        }
-        
-        .main-content .video-background-local iframe {
-            min-width: 100%;
-            min-height: 100%;
-            width: 177.77vh; 
-            height: 56.25vw;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+            z-index: 1; /* Detrás del contenido */
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(0, 255, 0, 0.1) 0px,
+                rgba(0, 255, 0, 0.1) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            background-size: 40px 40px; /* Tamaño de las "celdas" de las estelas */
+            transition: background-position 0.5s ease-out; /* Transición suave */
         }
 
-        /* Eliminada la superposición verde semi-transparente */
-        /* .main-content::before ya no existe */
+        .main-content:hover .green-trails-background {
+            background-position: 20px 20px; /* Efecto de movimiento al pasar el cursor */
+        }
 
         .main-container {
             display: flex;
@@ -146,7 +142,7 @@
             align-items: center;
             gap: 30px;
             position: relative; 
-            z-index: 3; /* Asegura que el contenido esté encima del video */
+            z-index: 3; /* Asegura que el contenido esté encima del fondo de estelas */
             background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente para el contenedor de precios/botón */
             border-radius: 8px;
             padding: 20px;
@@ -228,16 +224,8 @@
     </header>
 
     <main class="main-content">
-        <div class="video-background-local">
-            <iframe 
-                src="https://www.youtube.com/embed/jPZEGEuBK1Y?modestbranding=1&autohide=1&showinfo=0&controls=0&autoplay=1&mute=1&loop=1&playlist=jPZEGEuBK1Y" 
-                title="Video de Fondo" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                allowfullscreen>
-            </iframe>
-        </div>
-
+        <div class="green-trails-background"></div> 
+        
         <div class="main-container">
             <div class="price-info">
                 <h3>💰 Tabla de precios</h3>
