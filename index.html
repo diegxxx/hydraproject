@@ -97,7 +97,7 @@
 
         /*
             -------------------------------------------
-            CONTENIDO PRINCIPAL (MAIN) - Con efecto de estelas MEJORADO
+            CONTENIDO PRINCIPAL (MAIN) - Con efecto de estelas MÁS DINÁMICO
             -------------------------------------------
         */
         .main-content {
@@ -113,7 +113,7 @@
             overflow: hidden; 
         }
         
-        /* ESTILOS PARA LAS ESTELAS VERDES MEJORADO */
+        /* ESTILOS PARA LAS ESTELAS VERDES MÁS DINÁMICO */
         .green-trails-background {
             position: absolute;
             top: 0;
@@ -122,19 +122,20 @@
             height: 100%;
             z-index: 1; /* Detrás del contenido */
             background-image: repeating-linear-gradient(
-                45deg,
-                rgba(0, 255, 0, 0.2) 0px, /* Estela más opaca */
-                rgba(0, 255, 0, 0.2) 15px, /* Más gruesa */
-                transparent 15px,
-                transparent 30px
+                -45deg, /* Ángulo para un efecto diagonal */
+                rgba(0, 255, 0, 0.3) 0px, /* Estela más opaca */
+                rgba(0, 255, 0, 0.3) 10px, /* Grosor de la estela */
+                transparent 10px,
+                transparent 40px /* Espacio entre estelas */
             );
-            background-size: 60px 60px; /* Tamaño de las "celdas" de las estelas más grande */
+            background-size: 80px 80px; /* Tamaño de la repetición del patrón */
             background-position: 0 0; /* Posición inicial */
-            transition: background-position 0.8s ease-out; /* Transición más larga y suave */
+            transition: background-position 0.3s ease-out, background-size 0.3s ease-out; /* Transición combinada */
         }
 
         .main-content:hover .green-trails-background {
-            background-position: 60px 60px; /* Efecto de movimiento más pronunciado */
+            background-position: 20px 20px; /* Desplazamiento */
+            background-size: 90px 90px; /* Ligeramente más grande para un efecto de "onda" */
         }
 
         .main-container {
