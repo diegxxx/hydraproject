@@ -57,7 +57,7 @@
             position: relative;
             width: 100%;
             height: 400px; 
-            /* URL DEL BANNER PROPORCIONADO - RESTAURADO */
+            /* URL DEL BANNER PROPORCIONADO */
             background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -84,8 +84,6 @@
             z-index: 2;
         }
         
-        /* Se eliminan los estilos de .site-logo y .minecraft-character si no se usan las etiquetas img */
-
         .welcome-text {
             font-size: 2.5em;
             font-weight: 700;
@@ -100,11 +98,12 @@
         .main-content {
             flex-grow: 1;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            flex-direction: column; /* Cambiado a columna para apilar elementos */
+            justify-content: flex-start;
+            align-items: center; /* Centrar elementos horizontalmente */
             padding: 40px 20px;
-            /* Fondo verde para la parte inferior */
             background-color: #32CD32; /* Verde lima */
+            gap: 30px; /* Espacio entre los elementos principales */
         }
 
         .main-container {
@@ -178,6 +177,23 @@
         .price-list strong {
             color: #E91E63; 
         }
+
+        .video-container {
+            margin-top: 30px; /* Espacio encima del video */
+            width: 80%; /* Ancho del video, puedes ajustarlo */
+            max-width: 800px; /* Ancho máximo para el video */
+            aspect-ratio: 16 / 9; /* Relación de aspecto 16:9 para videos de YouTube */
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden; /* Asegura que el iframe no se salga de los bordes */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -208,6 +224,16 @@
                 <i class="fab fa-discord icon"></i>
                 <span>Discord</span>
             </a>
+        </div>
+
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/jPZEGEuBK1Y?modestbranding=1&autohide=1&showinfo=0&controls=0" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </main>
 </body>
