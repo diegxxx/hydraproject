@@ -49,7 +49,7 @@
         }
 
         .navbar a:hover {
-            color: #ffd700; 
+            color: #64B5F6; /* Azul claro para hover */
         }
 
         /*
@@ -92,7 +92,6 @@
             font-size: 2.5em;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            /* EFECTO DE DESVANECIMIENTO */
             opacity: 0;
             animation: fadeEffect 2s ease-out forwards;
         }
@@ -127,11 +126,10 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             max-width: 600px; 
             width: 90%; 
-            position: relative; /* Esencial para el posicionamiento del código cayendo interno */
-            overflow: hidden; /* Para que el código cayendo no se salga del contenedor */
+            position: relative; 
+            overflow: hidden; 
         }
         
-        /* Estilo para el contenedor que está ESTATICO (al final de la página) */
         .final-cta-section .main-container {
             position: relative; 
             margin: 0 auto;
@@ -139,16 +137,15 @@
             z-index: auto;
         }
 
-        /* NUEVO: Contenedor del código cayendo dentro del main-container */
         .main-container .code-rain-container-internal {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Por debajo del contenido */
+            z-index: 0; 
             pointer-events: none;
-            opacity: 0.15; /* Un poco más sutil */
+            opacity: 0.15; 
         }
 
         .action-button {
@@ -168,7 +165,7 @@
             align-items: center;
             gap: 8px; 
             width: 200px; 
-            position: relative; /* Para que el contenido esté por encima del código cayendo */
+            position: relative; 
             z-index: 1;
         }
 
@@ -191,7 +188,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             text-align: center;
             max-width: 250px; 
-            position: relative; /* Para que el contenido esté por encima del código cayendo */
+            position: relative; 
             z-index: 1;
         }
         
@@ -246,7 +243,7 @@
 
         /*
             -------------------------------------------
-            SECCIONES DE LOGOS CAYENDO (VERDE)
+            SECCIONES DE CODIGO CAYENDO (AHORA TODO AZUL)
             -------------------------------------------
         */
         .code-section {
@@ -257,19 +254,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #111; 
-            color: #00FF00; 
-            border-top: 5px solid #00FF00;
+            background-color: #1a2a4b; /* Fondo azul oscuro uniforme */
+            color: #64B5F6; /* Texto azul claro */
+            border-top: 5px solid #64B5F6; /* Borde azul */
+            border-bottom: 5px solid #64B5F6; /* Borde azul */
         }
         
         .code-section h2 {
             position: relative;
             z-index: 5;
             font-size: 3em;
-            text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 10px #64B5F6, 0 0 20px rgba(100, 181, 246, 0.5); /* Sombra azul */
         }
 
-        .logo-rain-container {
+        /* Este es el contenedor para el código cayendo azul en las secciones de tecnología */
+        .code-section .code-rain-container-tech {
             position: absolute;
             top: 0;
             left: 0;
@@ -277,37 +276,7 @@
             height: 100%;
             z-index: 1; 
             pointer-events: none; 
-        }
-
-        .logo-particle {
-            position: absolute;
-            animation: fall linear infinite; 
-            user-select: none;
-            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5)); 
-            opacity: 0.7; 
-        }
-
-        .logo-particle img {
-            display: block; 
-            width: auto; 
-            height: auto; 
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+            opacity: 0.3; /* Un poco transparente para no ocultar el texto */
         }
         
         /*
@@ -374,7 +343,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
-        /* Contenedor de partículas de código para las tarjetas de proyecto */
         .project-card .code-rain-container-inner {
             position: absolute;
             top: 0;
@@ -427,13 +395,14 @@
 
         /*
             -------------------------------------------
-            PARTÍCULAS CÓDIGO (NUEVO ESTILO AZUL)
+            PARTÍCULAS CÓDIGO (AZUL ÚNICO)
             -------------------------------------------
         */
         .code-particle {
             position: absolute;
             animation: fall-code linear infinite; 
             user-select: none;
+            color: rgba(129, 212, 250, 0.5); /* Azul claro semitransparente */
         }
 
         @keyframes fall-code {
@@ -480,18 +449,6 @@
             background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); 
             z-index: 1;
         }
-
-        /* Este contenedor general de código cayendo ya no lo necesitamos aquí, lo movemos dentro de .main-container */
-        /* .final-cta-section .code-rain-container-final {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; 
-            pointer-events: none;
-            opacity: 0.3;
-        } */
         
         .final-cta-section h2 {
             font-size: 2em;
@@ -501,15 +458,23 @@
             z-index: 2;
         }
         
-        /* Asegura que los elementos del main-container final estén por encima del código cayendo */
         .final-cta-section .main-container {
             z-index: 2;
         }
         
-        /* CORRECCIÓN: Aplicación del borde azul en el price-info y action-button de la sección final */
+        /* CORRECCIÓN: Aplicación del borde azul y colores de texto en la sección final */
         .final-cta-section .price-info {
              background-color: rgba(255, 255, 255, 0.95);
              border: 2px solid #64B5F6; 
+        }
+        .final-cta-section .price-info h3 {
+            color: #64B5F6; /* Título de precios en azul */
+        }
+        .final-cta-section .price-list li {
+            color: #81D4FA; /* Items de la lista en azul más claro */
+        }
+        .final-cta-section .price-list strong {
+            color: #4CAF50; /* Mantener verde para destacar precios */
         }
 
         .final-cta-section .action-button {
@@ -531,17 +496,17 @@
 
     <main class="main-content">
         <section class="code-section" id="code-python">
-            <div class="logo-rain-container"></div> 
+            <div class="code-rain-container-tech"></div> 
             <h2>PYTHON</h2>
         </section>
 
         <section class="code-section" id="code-html">
-            <div class="logo-rain-container"></div> 
+            <div class="code-rain-container-tech"></div> 
             <h2>HTML</h2>
         </section>
 
         <section class="code-section" id="code-css">
-            <div class="logo-rain-container"></div> 
+            <div class="code-rain-container-tech"></div> 
             <h2>CSS</h2>
         </section>
         
@@ -608,62 +573,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const logoMap = {
-                'code-python': 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
-                'code-html': 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
-                'code-css': 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
-            };
-            const greenParticles = 20; 
-            const blueParticlesProjectCards = 5; // Partículas para las tarjetas de proyecto
-            const blueParticlesFinalCtaInternal = 30; // Partículas para el main-container final
+            // Ya no necesitamos logos, solo caracteres de código azul
+            // const logoMap = {...}; 
 
-            // Caracteres para el código binario/tech azul
-            const projectCodeChars = ['0', '1', 'A', 'B', '#', '%', '&', '*', '{', '}', ';', '/', '<', '>', 'z'];
+            const techSectionParticles = 30; // Más partículas para las secciones de Python, HTML, CSS
+            const projectCardsParticles = 5; 
+            const finalCtaInternalParticles = 40; // Más partículas para el main-container final
 
-            function createLogoParticle(container, logoUrl, isGreen = true) {
-                const particleDiv = document.createElement('div');
-                
-                if (isGreen) {
-                    particleDiv.classList.add('logo-particle');
-                } else {
-                    particleDiv.classList.add('code-particle');
-                }
-                
-                const img = document.createElement('img');
-                img.src = logoUrl;
-                img.alt = 'Logo';
+            const codeChars = ['0', '1', 'A', 'B', '#', '%', '&', '*', '{', '}', ';', '/', '<', '>', 'z', 'X', 'Y', 'Z']; // Más caracteres para variedad
 
-                particleDiv.appendChild(img);
-
-                particleDiv.style.left = `${Math.random() * 100}%`;
-                const size = Math.random() * 40 + 30; 
-                img.style.width = `${size}px`;
-                img.style.height = `${size}px`;
-                
-                particleDiv.style.animationDuration = `${Math.random() * 8 + 5}s`; 
-                particleDiv.style.animationDelay = `${Math.random() * -5}s`; 
-
-                container.appendChild(particleDiv);
-
-                particleDiv.addEventListener('animationend', () => {
-                    particleDiv.remove();
-                    createLogoParticle(container, logoUrl, isGreen); 
-                });
-            }
-            
             function createBlueCodeParticle(container) {
                 const particle = document.createElement('span');
                 particle.classList.add('code-particle');
-                particle.textContent = projectCodeChars[Math.floor(Math.random() * projectCodeChars.length)];
-                
-                // Estilos específicos para el código azul
-                particle.style.color = 'rgba(129, 212, 250, 0.5)'; // Azul claro semitransparente
-                particle.style.fontSize = `${Math.random() * 1 + 0.5}em`; 
-                particle.style.animationDuration = `${Math.random() * 6 + 3}s`; 
-                particle.style.animationDelay = `${Math.random() * -3}s`; 
+                particle.textContent = codeChars[Math.floor(Math.random() * codeChars.length)];
                 
                 particle.style.left = `${Math.random() * 100}%`;
-
+                particle.style.fontSize = `${Math.random() * 1.2 + 0.6}em`; // Rango de tamaño un poco mayor
+                particle.style.animationDuration = `${Math.random() * 7 + 4}s`; // Duración de animación ajustada
+                particle.style.animationDelay = `${Math.random() * -4}s`; 
+                
                 container.appendChild(particle);
 
                 particle.addEventListener('animationend', () => {
@@ -672,30 +600,29 @@
                 });
             }
 
-            // 1. Inicializar lluvia de logos (Verde)
-            for (const sectionId in logoMap) {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    const container = section.querySelector('.logo-rain-container');
-                    const logoUrl = logoMap[sectionId];
-                    for (let i = 0; i < greenParticles; i++) {
-                        createLogoParticle(container, logoUrl, true);
+            // 1. Inicializar lluvia de código azul en las secciones de tecnología
+            const techSections = document.querySelectorAll('.code-section');
+            techSections.forEach(section => {
+                const container = section.querySelector('.code-rain-container-tech');
+                if (container) {
+                    for (let i = 0; i < techSectionParticles; i++) {
+                        createBlueCodeParticle(container);
                     }
                 }
-            }
+            });
             
-            // 2. Inicializar lluvia de código (Azul) en tarjetas de proyecto
+            // 2. Inicializar lluvia de código azul en tarjetas de proyecto
             const projectCardsContainers = document.querySelectorAll('.project-card .code-rain-container-inner');
             projectCardsContainers.forEach(container => {
-                for (let i = 0; i < blueParticlesProjectCards; i++) {
+                for (let i = 0; i < projectCardsParticles; i++) {
                     createBlueCodeParticle(container);
                 }
             });
 
-            // 3. Inicializar lluvia de código (Azul) dentro del main-container final
+            // 3. Inicializar lluvia de código azul dentro del main-container final
             const finalCtaInternalContainer = document.getElementById('code-final-cta-internal');
             if (finalCtaInternalContainer) {
-                for (let i = 0; i < blueParticlesFinalCtaInternal; i++) {
+                for (let i = 0; i < finalCtaInternalParticles; i++) {
                     createBlueCodeParticle(finalCtaInternalContainer);
                 }
             }
