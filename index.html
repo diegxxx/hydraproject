@@ -280,7 +280,7 @@
         
         .green-particle {
             position: absolute;
-            animation: fall-green linear infinite; 
+            animation: fall-green linear; /* Quitamos infinite para que JS lo maneje */
             user-select: none;
             color: rgba(0, 255, 0, 0.7); 
             filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
@@ -426,7 +426,7 @@
         */
         .code-particle {
             position: absolute;
-            animation: fall-code linear infinite; 
+            animation: fall-code linear; /* Quitamos infinite para que JS lo maneje */
             user-select: none;
             color: rgba(129, 212, 250, 0.5); /* Azul claro semitransparente */
         }
@@ -600,13 +600,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const greenParticles = 30; 
+            const greenParticles = 30; // Partículas iniciales para crear el efecto "lleno"
             const blueParticlesProjectCards = 8; 
             const blueParticlesFinalCtaInternal = 40; 
+            const particleCreationInterval = 500; // Intervalo para crear nuevas partículas (en ms)
 
             const greenCodeChars = ['0', '1', '>', '<', '&', '%', '#', 'Z', 'Y', 'X']; 
             const blueCodeChars = ['0', '1', 'A', 'B', '!', '@', '*', '{', '}', ';', '/', 'z', 'K', 'L']; 
 
+            /**
+             * Crea una partícula de código y la agrega al contenedor.
+             * @param {HTMLElement} container - El contenedor donde se agregará la partícula.
+             * @param {string} charType - 'green' o 'blue'.
+             */
             function createParticle(container, charType) {
                 const particle = document.createElement('span');
                 
@@ -629,42 +635,55 @@
                 
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.fontSize = `${Math.random() * sizeFactor + 0.6}em`; 
-                particle.style.animationDuration = `${Math.random() * durationFactor + 4}s`; 
-                particle.style.animationDelay = `${Math.random() * -4}s`; 
+                
+                const duration = Math.random() * durationFactor + 4;
+                particle.style.animationDuration = `${duration}s`; 
+                
+                // Usamos un retraso negativo para que las primeras partículas se vean cayendo de inmediato.
+                // Esto también ayuda a que la animación "finalice" en un tiempo determinado.
+                particle.style.animationDelay = `${Math.random() * -duration}s`;
                 
                 container.appendChild(particle);
 
+                // La eliminamos del DOM cuando termina su animación (para que sea reemplazada por setInterval)
                 particle.addEventListener('animationend', () => {
                     particle.remove();
-                    createParticle(container, charType);
                 });
             }
 
-            // 1. Inicializar lluvia de código verde en las secciones de tecnología
+            /**
+             * Inicia la lluvia de código: crea un lote inicial y luego un stream constante.
+             */
+            function startRain(container, charType, initialCount) {
+                // 1. Crear lote inicial de partículas para llenar el espacio
+                for (let i = 0; i < initialCount; i++) {
+                    createParticle(container, charType);
+                }
+                
+                // 2. Iniciar el stream constante para un efecto continuo
+                setInterval(() => {
+                    createParticle(container, charType);
+                }, particleCreationInterval); 
+            }
+
+            // Inicializar lluvia de código verde en las secciones de tecnología
             const techSectionsContainers = document.querySelectorAll('.code-section .code-rain-container-tech');
             techSectionsContainers.forEach(container => {
-                for (let i = 0; i < greenParticles; i++) {
-                    createParticle(container, 'green');
-                }
+                startRain(container, 'green', greenParticles);
             });
             
-            // 2. Inicializar lluvia de código azul en tarjetas de proyecto
+            // Inicializar lluvia de código azul en tarjetas de proyecto
             const projectCardsContainers = document.querySelectorAll('.project-card .code-rain-container-inner');
             projectCardsContainers.forEach(container => {
-                for (let i = 0; i < blueParticlesProjectCards; i++) {
-                    createParticle(container, 'blue');
-                }
+                startRain(container, 'blue', blueParticlesProjectCards);
             });
 
-            // 3. Inicializar lluvia de código azul dentro del main-container final
+            // Inicializar lluvia de código azul dentro del main-container final
             const finalCtaInternalContainer = document.getElementById('code-final-cta-internal');
             if (finalCtaInternalContainer) {
-                for (let i = 0; i < blueParticlesFinalCtaInternal; i++) {
-                    createParticle(finalCtaInternalContainer, 'blue');
-                }
+                startRain(finalCtaInternalContainer, 'blue', blueParticlesFinalCtaInternal);
             }
         });
     </script>
 </body>
 </html>
-```http://googleusercontent.com/image_generation_content/21
