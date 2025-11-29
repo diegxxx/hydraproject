@@ -273,16 +273,50 @@
             overflow: hidden;
             transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out;
             border-color: transparent; /* Ocultar borde cuando está colapsado */
+            display: flex; /* Para organizar el texto y la imagen */
+            flex-direction: column; /* Apilar texto y luego imagen */
+            align-items: center; /* Centrar elementos internos */
+            gap: 15px; /* Espacio entre la descripción y la imagen */
         }
         
         /* Contenido interno del recuadro para manejar el padding */
         .description-content {
-            padding: 15px 0;
+            padding: 15px 0 0; /* Solo padding superior cuando se abre */
+            width: 100%; /* Para que el texto ocupe el ancho completo */
         }
         
+        /* Contenedor de la imagen cliqueable */
+        .skill-image-container {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            display: flex;
+            justify-content: center; /* Centrar la imagen dentro del contenedor */
+            padding-bottom: 15px; /* Padding inferior */
+        }
+
+        .skill-image-container a {
+            display: block; /* Para que el enlace ocupe el espacio de la imagen */
+            border: 2px solid #00FF00; /* Recuadro verde para la imagen */
+            border-radius: 8px;
+            overflow: hidden; /* Asegura que la imagen no se salga del borde */
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.4); /* Sombra para resaltar */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-image-container a:hover {
+            transform: scale(1.03); /* Ligeramente más grande al pasar el mouse */
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+        }
+
+        .skill-image-container img {
+            max-width: 150px; /* Tamaño máximo de la imagen */
+            height: auto;
+            display: block; /* Elimina espacio extra debajo de la imagen */
+        }
+
+
         /* Clase cuando el acordeón está activo (abierto) */
         .code-section.active .skill-description-box {
-            max-height: 200px; /* Altura suficiente para mostrar todo el contenido */
+            max-height: 400px; /* Altura suficiente para mostrar contenido + imagen */
             padding: 0 15px; 
             margin-bottom: 20px;
             border-color: #00FF00; /* Mostrar borde cuando está abierto */
@@ -533,6 +567,9 @@
                 <div class="description-content">
                     Desarrollador de Python con **4 años de experiencia completos**. Tengo 3 cursos de Python profesional y he formado parte de algunas plataformas que han cerrado.
                 </div>
+                <div class="skill-image-container">
+                    <a href="https://www.python.org/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="Logo de Python"> </a>
+                </div>
             </div>
         </section>
 
@@ -545,6 +582,9 @@
                 <div class="description-content">
                     Desarrollador de HTML con **2 años aproximados de experiencia** donde busco crear estilos modernos.
                 </div>
+                <div class="skill-image-container">
+                    <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" alt="Logo de HTML"> </a>
+                </div>
             </div>
         </section>
 
@@ -556,6 +596,9 @@
             <div class="skill-description-box">
                 <div class="description-content">
                     Desarollador (3) De aproximadamente **1 año** con experiencia media.
+                </div>
+                <div class="skill-image-container">
+                    <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="Logo de CSS"> </a>
                 </div>
             </div>
         </section>
