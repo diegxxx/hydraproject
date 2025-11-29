@@ -54,14 +54,14 @@
 
         /*
             -------------------------------------------
-            BANNER PRINCIPAL (HEADER) - Solo Imagen Estática
+            BANNER PRINCIPAL (HEADER) - PANTALLA COMPLETA
             -------------------------------------------
         */
         .header-banner {
             position: relative;
             width: 100%;
-            height: 400px; 
-            /* URL DEL BANNER PROPORCIONADO - IMAGEN */
+            /* 💥 CAMBIO: ALTURA COMPLETA DE LA VENTANA */
+            height: 100vh; 
             background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -80,7 +80,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Capa oscura para legibilidad del texto en el header */
+            background: rgba(0, 0, 0, 0.4); 
             z-index: 2;
         }
 
@@ -111,7 +111,7 @@
         /* Contenedor de la primera sección (Precios/Discord) */
         .initial-section {
             padding: 40px 20px;
-            background-color: #32CD32; /* Fondo verde sólido de base */
+            background-color: #32CD32; 
             display: flex;
             flex-direction: column;
             align-items: center; 
@@ -120,17 +120,21 @@
             z-index: 5;
         }
         
+        /* 💥 CAMBIO: CONTENEDOR FLEXIBLE PARA COLOCAR PRECIOS Y DISCORD LADO A LADO */
         .main-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
+            flex-direction: row; /* Horizontal */
+            flex-wrap: wrap; /* Para que se ajusten en móvil */
+            justify-content: center; /* Centrado */
+            align-items: flex-start; /* Alineación superior */
+            gap: 50px; /* Espacio entre los elementos */
             position: relative; 
             z-index: 3; 
             background-color: rgba(255, 255, 255, 0.9); 
             border-radius: 8px;
-            padding: 20px;
+            padding: 30px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            max-width: 800px;
         }
 
         .action-button {
@@ -195,6 +199,15 @@
             color: #E91E63; 
         }
 
+        /* Media Query para móviles: apilamos los elementos verticalmente */
+        @media (max-width: 650px) {
+            .main-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+
         /*
             -------------------------------------------
             SECCIONES DE LOGOS CAYENDO (DEBAJO)
@@ -208,8 +221,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #111; /* Fondo oscuro para que los logos resalten */
-            color: #00FF00; /* Verde brillante para el texto de la sección */
+            background-color: #111; 
+            color: #00FF00; 
             border-top: 5px solid #00FF00;
         }
         
@@ -220,7 +233,6 @@
             text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5);
         }
 
-        /* Contenedor de los logos cayendo */
         .logo-rain-container {
             position: absolute;
             top: 0;
@@ -235,8 +247,8 @@
             position: absolute;
             animation: fall linear infinite; 
             user-select: none;
-            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5)); /* Resplandor para los logos */
-            opacity: 0.7; /* Opacidad para que no saturen */
+            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5)); 
+            opacity: 0.7; 
         }
 
         .logo-particle img {
@@ -314,7 +326,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Diccionario de URLs de logos para las tecnologías restantes
             const logoMap = {
                 'code-python': 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
                 'code-html': 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
