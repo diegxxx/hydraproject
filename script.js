@@ -1,19 +1,10 @@
-/*
-    -------------------------------------------
-    FUNCIÓN DE TOGGLE (ACORDEÓN)
-    -------------------------------------------
-*/
+
 function toggleDescription(sectionId) {
     const section = document.getElementById(sectionId);
     section.classList.toggle('active');
 }
 
 
-/*
-    -------------------------------------------
-    CÓDIGO JAVASCRIPT PARA LA LLUVIA DE CÓDIGO
-    -------------------------------------------
-*/
 document.addEventListener('DOMContentLoaded', () => {
     const greenParticles = 50; 
     const blueParticlesProjectCards = 15; 
