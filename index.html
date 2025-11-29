@@ -310,26 +310,15 @@
             <h2>CSS</h2>
         </section>
         
-        <section class="code-section" id="code-yaml">
-            <div class="logo-rain-container"></div> 
-            <h2>YAML</h2>
-        </section>
-        
-        <section class="code-section" id="code-mongodb">
-            <div class="logo-rain-container"></div> 
-            <h2>MONGODB</h2>
-        </section>
-
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Diccionario de URLs de logos para las tecnologías restantes
             const logoMap = {
                 'code-python': 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
                 'code-html': 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
                 'code-css': 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
-                'code-yaml': 'https://raw.githubusercontent.com/diegxxx/hydraproject/main/minecraft_block.png', // Logo de Minecraft para YAML
-                'code-mongodb': 'https://raw.githubusercontent.com/diegxxx/hydraproject/main/shield.png', // Logo de Escudo para MongoDB
             };
             const numberOfParticles = 20; 
 
@@ -344,7 +333,7 @@
                 particleDiv.appendChild(img);
 
                 particleDiv.style.left = `${Math.random() * 100}%`;
-                const size = Math.random() * 40 + 30; // Tamaño aleatorio entre 30px y 70px
+                const size = Math.random() * 40 + 30; 
                 img.style.width = `${size}px`;
                 img.style.height = `${size}px`;
                 
