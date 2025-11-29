@@ -97,63 +97,37 @@
 
         /*
             -------------------------------------------
-            CONTENIDO PRINCIPAL (MAIN) - Con efecto de palitos que se unen (CSS-only)
+            CONTENIDO PRINCIPAL (MAIN) - Layout General
             -------------------------------------------
         */
         .main-content {
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center; 
-            padding: 40px 20px;
-            background-color: #32CD32; /* Color verde sólido de base */
-            gap: 30px; 
+            gap: 0; /* Eliminamos el gap aquí para que las secciones se junten */
             position: relative; 
-            overflow: hidden; 
         }
         
-        /* ESTILOS PARA LOS "PALITOS QUE SE UNEN" */
-        .green-trails-background {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Contenedor de la primera sección (Precios/Discord) */
+        .initial-section {
+            padding: 40px 20px;
+            background-color: #32CD32; /* Fondo verde sólido de base */
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
             width: 100%;
-            height: 100%;
-            z-index: 1; /* Detrás del contenido */
-            /* Patrón de palitos inclinados (en forma de "X" repetida) */
-            background-image: linear-gradient(
-                -45deg, 
-                rgba(0, 255, 0, 0.3) 25%, 
-                transparent 25%, 
-                transparent 75%, 
-                rgba(0, 255, 0, 0.3) 75%
-            ),
-            linear-gradient(
-                45deg, 
-                rgba(0, 255, 0, 0.3) 25%, 
-                transparent 25%, 
-                transparent 75%, 
-                rgba(0, 255, 0, 0.3) 75%
-            );
-            background-size: 80px 80px; /* Tamaño del patrón inicial (separados) */
-            background-position: 0 0;
-            transition: background-size 0.4s ease-out, background-position 0.4s ease-out; /* Transición suave */
+            position: relative;
+            z-index: 5;
         }
-
-        .main-content:hover .green-trails-background {
-            background-size: 60px 60px; /* Tamaño del patrón al pasar el mouse (se "unen") */
-            background-position: 10px 10px; /* Ligeramente desplazado para el efecto */
-        }
-
+        
         .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
             position: relative; 
-            z-index: 3; /* Asegura que el contenido esté encima del fondo de estelas */
-            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente para el contenedor de precios/botón */
+            z-index: 3; 
+            background-color: rgba(255, 255, 255, 0.9); 
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -190,7 +164,7 @@
         }
         
         .price-info {
-            background-color: #ffffff; /* Sigue siendo blanco */
+            background-color: #ffffff; 
             border: 2px solid #32CD32; 
             border-radius: 8px;
             padding: 25px;
@@ -220,6 +194,70 @@
         .price-list strong {
             color: #E91E63; 
         }
+
+        /*
+            -------------------------------------------
+            SECCIONES DE CÓDIGO CAYENDO (DEBAJO)
+            -------------------------------------------
+        */
+        .code-section {
+            width: 100%;
+            height: 350px; /* Altura de cada sección para el efecto de caída */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111; /* Fondo oscuro para que el código resalte */
+            color: #0F0; /* Verde brillante para el texto de la sección */
+            border-top: 5px solid #00FF00;
+        }
+        
+        .code-section h2 {
+            position: relative;
+            z-index: 5;
+            font-size: 3em;
+            text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Contenedor de las partículas de código */
+        .code-rain-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; 
+            pointer-events: none; 
+        }
+
+        .code-particle {
+            position: absolute;
+            font-family: monospace;
+            font-size: 1.5em; 
+            color: rgba(0, 255, 0, 0.7); /* Verde claro */
+            text-shadow: 0 0 2px #00FF00; /* Ligero resplandor */
+            animation: fall linear infinite; 
+            user-select: none;
+            white-space: nowrap; 
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -234,25 +272,98 @@
     </header>
 
     <main class="main-content">
-        <div class="green-trails-background"></div> 
-        
-        <div class="main-container">
-            <div class="price-info">
-                <h3>💰 Tabla de precios</h3>
-                <p>¡Servicios de alta calidad a precios accesibles!</p>
-                <ul class="price-list">
-                    <li>Basic Builds: <strong>$5 USD</strong></li>
-                    <li>Medium Builds: <strong>$10 USD</strong></li>
-                    <li>Best Builds: <strong>$15 USD</strong></li>
-                </ul>
-                <p>¡Únete a Discord para ver más detalles!</p>
-            </div>
+        <section class="initial-section">
+            <div class="main-container">
+                <div class="price-info">
+                    <h3>💰 Tabla de precios</h3>
+                    <p>¡Servicios de alta calidad a precios accesibles!</p>
+                    <ul class="price-list">
+                        <li>Basic Builds: <strong>$5 USD</strong></li>
+                        <li>Medium Builds: <strong>$10 USD</strong></li>
+                        <li>Best Builds: <strong>$15 USD</strong></li>
+                    </ul>
+                    <p>¡Únete a Discord para ver más detalles!</p>
+                </div>
 
-            <a href="URL_DE_TU_DISCORD" class="action-button discord">
-                <i class="fab fa-discord icon"></i>
-                <span>Discord</span>
-            </a>
-        </div>
+                <a href="URL_DE_TU_DISCORD" class="action-button discord">
+                    <i class="fab fa-discord icon"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="code-section" id="code-python">
+            <div class="code-rain-container"></div> 
+            <h2>PYTHON</h2>
+        </section>
+
+        <section class="code-section" id="code-html">
+            <div class="code-rain-container"></div> 
+            <h2>HTML</h2>
+        </section>
+
+        <section class="code-section" id="code-css">
+            <div class="code-rain-container"></div> 
+            <h2>CSS</h2>
+        </section>
+        
+        <section class="code-section" id="code-yaml">
+            <div class="code-rain-container"></div> 
+            <h2>YAML</h2>
+        </section>
+        
+        <section class="code-section" id="code-mongodb">
+            <div class="code-rain-container"></div> 
+            <h2>MONGODB</h2>
+        </section>
+
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const techMap = {
+                'code-python': ['🐍', 'def', 'print', 'import', 'class', 'for', 'while', 'True', 'False', 'None'],
+                'code-html': ['<', '>', '<html>', '<body>', '<div>', '<p>', '<h1>', '</a>', 'id="', 'class="'],
+                'code-css': ['{', '}', ':', ';', 'color', 'background', 'font-size', '.class', '#id', 'px', 'em'],
+                'code-yaml': ['-', ':', 'key', 'value', 'list', 'item', '---', 'true', 'false', 'null'],
+                'code-mongodb': ['db.', '.find({})', '.insert({})', '.update({})', '.delete()', '{"name":', '{"age":'],
+            };
+            const numberOfParticles = 30; // Partículas por sección
+
+            function createParticle(container, chars) {
+                const particle = document.createElement('span');
+                particle.classList.add('code-particle');
+                particle.textContent = chars[Math.floor(Math.random() * chars.length)];
+
+                // Posición inicial aleatoria en la parte superior
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.fontSize = `${Math.random() * 1.5 + 0.8}em`; 
+                
+                // Duración y retraso aleatorios para evitar que caigan al mismo tiempo
+                particle.style.animationDuration = `${Math.random() * 8 + 5}s`; 
+                particle.style.animationDelay = `${Math.random() * -5}s`; 
+
+                container.appendChild(particle);
+
+                // Reciclar la partícula
+                particle.addEventListener('animationend', () => {
+                    particle.remove();
+                    createParticle(container, chars); 
+                });
+            }
+
+            // Inicializar las secciones de código
+            for (const sectionId in techMap) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const container = section.querySelector('.code-rain-container');
+                    const chars = techMap[sectionId];
+                    for (let i = 0; i < numberOfParticles; i++) {
+                        createParticle(container, chars);
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
