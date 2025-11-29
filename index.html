@@ -60,7 +60,7 @@
         .header-banner {
             position: relative;
             width: 100%;
-            height: 100vh; /* Aseguramos que ocupe toda la altura de la ventana */
+            height: 100vh; 
             background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -145,14 +145,14 @@
             opacity: 0.15; 
         }
 
-        /* ESTILOS DE LA TARJETA DE CONTACTO DETALLADA (Reemplaza el .action-button) */
+        /* ESTILOS DE LA TARJETA DE CONTACTO DETALLADA */
         .contact-card-detailed {
-            background-color: #3c414c; /* Gris oscuro para simular el fondo de Discord */
-            border: 2px solid #64B5F6; /* Borde azul */
+            background-color: #3c414c;
+            border: 2px solid #64B5F6;
             border-radius: 10px;
             padding: 20px 30px;
             text-align: left; 
-            color: #dcdcdc; /* Color claro para el texto */
+            color: #dcdcdc; 
             width: 100%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             position: relative;
@@ -160,7 +160,7 @@
         }
         
         .contact-card-detailed h3 {
-            color: #64B5F6; /* Título ¡CONTÁCTAME! en azul */
+            color: #64B5F6; 
             font-size: 1.5em;
             margin-top: 0;
             margin-bottom: 20px;
@@ -174,13 +174,13 @@
         }
 
         .contact-info-detailed strong {
-            color: #64B5F6; /* Destacar etiquetas en azul */
+            color: #64B5F6; 
             font-weight: 700;
             margin-right: 5px;
         }
 
         .contact-info-detailed a {
-            color: #90CAF9; /* Links en azul más claro */
+            color: #90CAF9;
             text-decoration: none;
             word-break: break-all;
             transition: color 0.3s;
@@ -212,18 +212,22 @@
         */
         .code-section {
             width: 100%;
-            height: 350px; /* Asegura una altura mínima para la sección */
+            /* Ajuste de altura para acomodar la descripción */
+            height: auto; 
+            padding: 40px 20px;
             position: relative;
             overflow: hidden;
             display: flex;
+            flex-direction: column; /* Cambiado a columna para apilar H2 y descripción */
             justify-content: center;
             align-items: center;
             background-color: #111; 
             color: #00FF00; 
             border-top: 5px solid #00FF00;
             border-bottom: 5px solid #00FF00; 
-            margin-top: 0; /* Asegurar que no haya margen superior extra */
-            margin-bottom: 0; /* Asegurar que no haya margen inferior extra */
+            margin-top: 0; 
+            margin-bottom: 0; 
+            text-align: center;
         }
         
         .code-section h2 {
@@ -231,8 +235,27 @@
             z-index: 5;
             font-size: 3em;
             text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5); 
-            margin: 0; /* Eliminar márgenes por defecto del h2 */
+            margin-bottom: 20px; 
+            margin-top: 0;
         }
+        
+        /* Estilo para el recuadro de descripción */
+        .skill-description-box {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            width: 90%;
+            padding: 15px;
+            border: 2px solid #00FF00; /* Borde verde */
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro transparente */
+            color: #00FF00; /* Texto verde */
+            font-size: 1.1em;
+            line-height: 1.4;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Efecto de brillo verde */
+            margin-top: 0;
+        }
+
 
         .code-section .code-rain-container-tech {
             position: absolute;
@@ -463,25 +486,29 @@
     </header>
 
     <main class="main-content">
+        
         <section class="code-section" id="code-python">
             <div class="code-rain-container-tech" data-char-type="green"></div> 
             <h2>PYTHON</h2>
-            <p>
-            <p>Desarrollador de Python con 4 años de experiencia completos tengo 3 cursos de python profesional eh formado parte de algunas plataformas que han cerrado<p>
+            <div class="skill-description-box">
+                Desarrollador de Python con **4 años de experiencia completos**. Tengo 3 cursos de Python profesional y he formado parte de algunas plataformas que han cerrado.
+            </div>
         </section>
 
         <section class="code-section" id="code-html">
             <div class="code-rain-container-tech" data-char-type="green"></div> 
             <h2>HTML</h2>
-            <p>
-            <p>Desarrollador de HTML con 2 años aproximados de experiencia donde busco crear estilos modernos<p>
+            <div class="skill-description-box">
+                Desarrollador de HTML con **2 años aproximados de experiencia** donde busco crear estilos modernos.
+            </div>
         </section>
 
         <section class="code-section" id="code-css">
             <div class="code-rain-container-tech" data-char-type="green"></div> 
             <h2>CSS</h2>
-            <p>
-            <p>Desarollador (3) De aproximadamente 1 año con experiencia media<p>
+            <div class="skill-description-box">
+                Desarollador (3) De aproximadamente **1 año** con experiencia media.
+            </div>
         </section>
         
         <section class="project-section">
@@ -529,15 +556,16 @@
                     <h3><i class="fas fa-info-circle"></i> ¡CONTÁCTAME!</h3>
                     <div class="contact-info-detailed">
                         <p>
-                            Contactame a mi discord para hablar sobre tu proyecto
+                            ¡Únete a nuestro discord para recibir un soporte mucho más rápido o descuentos únicos!:
                         </p>
                         <p>
+                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord:</strong> <a href="https://discord.gg/minebosh" target="_blank">discord.gg/minebosh</a>
                         </p>
                         <p>
-                            <i class="fas fa-envelope" style="color: #e67e22;"></i> <strong>Correo:</strong> <a href="mailto:heavxndev@gmail.com">heavxndev@gmail.com</a>
+                            <i class="fas fa-envelope" style="color: #e67e22;"></i> <strong>Correo:</strong> <a href="mailto:mineboshnetwork@gmail.com">mineboshnetwork@gmail.com</a>
                         </p>
                          <p>
-                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord MD:</strong> fancynpcs_#0000
+                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord MD:</strong> yerson_x
                         </p>
                     </div>
                 </div>
@@ -621,7 +649,3 @@
     </script>
 </body>
 </html>
-
-
-
-
