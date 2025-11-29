@@ -637,4 +637,52 @@
             function createBlueCodeParticle(container) {
                 const particle = document.createElement('span');
                 particle.classList.add('code-particle');
-                particle.textContent = projectCodeChars[Math.floor
+                particle.textContent = projectCodeChars[Math.floor(Math.random() * projectCodeChars.length)];
+                
+                // Estilos específicos para el código azul
+                particle.style.color = 'rgba(129, 212, 250, 0.5)'; // Azul claro semitransparente
+                particle.style.fontSize = `${Math.random() * 1 + 0.5}em`; 
+                particle.style.animationDuration = `${Math.random() * 6 + 3}s`; 
+                particle.style.animationDelay = `${Math.random() * -3}s`; 
+                
+                particle.style.left = `${Math.random() * 100}%`;
+
+                container.appendChild(particle);
+
+                particle.addEventListener('animationend', () => {
+                    particle.remove();
+                    createBlueCodeParticle(container);
+                });
+            }
+
+            // 1. Inicializar lluvia de logos (Verde)
+            for (const sectionId in logoMap) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const container = section.querySelector('.logo-rain-container');
+                    const logoUrl = logoMap[sectionId];
+                    for (let i = 0; i < greenParticles; i++) {
+                        createLogoParticle(container, logoUrl, true);
+                    }
+                }
+            }
+            
+            // 2. Inicializar lluvia de código (Azul) en tarjetas de proyecto
+            const projectCardsContainers = document.querySelectorAll('.project-card .code-rain-container-inner');
+            projectCardsContainers.forEach(container => {
+                for (let i = 0; i < blueParticles; i++) {
+                    createBlueCodeParticle(container);
+                }
+            });
+
+            // 3. Inicializar lluvia de código (Azul) en la sección final
+            const finalCtaContainer = document.getElementById('code-final-cta');
+            if (finalCtaContainer) {
+                for (let i = 0; i < finalCtaParticles; i++) {
+                    createBlueCodeParticle(finalCtaContainer);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
