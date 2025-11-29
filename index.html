@@ -243,7 +243,7 @@
 
         /*
             -------------------------------------------
-            SECCIONES DE CODIGO CAYENDO (AHORA TODO AZUL)
+            SECCIONES DE CODIGO CAYENDO (AHORA VERDE)
             -------------------------------------------
         */
         .code-section {
@@ -254,20 +254,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1a2a4b; /* Fondo azul oscuro uniforme */
-            color: #64B5F6; /* Texto azul claro */
-            border-top: 5px solid #64B5F6; /* Borde azul */
-            border-bottom: 5px solid #64B5F6; /* Borde azul */
+            /* RESTAURADO A VERDE */
+            background-color: #111; 
+            color: #00FF00; 
+            border-top: 5px solid #00FF00;
+            border-bottom: 5px solid #00FF00; 
         }
         
         .code-section h2 {
             position: relative;
             z-index: 5;
             font-size: 3em;
-            text-shadow: 0 0 10px #64B5F6, 0 0 20px rgba(100, 181, 246, 0.5); /* Sombra azul */
+            /* Sombra verde */
+            text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5); 
         }
 
-        /* Este es el contenedor para el código cayendo azul en las secciones de tecnología */
+        /* Contenedor para la lluvia de código (Verde) - Usaremos esta clase de JS */
         .code-section .code-rain-container-tech {
             position: absolute;
             top: 0;
@@ -276,12 +278,40 @@
             height: 100%;
             z-index: 1; 
             pointer-events: none; 
-            opacity: 0.3; /* Un poco transparente para no ocultar el texto */
+            opacity: 0.3;
         }
         
+        /* ESTILO PARA LAS PARTÍCULAS VERDES */
+        .green-particle {
+            position: absolute;
+            animation: fall-green linear infinite; 
+            user-select: none;
+            color: rgba(0, 255, 0, 0.7); /* Verde claro semitransparente */
+            filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
+        }
+
+        /* Keyframes para las partículas verdes */
+        @keyframes fall-green {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
         /*
             -------------------------------------------
-            SECCIÓN DE PROYECTOS (AZUL con CÓDIGO CAYENDO)
+            SECCIÓN DE PROYECTOS (AZUL con CÓDIGO CAYENDO AZUL)
             -------------------------------------------
         */
         .project-section {
@@ -395,7 +425,7 @@
 
         /*
             -------------------------------------------
-            PARTÍCULAS CÓDIGO (AZUL ÚNICO)
+            PARTÍCULAS CÓDIGO AZUL (Usadas en Proyectos y CTA final)
             -------------------------------------------
         */
         .code-particle {
@@ -425,7 +455,7 @@
 
         /*
             -------------------------------------------
-            SECCIÓN FINAL DE LLAMADA A LA ACCIÓN (AZUL)
+            SECCIÓN FINAL DE LLAMADA A LA ACCIÓN (AZUL con CÓDIGO CAYENDO AZUL)
             -------------------------------------------
         */
         .final-cta-section {
@@ -462,23 +492,23 @@
             z-index: 2;
         }
         
-        /* CORRECCIÓN: Aplicación del borde azul y colores de texto en la sección final */
+        /* Estilos específicos para la sección de precios/discord (tema azul) */
         .final-cta-section .price-info {
              background-color: rgba(255, 255, 255, 0.95);
-             border: 2px solid #64B5F6; 
+             border: 2px solid #64B5F6; /* Borde azul */
         }
         .final-cta-section .price-info h3 {
             color: #64B5F6; /* Título de precios en azul */
         }
         .final-cta-section .price-list li {
-            color: #81D4FA; /* Items de la lista en azul más claro */
+            color: #81D4FA; 
         }
         .final-cta-section .price-list strong {
-            color: #4CAF50; /* Mantener verde para destacar precios */
+            color: #E91E63; /* Precio destacado en rosa para contraste */
         }
 
         .final-cta-section .action-button {
-             border: 2px solid #64B5F6; 
+             border: 2px solid #64B5F6; /* Borde azul */
         }
         
     </style>
@@ -496,17 +526,17 @@
 
     <main class="main-content">
         <section class="code-section" id="code-python">
-            <div class="code-rain-container-tech"></div> 
+            <div class="code-rain-container-tech" data-char-type="green"></div> 
             <h2>PYTHON</h2>
         </section>
 
         <section class="code-section" id="code-html">
-            <div class="code-rain-container-tech"></div> 
+            <div class="code-rain-container-tech" data-char-type="green"></div> 
             <h2>HTML</h2>
         </section>
 
         <section class="code-section" id="code-css">
-            <div class="code-rain-container-tech"></div> 
+            <div class="code-rain-container-tech" data-char-type="green"></div> 
             <h2>CSS</h2>
         </section>
         
@@ -515,28 +545,28 @@
             <div class="project-grid">
                 
                 <div class="project-card">
-                    <div class="code-rain-container-inner" data-card-id="mineorchid"></div>
+                    <div class="code-rain-container-inner" data-char-type="blue"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/30d4e087bfcc3226b85e075c921d9943.png?raw=true" alt="Logo MineOrchid" class="project-card-logo">
                     <h3>MineOrchid</h3>
                     <p>Servidor fundado por mi en el cual le dedique mas de 240h en configuracion y actualmente se encuentra cerrado.</p>
                 </div>
                 
                 <div class="project-card">
-                    <div class="code-rain-container-inner" data-card-id="veantymc"></div>
+                    <div class="code-rain-container-inner" data-char-type="blue"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/unnamed.jpg?raw=true" alt="Logo VeantyMc" class="project-card-logo">
                     <h3>VeantyMc</h3>
                     <p>Servidor de boxpvp con una modalidad de fnafbox.</p>
                 </div>
                 
                 <div class="project-card">
-                    <div class="code-rain-container-inner" data-card-id="rustmc"></div>
+                    <div class="code-rain-container-inner" data-char-type="blue"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/logo1discord-1563374528_thumb.jpg?raw=true" alt="Logo RustMC" class="project-card-logo">
                     <h3>RustMC</h3>
                     <p>Servidor de minecraft fundado por mi amigo en el cual fui configurador y founder.</p>
                 </div>
                 
                 <div class="project-card">
-                    <div class="code-rain-container-inner" data-card-id="nullsq"></div>
+                    <div class="code-rain-container-inner" data-char-type="blue"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/6492638e9d2b601437a64d6f44c9146d.png?raw=true" alt="Logo NullSQ Renoved" class="project-card-logo">
                     <h3>NullSQ Renoved</h3>
                     <p>Comunidad de desarrolladores especializados en ciberseguridad.</p>
@@ -549,7 +579,7 @@
             <h2>¿Listo para empezar tu proyecto?</h2>
             
             <div class="main-container">
-                <div class="code-rain-container-internal" id="code-final-cta-internal"></div>
+                <div class="code-rain-container-internal" id="code-final-cta-internal" data-char-type="blue"></div>
 
                 <div class="price-info">
                     <h3>💰 Tabla de precios</h3>
@@ -573,49 +603,60 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Ya no necesitamos logos, solo caracteres de código azul
-            // const logoMap = {...}; 
+            const greenParticles = 30; // Partículas verdes para las secciones de tecnología
+            const blueParticlesProjectCards = 8; // Partículas azules para las tarjetas de proyecto
+            const blueParticlesFinalCtaInternal = 40; // Partículas azules para el main-container final
 
-            const techSectionParticles = 30; // Más partículas para las secciones de Python, HTML, CSS
-            const projectCardsParticles = 5; 
-            const finalCtaInternalParticles = 40; // Más partículas para el main-container final
+            // Caracteres para el código
+            const greenCodeChars = ['0', '1', '>', '<', '&', '%', '#', 'Z', 'Y', 'X']; // Caracteres para el código verde (simulando código clásico)
+            const blueCodeChars = ['0', '1', 'A', 'B', '!', '@', '*', '{', '}', ';', '/', 'z', 'K', 'L']; // Caracteres para el código azul
 
-            const codeChars = ['0', '1', 'A', 'B', '#', '%', '&', '*', '{', '}', ';', '/', '<', '>', 'z', 'X', 'Y', 'Z']; // Más caracteres para variedad
-
-            function createBlueCodeParticle(container) {
+            function createParticle(container, charType) {
                 const particle = document.createElement('span');
-                particle.classList.add('code-particle');
-                particle.textContent = codeChars[Math.floor(Math.random() * codeChars.length)];
+                
+                let chars, className, durationFactor, sizeFactor, color, filter;
+
+                if (charType === 'green') {
+                    chars = greenCodeChars;
+                    className = 'green-particle';
+                    durationFactor = 7;
+                    sizeFactor = 1.2;
+                } else { // 'blue'
+                    chars = blueCodeChars;
+                    className = 'code-particle'; // Ya definido como azul
+                    durationFactor = 6;
+                    sizeFactor = 1;
+                }
+                
+                particle.classList.add(className);
+                particle.textContent = chars[Math.floor(Math.random() * chars.length)];
                 
                 particle.style.left = `${Math.random() * 100}%`;
-                particle.style.fontSize = `${Math.random() * 1.2 + 0.6}em`; // Rango de tamaño un poco mayor
-                particle.style.animationDuration = `${Math.random() * 7 + 4}s`; // Duración de animación ajustada
+                particle.style.fontSize = `${Math.random() * sizeFactor + 0.6}em`; 
+                particle.style.animationDuration = `${Math.random() * durationFactor + 4}s`; 
                 particle.style.animationDelay = `${Math.random() * -4}s`; 
                 
                 container.appendChild(particle);
 
                 particle.addEventListener('animationend', () => {
                     particle.remove();
-                    createBlueCodeParticle(container);
+                    createParticle(container, charType);
                 });
             }
 
-            // 1. Inicializar lluvia de código azul en las secciones de tecnología
-            const techSections = document.querySelectorAll('.code-section');
-            techSections.forEach(section => {
-                const container = section.querySelector('.code-rain-container-tech');
-                if (container) {
-                    for (let i = 0; i < techSectionParticles; i++) {
-                        createBlueCodeParticle(container);
-                    }
+            // 1. Inicializar lluvia de código verde en las secciones de tecnología
+            const techSectionsContainers = document.querySelectorAll('.code-section .code-rain-container-tech');
+            techSectionsContainers.forEach(container => {
+                for (let i = 0; i < greenParticles; i++) {
+                    createParticle(container, 'green');
                 }
             });
             
             // 2. Inicializar lluvia de código azul en tarjetas de proyecto
             const projectCardsContainers = document.querySelectorAll('.project-card .code-rain-container-inner');
             projectCardsContainers.forEach(container => {
-                for (let i = 0; i < projectCardsParticles; i++) {
-                    createBlueCodeParticle(container);
+                for (let i = 0; i < blueParticlesProjectCards; i++) {
+                    createParticle(container, 'blue');
                 }
             });
 
@@ -623,7 +664,7 @@
             const finalCtaInternalContainer = document.getElementById('code-final-cta-internal');
             if (finalCtaInternalContainer) {
                 for (let i = 0; i < finalCtaInternalParticles; i++) {
-                    createBlueCodeParticle(finalCtaInternalContainer);
+                    createParticle(finalCtaInternalContainer, 'blue');
                 }
             }
         });
