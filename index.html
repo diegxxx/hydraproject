@@ -92,7 +92,7 @@
             font-size: 2.5em;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            /* NUEVO: Efecto de desvanecimiento */
+            /* EFECTO DE DESVANECIMIENTO */
             opacity: 0;
             animation: fadeEffect 2s ease-out forwards;
         }
@@ -110,7 +110,7 @@
 
         /*
             -------------------------------------------
-            CONTENEDOR DE PRECIOS Y DISCORD (Solo el de abajo ahora)
+            CONTENEDOR DE PRECIOS Y DISCORD (Solo el de abajo)
             -------------------------------------------
         */
         .main-container {
@@ -132,7 +132,7 @@
         
         /* Estilo para el contenedor que está ESTATICO (al final de la página) */
         .final-cta-section .main-container {
-            position: relative; /* Restaura el flujo normal */
+            position: relative; 
             margin: 0 auto;
             transform: none;
             z-index: auto;
@@ -155,8 +155,6 @@
             align-items: center;
             gap: 8px; 
             width: 200px; 
-            /* NUEVO: Borde azul para el botón de Discord */
-            border: 2px solid #64B5F6; 
         }
 
         .action-button:hover {
@@ -172,14 +170,12 @@
         
         .price-info {
             background-color: #ffffff; 
-            border: 2px solid #32CD32; 
+            border: 2px solid #32CD32; /* Borde original verde */
             border-radius: 8px;
             padding: 20px; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             text-align: center;
             max-width: 250px; 
-            /* NUEVO: Borde azul para la tabla de precios */
-            border: 2px solid #64B5F6; 
         }
         
         .price-info h3 {
@@ -423,7 +419,6 @@
             user-select: none;
         }
 
-        /* Reutilizamos fall, pero le cambiamos el nombre para el JS */
         @keyframes fall-code {
             0% {
                 transform: translateY(-100px) rotate(0deg);
@@ -449,13 +444,13 @@
         */
         .final-cta-section {
             padding: 60px 20px;
-            background-color: #1a2a4b; /* Fondo azul oscuro */
+            background-color: #1a2a4b; 
             color: white;
             text-align: center;
             width: 100%;
             position: relative;
             overflow: hidden;
-            border-top: 5px solid #64B5F6; /* Borde azul */
+            border-top: 5px solid #64B5F6; 
         }
         
         .final-cta-section::before {
@@ -465,7 +460,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); /* Overlay */
+            background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); 
             z-index: 1;
         }
 
@@ -488,15 +483,18 @@
             z-index: 2;
         }
         
-        /* Asegura que los elementos del main-container final estén por encima del código cayendo */
         .final-cta-section .main-container {
             z-index: 2;
         }
         
-        /* Ajuste de color para la lista de precios en la sección final oscura */
+        /* CORRECCIÓN: Aplicación del borde azul en el price-info y action-button de la sección final */
         .final-cta-section .price-info {
              background-color: rgba(255, 255, 255, 0.95);
-             border: 2px solid #64B5F6; /* Borde azul */
+             border: 2px solid #64B5F6; /* Borde AZUL forzado */
+        }
+
+        .final-cta-section .action-button {
+             border: 2px solid #64B5F6; /* Borde AZUL forzado */
         }
         
     </style>
@@ -510,8 +508,7 @@
         <div class="header-content">
             <h1 class="welcome-text">Bienvenido a Hydra Projects</h1>
         </div>
-        
-        </header>
+    </header>
 
     <main class="main-content">
         <section class="code-section" id="code-python">
