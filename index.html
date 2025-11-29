@@ -104,7 +104,7 @@
             display: flex;
             flex-direction: column;
             align-items: center; 
-            gap: 0; /* Eliminamos el gap aquí para que las secciones se junten */
+            gap: 0; 
             position: relative; 
         }
         
@@ -197,19 +197,19 @@
 
         /*
             -------------------------------------------
-            SECCIONES DE CÓDIGO CAYENDO (DEBAJO)
+            SECCIONES DE LOGOS CAYENDO (DEBAJO)
             -------------------------------------------
         */
         .code-section {
             width: 100%;
-            height: 350px; /* Altura de cada sección para el efecto de caída */
+            height: 350px; 
             position: relative;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #111; /* Fondo oscuro para que el código resalte */
-            color: #0F0; /* Verde brillante para el texto de la sección */
+            background-color: #111; /* Fondo oscuro para que los logos resalten */
+            color: #00FF00; /* Verde brillante para el texto de la sección */
             border-top: 5px solid #00FF00;
         }
         
@@ -220,8 +220,8 @@
             text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5);
         }
 
-        /* Contenedor de las partículas de código */
-        .code-rain-container {
+        /* Contenedor de los logos cayendo */
+        .logo-rain-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -231,15 +231,18 @@
             pointer-events: none; 
         }
 
-        .code-particle {
+        .logo-particle {
             position: absolute;
-            font-family: monospace;
-            font-size: 1.5em; 
-            color: rgba(0, 255, 0, 0.7); /* Verde claro */
-            text-shadow: 0 0 2px #00FF00; /* Ligero resplandor */
             animation: fall linear infinite; 
             user-select: none;
-            white-space: nowrap; 
+            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5)); /* Resplandor para los logos */
+            opacity: 0.7; /* Opacidad para que no saturen */
+        }
+
+        .logo-particle img {
+            display: block; /* Elimina espacio extra debajo de la imagen */
+            width: auto; /* Ancho se ajustará al tamaño definido en JS */
+            height: auto; /* Altura se ajustará al tamaño definido en JS */
         }
 
         @keyframes fall {
@@ -248,10 +251,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.7;
             }
             90% {
-                opacity: 1;
+                opacity: 0.7;
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
@@ -293,27 +296,27 @@
         </section>
 
         <section class="code-section" id="code-python">
-            <div class="code-rain-container"></div> 
+            <div class="logo-rain-container"></div> 
             <h2>PYTHON</h2>
         </section>
 
         <section class="code-section" id="code-html">
-            <div class="code-rain-container"></div> 
+            <div class="logo-rain-container"></div> 
             <h2>HTML</h2>
         </section>
 
         <section class="code-section" id="code-css">
-            <div class="code-rain-container"></div> 
+            <div class="logo-rain-container"></div> 
             <h2>CSS</h2>
         </section>
         
         <section class="code-section" id="code-yaml">
-            <div class="code-rain-container"></div> 
+            <div class="logo-rain-container"></div> 
             <h2>YAML</h2>
         </section>
         
         <section class="code-section" id="code-mongodb">
-            <div class="code-rain-container"></div> 
+            <div class="logo-rain-container"></div> 
             <h2>MONGODB</h2>
         </section>
 
@@ -321,45 +324,53 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const techMap = {
-                'code-python': ['🐍', 'def', 'print', 'import', 'class', 'for', 'while', 'True', 'False', 'None'],
-                'code-html': ['<', '>', '<html>', '<body>', '<div>', '<p>', '<h1>', '</a>', 'id="', 'class="'],
-                'code-css': ['{', '}', ':', ';', 'color', 'background', 'font-size', '.class', '#id', 'px', 'em'],
-                'code-yaml': ['-', ':', 'key', 'value', 'list', 'item', '---', 'true', 'false', 'null'],
-                'code-mongodb': ['db.', '.find({})', '.insert({})', '.update({})', '.delete()', '{"name":', '{"age":'],
+            // Diccionario de URLs de logos para cada tecnología
+            const logoMap = {
+                'code-python': 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
+                'code-html': 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
+                'code-css': 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
+                'code-yaml': 'https://upload.wikimedia.org/wikipedia/commons/a/ae/YAML_logo.svg', // Logo de YAML
+                'code-mongodb': 'https://upload.wikimedia.org/wikipedia/en/4/45/MongoDB-Logo.svg',
             };
-            const numberOfParticles = 30; // Partículas por sección
+            const numberOfParticles = 20; // Menos partículas porque son imágenes más grandes
 
-            function createParticle(container, chars) {
-                const particle = document.createElement('span');
-                particle.classList.add('code-particle');
-                particle.textContent = chars[Math.floor(Math.random() * chars.length)];
+            function createLogoParticle(container, logoUrl) {
+                const particleDiv = document.createElement('div');
+                particleDiv.classList.add('logo-particle');
+                
+                const img = document.createElement('img');
+                img.src = logoUrl;
+                img.alt = 'Logo';
+
+                particleDiv.appendChild(img);
 
                 // Posición inicial aleatoria en la parte superior
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.fontSize = `${Math.random() * 1.5 + 0.8}em`; 
+                particleDiv.style.left = `${Math.random() * 100}%`;
+                const size = Math.random() * 40 + 30; // Tamaño aleatorio entre 30px y 70px
+                img.style.width = `${size}px`;
+                img.style.height = `${size}px`;
                 
-                // Duración y retraso aleatorios para evitar que caigan al mismo tiempo
-                particle.style.animationDuration = `${Math.random() * 8 + 5}s`; 
-                particle.style.animationDelay = `${Math.random() * -5}s`; 
+                // Duración y retraso aleatorios para que caigan de forma irregular
+                particleDiv.style.animationDuration = `${Math.random() * 8 + 5}s`; 
+                particleDiv.style.animationDelay = `${Math.random() * -5}s`; 
 
-                container.appendChild(particle);
+                container.appendChild(particleDiv);
 
                 // Reciclar la partícula
-                particle.addEventListener('animationend', () => {
-                    particle.remove();
-                    createParticle(container, chars); 
+                particleDiv.addEventListener('animationend', () => {
+                    particleDiv.remove();
+                    createLogoParticle(container, logoUrl); 
                 });
             }
 
-            // Inicializar las secciones de código
-            for (const sectionId in techMap) {
+            // Inicializar las secciones con logos cayendo
+            for (const sectionId in logoMap) {
                 const section = document.getElementById(sectionId);
                 if (section) {
-                    const container = section.querySelector('.code-rain-container');
-                    const chars = techMap[sectionId];
+                    const container = section.querySelector('.logo-rain-container');
+                    const logoUrl = logoMap[sectionId];
                     for (let i = 0; i < numberOfParticles; i++) {
-                        createParticle(container, chars);
+                        createLogoParticle(container, logoUrl);
                     }
                 }
             }
