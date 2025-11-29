@@ -96,15 +96,11 @@
 
         /*
             -------------------------------------------
-            CONTENEDOR DE PRECIOS Y DISCORD (SOBRE EL BANNER)
+            CONTENEDOR DE PRECIOS Y DISCORD
             -------------------------------------------
         */
         .main-container {
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            
+            /* Estilos generales del contenedor */
             display: flex;
             flex-direction: row; 
             flex-wrap: wrap; 
@@ -112,13 +108,29 @@
             align-items: flex-start; 
             gap: 30px; 
             
-            z-index: 4; 
             background-color: rgba(255, 255, 255, 0.9); 
             border-radius: 8px;
             padding: 20px; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             max-width: 600px; 
             width: 90%; 
+        }
+
+        /* Estilo para el contenedor que está ABSOLUTO (en el banner) */
+        .header-banner .main-container {
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 4; 
+        }
+        
+        /* Estilo para el contenedor que está ESTATICO (al final de la página) */
+        .final-cta-section .main-container {
+            position: relative; /* Restaura el flujo normal */
+            margin: 0 auto;
+            transform: none;
+            z-index: auto;
         }
 
         .action-button {
@@ -198,7 +210,21 @@
 
         /*
             -------------------------------------------
-            SECCIONES DE LOGOS CAYENDO
+            CONTENIDO PRINCIPAL (MAIN)
+            -------------------------------------------
+        */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 0; 
+            position: relative; 
+            flex-grow: 1; 
+        }
+
+        /*
+            -------------------------------------------
+            SECCIONES DE LOGOS CAYENDO (VERDE)
             -------------------------------------------
         */
         .code-section {
@@ -261,23 +287,39 @@
                 opacity: 0;
             }
         }
-
+        
         /*
             -------------------------------------------
-            SECCIÓN DE PROYECTOS (NUEVA)
+            SECCIÓN DE PROYECTOS (AZUL con CÓDIGO CAYENDO)
             -------------------------------------------
         */
         .project-section {
             padding: 60px 20px;
-            background-color: #f0f2f5; 
+            background-color: #1a2a4b; /* Fondo azul oscuro */
+            color: white;
             text-align: center;
             width: 100%;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .project-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); /* Overlay */
+            z-index: 1;
         }
 
         .project-section h2 {
             font-size: 2.2em;
-            color: #333;
+            color: #64B5F6; /* Azul claro */
             margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .project-grid {
@@ -287,22 +329,39 @@
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2; 
         }
 
         .project-card {
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             padding: 20px;
-            width: 100%; /* Default 100% for small screens */
+            width: 100%; 
             max-width: 250px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; 
+            overflow: hidden;
+            border: 2px solid #64B5F6; /* Borde azul claro */
         }
 
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Contenedor de partículas de código para las tarjetas de proyecto */
+        .project-card .code-rain-container-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+            pointer-events: none;
+            opacity: 0.2; 
         }
 
         .project-card-logo {
@@ -311,33 +370,126 @@
             margin-bottom: 15px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #32CD32;
+            border: 4px solid #64B5F6; /* Borde del logo azul */
+            position: relative;
+            z-index: 1; 
         }
 
         .project-card h3 {
-            color: #333;
+            color: #81D4FA; /* Título azul más claro */
             font-size: 1.4em;
             margin-top: 0;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         .project-card p {
             font-size: 0.9em;
-            color: #666;
+            color: #BBDEFB; /* Descripción azul muy claro */
+            position: relative;
+            z-index: 1;
         }
         
         @media (min-width: 768px) {
             .project-card {
-                width: calc(50% - 30px); /* Two columns */
+                width: calc(50% - 30px); 
             }
         }
         
         @media (min-width: 1024px) {
             .project-card {
-                width: calc(25% - 30px); /* Four columns */
+                width: calc(25% - 30px); 
             }
         }
 
+        /*
+            -------------------------------------------
+            PARTÍCULAS CÓDIGO (NUEVO ESTILO AZUL)
+            -------------------------------------------
+        */
+        .code-particle {
+            position: absolute;
+            animation: fall-code linear infinite; 
+            user-select: none;
+        }
+
+        /* Reutilizamos fall, pero le cambiamos el nombre para el JS */
+        @keyframes fall-code {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
+        /*
+            -------------------------------------------
+            SECCIÓN FINAL DE LLAMADA A LA ACCIÓN (AZUL)
+            -------------------------------------------
+        */
+        .final-cta-section {
+            padding: 60px 20px;
+            background-color: #1a2a4b; /* Fondo azul oscuro */
+            color: white;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #64B5F6; /* Borde azul */
+        }
+        
+        .final-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); /* Overlay */
+            z-index: 1;
+        }
+
+        .final-cta-section .code-rain-container-final {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .final-cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #64B5F6; 
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Asegura que los elementos del main-container final estén por encima del código cayendo */
+        .final-cta-section .main-container {
+            z-index: 2;
+        }
+        
+        /* Ajuste de color para la lista de precios en la sección final oscura */
+        .final-cta-section .price-info {
+             background-color: rgba(255, 255, 255, 0.95);
+             border: 2px solid #64B5F6; /* Borde azul */
+        }
+        
     </style>
 </head>
 <body>
@@ -386,33 +538,60 @@
         </section>
         
         <section class="project-section">
-            <h2>Proyectos en los que eh participado</h2>
+            <h2>Proyectos en los que he participado</h2>
             <div class="project-grid">
                 
                 <div class="project-card">
+                    <div class="code-rain-container-inner" data-card-id="mineorchid"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/30d4e087bfcc3226b85e075c921d9943.png?raw=true" alt="Logo MineOrchid" class="project-card-logo">
                     <h3>MineOrchid</h3>
-                    <p>Servidor fundado por mi en el cual le dedique mas de 240h en configuracion y actualmente se encuentra cerrado</p>
+                    <p>Servidor fundado por mi en el cual le dedique mas de 240h en configuracion y actualmente se encuentra cerrado.</p>
                 </div>
                 
                 <div class="project-card">
+                    <div class="code-rain-container-inner" data-card-id="veantymc"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/unnamed.jpg?raw=true" alt="Logo VeantyMc" class="project-card-logo">
                     <h3>VeantyMc</h3>
-                    <p>Servidor de boxpvp con una modalidad de fnafbox</p>
+                    <p>Servidor de boxpvp con una modalidad de fnafbox.</p>
                 </div>
                 
                 <div class="project-card">
+                    <div class="code-rain-container-inner" data-card-id="rustmc"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/logo1discord-1563374528_thumb.jpg?raw=true" alt="Logo RustMC" class="project-card-logo">
                     <h3>RustMC</h3>
                     <p>Servidor de minecraft fundado por mi amigo en el cual fui configurador y founder.</p>
                 </div>
                 
                 <div class="project-card">
+                    <div class="code-rain-container-inner" data-card-id="nullsq"></div>
                     <img src="https://github.com/diegxxx/hydraproject/blob/main/6492638e9d2b601437a64d6f44c9146d.png?raw=true" alt="Logo NullSQ Renoved" class="project-card-logo">
                     <h3>NullSQ Renoved</h3>
                     <p>Comunidad de desarrolladores especializados en ciberseguridad.</p>
                 </div>
 
+            </div>
+        </section>
+        
+        <section class="final-cta-section">
+            <div class="code-rain-container-final" id="code-final-cta"></div>
+            <h2>¿Listo para empezar tu proyecto?</h2>
+            
+            <div class="main-container">
+                <div class="price-info">
+                    <h3>💰 Tabla de precios</h3>
+                    <p>¡Servicios de alta calidad a precios accesibles!</p>
+                    <ul class="price-list">
+                        <li>Basic Builds: <strong>$5 USD</strong></li>
+                        <li>Medium Builds: <strong>$10 USD</strong></li>
+                        <li>Best Builds: <strong>$15 USD</strong></li>
+                    </ul>
+                    <p>¡Únete a Discord para ver más detalles!</p>
+                </div>
+
+                <a href="URL_DE_TU_DISCORD" class="action-button discord">
+                    <i class="fab fa-discord icon"></i>
+                    <span>Discord</span>
+                </a>
             </div>
         </section>
         
@@ -425,11 +604,23 @@
                 'code-html': 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
                 'code-css': 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg',
             };
-            const numberOfParticles = 20; 
+            const greenParticles = 20; 
+            const blueParticles = 5;
+            const finalCtaParticles = 25;
 
-            function createLogoParticle(container, logoUrl) {
+            // Caracteres para el código binario/tech azul
+            const projectCodeChars = ['0', '1', 'A', 'B', '#', '%', '&', '*', '{', '}', ';', '/', '<', '>', 'z'];
+
+            function createLogoParticle(container, logoUrl, isGreen = true) {
                 const particleDiv = document.createElement('div');
-                particleDiv.classList.add('logo-particle');
+                
+                // Usamos la misma animación, pero con estilos específicos de clase si no es verde
+                if (isGreen) {
+                    particleDiv.classList.add('logo-particle');
+                } else {
+                     // Para las partículas internas de las tarjetas
+                    particleDiv.classList.add('code-particle');
+                }
                 
                 const img = document.createElement('img');
                 img.src = logoUrl;
@@ -449,25 +640,59 @@
 
                 particleDiv.addEventListener('animationend', () => {
                     particleDiv.remove();
-                    createLogoParticle(container, logoUrl); 
+                    createLogoParticle(container, logoUrl, isGreen); 
+                });
+            }
+            
+            function createBlueCodeParticle(container) {
+                const particle = document.createElement('span');
+                particle.classList.add('code-particle');
+                particle.textContent = projectCodeChars[Math.floor(Math.random() * projectCodeChars.length)];
+                
+                // Estilos específicos para el código azul
+                particle.style.color = 'rgba(129, 212, 250, 0.5)'; // Azul claro semitransparente
+                particle.style.fontSize = `${Math.random() * 1 + 0.5}em`; 
+                particle.style.animationDuration = `${Math.random() * 6 + 3}s`; 
+                particle.style.animationDelay = `${Math.random() * -3}s`; 
+                
+                particle.style.left = `${Math.random() * 100}%`;
+
+                container.appendChild(particle);
+
+                particle.addEventListener('animationend', () => {
+                    particle.remove();
+                    createBlueCodeParticle(container);
                 });
             }
 
+            // 1. Inicializar lluvia de logos (Verde)
             for (const sectionId in logoMap) {
                 const section = document.getElementById(sectionId);
                 if (section) {
                     const container = section.querySelector('.logo-rain-container');
                     const logoUrl = logoMap[sectionId];
-                    for (let i = 0; i < numberOfParticles; i++) {
-                        createLogoParticle(container, logoUrl);
+                    for (let i = 0; i < greenParticles; i++) {
+                        createLogoParticle(container, logoUrl, true);
                     }
+                }
+            }
+            
+            // 2. Inicializar lluvia de código (Azul) en tarjetas de proyecto
+            const projectCardsContainers = document.querySelectorAll('.project-card .code-rain-container-inner');
+            projectCardsContainers.forEach(container => {
+                for (let i = 0; i < blueParticles; i++) {
+                    createBlueCodeParticle(container);
+                }
+            });
+
+            // 3. Inicializar lluvia de código (Azul) en la sección final
+            const finalCtaContainer = document.getElementById('code-final-cta');
+            if (finalCtaContainer) {
+                for (let i = 0; i < finalCtaParticles; i++) {
+                    createBlueCodeParticle(finalCtaContainer);
                 }
             }
         });
     </script>
 </body>
 </html>
-
-
-
-
