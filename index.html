@@ -92,11 +92,25 @@
             font-size: 2.5em;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            /* NUEVO: Efecto de desvanecimiento */
+            opacity: 0;
+            animation: fadeEffect 2s ease-out forwards;
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /*
             -------------------------------------------
-            CONTENEDOR DE PRECIOS Y DISCORD
+            CONTENEDOR DE PRECIOS Y DISCORD (Solo el de abajo ahora)
             -------------------------------------------
         */
         .main-container {
@@ -114,15 +128,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             max-width: 600px; 
             width: 90%; 
-        }
-
-        /* Estilo para el contenedor que está ABSOLUTO (en el banner) */
-        .header-banner .main-container {
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            z-index: 4; 
         }
         
         /* Estilo para el contenedor que está ESTATICO (al final de la página) */
@@ -150,6 +155,8 @@
             align-items: center;
             gap: 8px; 
             width: 200px; 
+            /* NUEVO: Borde azul para el botón de Discord */
+            border: 2px solid #64B5F6; 
         }
 
         .action-button:hover {
@@ -171,6 +178,8 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             text-align: center;
             max-width: 250px; 
+            /* NUEVO: Borde azul para la tabla de precios */
+            border: 2px solid #64B5F6; 
         }
         
         .price-info h3 {
@@ -502,24 +511,7 @@
             <h1 class="welcome-text">Bienvenido a Hydra Projects</h1>
         </div>
         
-        <div class="main-container">
-            <div class="price-info">
-                <h3>💰 Tabla de precios</h3>
-                <p>¡Servicios de alta calidad a precios accesibles!</p>
-                <ul class="price-list">
-                    <li>Basic Builds: <strong>$5 USD</strong></li>
-                    <li>Medium Builds: <strong>$10 USD</strong></li>
-                    <li>Best Builds: <strong>$15 USD</strong></li>
-                </ul>
-                <p>¡Únete a Discord para ver más detalles!</p>
-            </div>
-
-            <a href="URL_DE_TU_DISCORD" class="action-button discord">
-                <i class="fab fa-discord icon"></i>
-                <span>Discord</span>
-            </a>
-        </div>
-    </header>
+        </header>
 
     <main class="main-content">
         <section class="code-section" id="code-python">
@@ -614,11 +606,9 @@
             function createLogoParticle(container, logoUrl, isGreen = true) {
                 const particleDiv = document.createElement('div');
                 
-                // Usamos la misma animación, pero con estilos específicos de clase si no es verde
                 if (isGreen) {
                     particleDiv.classList.add('logo-particle');
                 } else {
-                     // Para las partículas internas de las tarjetas
                     particleDiv.classList.add('code-particle');
                 }
                 
@@ -647,52 +637,4 @@
             function createBlueCodeParticle(container) {
                 const particle = document.createElement('span');
                 particle.classList.add('code-particle');
-                particle.textContent = projectCodeChars[Math.floor(Math.random() * projectCodeChars.length)];
-                
-                // Estilos específicos para el código azul
-                particle.style.color = 'rgba(129, 212, 250, 0.5)'; // Azul claro semitransparente
-                particle.style.fontSize = `${Math.random() * 1 + 0.5}em`; 
-                particle.style.animationDuration = `${Math.random() * 6 + 3}s`; 
-                particle.style.animationDelay = `${Math.random() * -3}s`; 
-                
-                particle.style.left = `${Math.random() * 100}%`;
-
-                container.appendChild(particle);
-
-                particle.addEventListener('animationend', () => {
-                    particle.remove();
-                    createBlueCodeParticle(container);
-                });
-            }
-
-            // 1. Inicializar lluvia de logos (Verde)
-            for (const sectionId in logoMap) {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    const container = section.querySelector('.logo-rain-container');
-                    const logoUrl = logoMap[sectionId];
-                    for (let i = 0; i < greenParticles; i++) {
-                        createLogoParticle(container, logoUrl, true);
-                    }
-                }
-            }
-            
-            // 2. Inicializar lluvia de código (Azul) en tarjetas de proyecto
-            const projectCardsContainers = document.querySelectorAll('.project-card .code-rain-container-inner');
-            projectCardsContainers.forEach(container => {
-                for (let i = 0; i < blueParticles; i++) {
-                    createBlueCodeParticle(container);
-                }
-            });
-
-            // 3. Inicializar lluvia de código (Azul) en la sección final
-            const finalCtaContainer = document.getElementById('code-final-cta');
-            if (finalCtaContainer) {
-                for (let i = 0; i < finalCtaParticles; i++) {
-                    createBlueCodeParticle(finalCtaContainer);
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+                particle.textContent = projectCodeChars[Math.floor
