@@ -60,8 +60,7 @@
         .header-banner {
             position: relative;
             width: 100%;
-            /* 💥 CAMBIO: ALTURA COMPLETA DE LA VENTANA */
-            height: 100vh; 
+            height: 100vh; /* Altura completa de la ventana */
             background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -97,63 +96,49 @@
 
         /*
             -------------------------------------------
-            CONTENIDO PRINCIPAL (MAIN) - Layout General
+            CONTENEDOR DE PRECIOS Y DISCORD (SOBRE EL BANNER)
             -------------------------------------------
         */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            gap: 0; 
-            position: relative; 
-        }
-        
-        /* Contenedor de la primera sección (Precios/Discord) */
-        .initial-section {
-            padding: 40px 20px;
-            background-color: #32CD32; 
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            width: 100%;
-            position: relative;
-            z-index: 5;
-        }
-        
-        /* 💥 CAMBIO: CONTENEDOR FLEXIBLE PARA COLOCAR PRECIOS Y DISCORD LADO A LADO */
         .main-container {
+            /* 💥 CAMBIOS CLAVE: Posicionamiento absoluto y tamaño reducido */
+            position: absolute; /* Para que flote sobre el banner */
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra horizontalmente */
+            transform: translate(-50%, -50%); /* Ajuste fino para centrarlo perfectamente */
+            
             display: flex;
-            flex-direction: row; /* Horizontal */
-            flex-wrap: wrap; /* Para que se ajusten en móvil */
-            justify-content: center; /* Centrado */
-            align-items: flex-start; /* Alineación superior */
-            gap: 50px; /* Espacio entre los elementos */
-            position: relative; 
-            z-index: 3; 
-            background-color: rgba(255, 255, 255, 0.9); 
+            flex-direction: row; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: flex-start; 
+            gap: 30px; /* Espacio entre los elementos, un poco más pequeño */
+            
+            z-index: 4; /* Asegura que esté por encima del banner y su overlay */
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
             border-radius: 8px;
-            padding: 30px;
+            padding: 20px; /* Padding más pequeño */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            max-width: 800px;
+            max-width: 600px; /* Ancho máximo más pequeño */
+            width: 90%; /* Ajuste para responsividad */
         }
 
         .action-button {
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 20px 30px;
+            padding: 15px 20px; /* Padding más pequeño */
             text-align: center;
             text-decoration: none;
             color: #333;
-            font-size: 1.2em;
+            font-size: 1.1em; /* Fuente ligeramente más pequeña */
             font-weight: 700;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            width: 250px; 
+            gap: 8px; /* Gap más pequeño */
+            width: 200px; /* Ancho más pequeño */
         }
 
         .action-button:hover {
@@ -164,34 +149,34 @@
 
         .action-button .icon {
             color: #7289da; 
-            font-size: 2.5em;
+            font-size: 2em; /* Icono ligeramente más pequeño */
         }
         
         .price-info {
             background-color: #ffffff; 
             border: 2px solid #32CD32; 
             border-radius: 8px;
-            padding: 25px;
+            padding: 20px; /* Padding más pequeño */
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             text-align: center;
-            max-width: 300px;
+            max-width: 250px; /* Ancho máximo más pequeño */
         }
         
         .price-info h3 {
             color: #32CD32;
             margin-top: 0;
-            font-size: 1.5em;
+            font-size: 1.3em; /* Fuente más pequeña */
         }
         
         .price-list {
             list-style: none;
             padding: 0;
-            font-size: 1.1em;
+            font-size: 1em; /* Fuente más pequeña */
             font-weight: 700;
         }
         
         .price-list li {
-            margin: 8px 0;
+            margin: 6px 0; /* Margen más pequeño */
             color: #4CAF50; 
         }
         
@@ -203,16 +188,31 @@
         @media (max-width: 650px) {
             .main-container {
                 flex-direction: column;
-                gap: 30px;
+                gap: 20px; /* Gap más pequeño para móviles */
+                padding: 15px;
+            }
+            .action-button, .price-info {
+                width: 100%; /* Ocupan todo el ancho en móvil */
+                max-width: none;
             }
         }
 
-
         /*
             -------------------------------------------
-            SECCIONES DE LOGOS CAYENDO (DEBAJO)
+            CONTENIDO PRINCIPAL (MAIN) - Solo las secciones de LOGOS CAYENDO
             -------------------------------------------
         */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 0; 
+            position: relative; 
+            /* Se asegura que el main-content empiece DEBAJO del banner de 100vh */
+            margin-top: 0; 
+            flex-grow: 1; /* Para que ocupe el espacio restante si hay poco contenido */
+        }
+
         .code-section {
             width: 100%;
             height: 350px; 
@@ -284,29 +284,26 @@
         <div class="header-content">
             <h1 class="welcome-text">Bienvenido a Hydra Projects</h1>
         </div>
+        <div class="main-container">
+            <div class="price-info">
+                <h3>💰 Tabla de precios</h3>
+                <p>¡Servicios de alta calidad a precios accesibles!</p>
+                <ul class="price-list">
+                    <li>Basic Builds: <strong>$5 USD</strong></li>
+                    <li>Medium Builds: <strong>$10 USD</strong></li>
+                    <li>Best Builds: <strong>$15 USD</strong></li>
+                </ul>
+                <p>¡Únete a Discord para ver más detalles!</p>
+            </div>
+
+            <a href="URL_DE_TU_DISCORD" class="action-button discord">
+                <i class="fab fa-discord icon"></i>
+                <span>Discord</span>
+            </a>
+        </div>
     </header>
 
     <main class="main-content">
-        <section class="initial-section">
-            <div class="main-container">
-                <div class="price-info">
-                    <h3>💰 Tabla de precios</h3>
-                    <p>¡Servicios de alta calidad a precios accesibles!</p>
-                    <ul class="price-list">
-                        <li>Basic Builds: <strong>$5 USD</strong></li>
-                        <li>Medium Builds: <strong>$10 USD</strong></li>
-                        <li>Best Builds: <strong>$15 USD</strong></li>
-                    </ul>
-                    <p>¡Únete a Discord para ver más detalles!</p>
-                </div>
-
-                <a href="URL_DE_TU_DISCORD" class="action-button discord">
-                    <i class="fab fa-discord icon"></i>
-                    <span>Discord</span>
-                </a>
-            </div>
-        </section>
-
         <section class="code-section" id="code-python">
             <div class="logo-rain-container"></div> 
             <h2>PYTHON</h2>
