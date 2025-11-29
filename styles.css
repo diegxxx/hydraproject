@@ -1,8 +1,3 @@
-/*
-    -------------------------------------------
-    GENERALES Y TIPOGRAFÍA
-    -------------------------------------------
-*/
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -16,11 +11,6 @@ body {
     z-index: 1; 
 }
 
-/*
-    -------------------------------------------
-    BARRA DE NAVEGACIÓN (NAVBAR)
-    -------------------------------------------
-*/
 .navbar {
     background-color: #333;
     padding: 10px 0;
@@ -39,19 +29,14 @@ body {
 }
 
 .navbar a:hover {
-    color: #64B5F6; /* Azul claro para hover */
+    color: #64B5F6;
 }
 
-/*
-    -------------------------------------------
-    BANNER PRINCIPAL (HEADER) - PANTALLA MÁS PEQUEÑA
-    -------------------------------------------
-*/
 .header-banner {
     position: relative;
     width: 100%;
-    height: 400px; /* Tamaño más pequeño */
-    background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
+    height: 400px; 
+    background: url('https://github.com/diegxxx/hydraproject/blob/main/Banner.png?raw=true') no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,11 +82,6 @@ body {
     }
 }
 
-/*
-    -------------------------------------------
-    CONTENEDOR DE CONTACTO (CTA FINAL)
-    -------------------------------------------
-*/
 .main-container {
     display: flex;
     justify-content: center; 
@@ -134,7 +114,6 @@ body {
     opacity: 0.15; 
 }
 
-/* ESTILOS DE LA TARJETA DE CONTACTO DETALLADA */
 .contact-card-detailed {
     background-color: #3c414c;
     border: 2px solid #64B5F6;
@@ -180,11 +159,6 @@ body {
     text-decoration: underline;
 }
 
-/*
-    -------------------------------------------
-    CONTENIDO PRINCIPAL (MAIN)
-    -------------------------------------------
-*/
 .main-content {
     display: flex;
     flex-direction: column;
@@ -194,11 +168,6 @@ body {
     flex-grow: 1; 
 }
 
-/*
-    -------------------------------------------
-    SECCIONES DE CODIGO CAYENDO (TOGGLE/ACORDEÓN)
-    -------------------------------------------
-*/
 .code-section {
     width: 100%;
     height: auto; 
@@ -218,7 +187,6 @@ body {
     text-align: center;
 }
 
-/* Contenedor del Título y la Flecha - Clickable Area */
 .code-section h2 {
     position: relative;
     z-index: 5;
@@ -226,28 +194,26 @@ body {
     text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5); 
     margin-bottom: 20px; 
     margin-top: 0;
-    cursor: pointer; /* Indica que se puede hacer clic */
-    padding-right: 40px; /* Espacio para la flecha */
-    display: inline-block; /* Para centrar y controlar padding */
+    cursor: pointer; 
+    padding-right: 40px; 
+    display: inline-block; 
 }
 
-/* Estilo para la flecha */
 .toggle-icon {
     position: absolute;
-    right: -30px; /* Posición al lado del texto */
+    right: -30px; 
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.3s ease;
-    font-size: 0.6em; /* Tamaño de la flecha relativo al H2 */
+    font-size: 0.6em; 
 }
 
-/* Contenedor de la descripción (Cuerpo del acordeón) */
 .skill-description-box {
     position: relative;
     z-index: 5;
     max-width: 800px;
     width: 90%;
-    padding: 0 15px; /* Padding vertical 0 al inicio */
+    padding: 0 15px; 
     border: 2px solid #00FF00; 
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.7); 
@@ -257,66 +223,61 @@ body {
     box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); 
     margin-top: 0;
 
-    /* Propiedades para el efecto de toggle */
-    max-height: 0; /* Oculto por defecto */
+    max-height: 0; 
     overflow: hidden;
     transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out;
-    border-color: transparent; /* Ocultar borde cuando está colapsado */
-    display: flex; /* Para organizar el texto y la imagen */
-    flex-direction: column; /* Apilar texto y luego imagen */
-    align-items: center; /* Centrar elementos internos */
-    gap: 15px; /* Espacio entre la descripción y la imagen */
+    border-color: transparent; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 15px; 
 }
 
-/* Contenido interno del recuadro para manejar el padding */
 .description-content {
-    padding: 15px 0 0; /* Solo padding superior cuando se abre */
-    width: 100%; /* Para que el texto ocupe el ancho completo */
+    padding: 15px 0 0; 
+    width: 100%; 
 }
 
-/* Contenedor de la imagen cliqueable */
 .skill-image-container {
-    width: 100%; /* Ocupa todo el ancho disponible */
+    width: 100%; 
     display: flex;
-    justify-content: center; /* Centrar la imagen dentro del contenedor */
-    padding-bottom: 15px; /* Padding inferior */
+    justify-content: center; 
+    padding-bottom: 15px; 
 }
 
 .skill-image-container a {
-    display: block; /* Para que el enlace ocupe el espacio de la imagen */
-    border: 2px solid #00FF00; /* Recuadro verde para la imagen */
+    display: block; 
+    border: 2px solid #00FF00; 
     border-radius: 8px;
-    overflow: hidden; /* Asegura que la imagen no se salga del borde */
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.4); /* Sombra para resaltar */
+    overflow: hidden; 
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.4); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-image-container a:hover {
-    transform: scale(1.03); /* Ligeramente más grande al pasar el mouse */
+    transform: scale(1.03); 
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
 }
 
 .skill-image-container img {
-    max-width: 150px; /* Tamaño máximo de la imagen */
+    max-width: 150px; 
     height: auto;
-    display: block; /* Elimina espacio extra debajo de la imagen */
+    display: block; 
 }
 
 
-/* Clase cuando el acordeón está activo (abierto) */
+
 .code-section.active .skill-description-box {
-    max-height: 400px; /* Altura suficiente para mostrar contenido + imagen */
+    max-height: 400px;
     padding: 0 15px; 
     margin-bottom: 20px;
-    border-color: #00FF00; /* Mostrar borde cuando está abierto */
+    border-color: #00FF00; 
 }
 
-/* Rotación de la flecha cuando está activa */
 .code-section.active .toggle-icon {
     transform: translateY(-50%) rotate(180deg);
 }
 
-/* Estilos existentes para la lluvia de código */
 .code-section .code-rain-container-tech {
     position: absolute;
     top: 0;
@@ -353,12 +314,6 @@ body {
     }
 }
 
-
-/*
-    -------------------------------------------
-    SECCIÓN DE PROYECTOS (FONDO NEGRO, CODIGO AZUL)
-    -------------------------------------------
-*/
 .project-section {
     padding: 60px 20px;
     background-color: #000000; 
@@ -468,11 +423,6 @@ body {
     }
 }
 
-/*
-    -------------------------------------------
-    PARTÍCULAS CÓDIGO AZUL (Usadas en Proyectos y CTA final)
-    -------------------------------------------
-*/
 .code-particle {
     position: absolute;
     animation: fall-code linear; 
@@ -497,12 +447,6 @@ body {
     }
 }
 
-
-/*
-    -------------------------------------------
-    SECCIÓN FINAL DE LLAMADA A LA ACCIÓN (FONDO NEGRO, CODIGO AZUL)
-    -------------------------------------------
-*/
 .final-cta-section {
     padding: 60px 20px;
     background-color: #000000; 
