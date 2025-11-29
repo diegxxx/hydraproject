@@ -60,7 +60,7 @@
         .header-banner {
             position: relative;
             width: 100%;
-            height: 400px; /* ¡CAMBIADO A 400px para hacerlo más pequeño! */
+            height: 400px; /* Tamaño más pequeño */
             background: url('https://github.com/diegxxx/hydraproject/blob/main/pf.png?raw=true') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -109,14 +109,13 @@
 
         /*
             -------------------------------------------
-            CONTENEDOR DE CONTACTO (AHORA TARJETA DETALLADA)
+            CONTENEDOR DE CONTACTO (CTA FINAL)
             -------------------------------------------
         */
         .main-container {
             display: flex;
             justify-content: center; 
             align-items: center; 
-            
             background-color: transparent; 
             border-radius: 8px;
             padding: 0;
@@ -207,18 +206,17 @@
 
         /*
             -------------------------------------------
-            SECCIONES DE CODIGO CAYENDO (VERDE para PYTHON, HTML, CSS)
+            SECCIONES DE CODIGO CAYENDO (TOGGLE/ACORDEÓN)
             -------------------------------------------
         */
         .code-section {
             width: 100%;
-            /* Ajuste de altura para acomodar la descripción */
             height: auto; 
             padding: 40px 20px;
             position: relative;
             overflow: hidden;
             display: flex;
-            flex-direction: column; /* Cambiado a columna para apilar H2 y descripción */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
             background-color: #111; 
@@ -230,6 +228,7 @@
             text-align: center;
         }
         
+        /* Contenedor del Título y la Flecha - Clickable Area */
         .code-section h2 {
             position: relative;
             z-index: 5;
@@ -237,26 +236,63 @@
             text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5); 
             margin-bottom: 20px; 
             margin-top: 0;
+            cursor: pointer; /* Indica que se puede hacer clic */
+            padding-right: 40px; /* Espacio para la flecha */
+            display: inline-block; /* Para centrar y controlar padding */
         }
         
-        /* Estilo para el recuadro de descripción */
+        /* Estilo para la flecha */
+        .toggle-icon {
+            position: absolute;
+            right: -30px; /* Posición al lado del texto */
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 0.6em; /* Tamaño de la flecha relativo al H2 */
+        }
+
+        /* Contenedor de la descripción (Cuerpo del acordeón) */
         .skill-description-box {
             position: relative;
             z-index: 5;
             max-width: 800px;
             width: 90%;
-            padding: 15px;
-            border: 2px solid #00FF00; /* Borde verde */
+            padding: 0 15px; /* Padding vertical 0 al inicio */
+            border: 2px solid #00FF00; 
             border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro transparente */
-            color: #00FF00; /* Texto verde */
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: #00FF00; 
             font-size: 1.1em;
             line-height: 1.4;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Efecto de brillo verde */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); 
             margin-top: 0;
+
+            /* Propiedades para el efecto de toggle */
+            max-height: 0; /* Oculto por defecto */
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out;
+            border-color: transparent; /* Ocultar borde cuando está colapsado */
+        }
+        
+        /* Contenido interno del recuadro para manejar el padding */
+        .description-content {
+            padding: 15px 0;
+        }
+        
+        /* Clase cuando el acordeón está activo (abierto) */
+        .code-section.active .skill-description-box {
+            max-height: 200px; /* Altura suficiente para mostrar todo el contenido */
+            padding: 0 15px; 
+            margin-bottom: 20px;
+            border-color: #00FF00; /* Mostrar borde cuando está abierto */
         }
 
+        /* Rotación de la flecha cuando está activa */
+        .code-section.active .toggle-icon {
+            transform: translateY(-50%) rotate(180deg);
+        }
 
+        /* Estilos existentes para la lluvia de código */
         .code-section .code-rain-container-tech {
             position: absolute;
             top: 0;
@@ -481,7 +517,7 @@
 
     <header class="header-banner">
         <div class="header-content">
-            <h1 class="welcome-text"></h1>
+            <h1 class="welcome-text">Welcome to my Portfolio</h1>
         </div>
     </header>
 
@@ -489,25 +525,37 @@
         
         <section class="code-section" id="code-python">
             <div class="code-rain-container-tech" data-char-type="green"></div> 
-            <h2>PYTHON</h2>
+            <h2 onclick="toggleDescription('code-python')">
+                PYTHON <i class="fas fa-chevron-down toggle-icon" id="icon-code-python"></i>
+            </h2>
             <div class="skill-description-box">
-                Desarrollador de Python con **4 años de experiencia completos**. Tengo 3 cursos de Python profesional y he formado parte de algunas plataformas que han cerrado.
+                <div class="description-content">
+                    Desarrollador de Python con **4 años de experiencia completos**. Tengo 3 cursos de Python profesional y he formado parte de algunas plataformas que han cerrado.
+                </div>
             </div>
         </section>
 
         <section class="code-section" id="code-html">
             <div class="code-rain-container-tech" data-char-type="green"></div> 
-            <h2>HTML</h2>
+            <h2 onclick="toggleDescription('code-html')">
+                HTML <i class="fas fa-chevron-down toggle-icon" id="icon-code-html"></i>
+            </h2>
             <div class="skill-description-box">
-                Desarrollador de HTML con **2 años aproximados de experiencia** donde busco crear estilos modernos.
+                <div class="description-content">
+                    Desarrollador de HTML con **2 años aproximados de experiencia** donde busco crear estilos modernos.
+                </div>
             </div>
         </section>
 
         <section class="code-section" id="code-css">
             <div class="code-rain-container-tech" data-char-type="green"></div> 
-            <h2>CSS</h2>
+            <h2 onclick="toggleDescription('code-css')">
+                CSS <i class="fas fa-chevron-down toggle-icon" id="icon-code-css"></i>
+            </h2>
             <div class="skill-description-box">
-                Desarollador (3) De aproximadamente **1 año** con experiencia media.
+                <div class="description-content">
+                    Desarollador (3) De aproximadamente **1 año** con experiencia media.
+                </div>
             </div>
         </section>
         
@@ -574,7 +622,22 @@
     </main>
 
     <script>
-        // Código JavaScript para la lluvia de código (code rain)
+        /*
+            -------------------------------------------
+            FUNCIÓN DE TOGGLE (ACORDEÓN)
+            -------------------------------------------
+        */
+        function toggleDescription(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('active');
+        }
+
+
+        /*
+            -------------------------------------------
+            CÓDIGO JAVASCRIPT PARA LA LLUVIA DE CÓDIGO
+            -------------------------------------------
+        */
         document.addEventListener('DOMContentLoaded', () => {
             const greenParticles = 50; 
             const blueParticlesProjectCards = 15; 
