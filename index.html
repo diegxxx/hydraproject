@@ -243,7 +243,7 @@
 
         /*
             -------------------------------------------
-            SECCIONES DE CODIGO CAYENDO (AHORA VERDE)
+            SECCIONES DE CODIGO CAYENDO (VERDE para PYTHON, HTML, CSS)
             -------------------------------------------
         */
         .code-section {
@@ -254,7 +254,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* RESTAURADO A VERDE */
             background-color: #111; 
             color: #00FF00; 
             border-top: 5px solid #00FF00;
@@ -265,11 +264,9 @@
             position: relative;
             z-index: 5;
             font-size: 3em;
-            /* Sombra verde */
             text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5); 
         }
 
-        /* Contenedor para la lluvia de código (Verde) - Usaremos esta clase de JS */
         .code-section .code-rain-container-tech {
             position: absolute;
             top: 0;
@@ -281,16 +278,14 @@
             opacity: 0.3;
         }
         
-        /* ESTILO PARA LAS PARTÍCULAS VERDES */
         .green-particle {
             position: absolute;
             animation: fall-green linear infinite; 
             user-select: none;
-            color: rgba(0, 255, 0, 0.7); /* Verde claro semitransparente */
+            color: rgba(0, 255, 0, 0.7); 
             filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
         }
 
-        /* Keyframes para las partículas verdes */
         @keyframes fall-green {
             0% {
                 transform: translateY(-100px) rotate(0deg);
@@ -311,12 +306,12 @@
 
         /*
             -------------------------------------------
-            SECCIÓN DE PROYECTOS (AZUL con CÓDIGO CAYENDO AZUL)
+            SECCIÓN DE PROYECTOS (FONDO NEGRO, CODIGO AZUL)
             -------------------------------------------
         */
         .project-section {
             padding: 60px 20px;
-            background-color: #1a2a4b; 
+            background-color: #000000; /* FONDO NEGRO */
             color: white;
             text-align: center;
             width: 100%;
@@ -331,7 +326,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); 
+            /* OVERLAY PARA FONDO NEGRO */
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); 
             z-index: 1;
         }
 
@@ -455,12 +451,12 @@
 
         /*
             -------------------------------------------
-            SECCIÓN FINAL DE LLAMADA A LA ACCIÓN (AZUL con CÓDIGO CAYENDO AZUL)
+            SECCIÓN FINAL DE LLAMADA A LA ACCIÓN (FONDO NEGRO, CODIGO AZUL)
             -------------------------------------------
         */
         .final-cta-section {
             padding: 60px 20px;
-            background-color: #1a2a4b; 
+            background-color: #000000; /* FONDO NEGRO */
             color: white;
             text-align: center;
             width: 100%;
@@ -476,7 +472,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(26,42,75,0.8), rgba(26,42,75,0.8)); 
+            /* OVERLAY PARA FONDO NEGRO */
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); 
             z-index: 1;
         }
         
@@ -495,20 +492,20 @@
         /* Estilos específicos para la sección de precios/discord (tema azul) */
         .final-cta-section .price-info {
              background-color: rgba(255, 255, 255, 0.95);
-             border: 2px solid #64B5F6; /* Borde azul */
+             border: 2px solid #64B5F6; 
         }
         .final-cta-section .price-info h3 {
-            color: #64B5F6; /* Título de precios en azul */
+            color: #64B5F6; 
         }
         .final-cta-section .price-list li {
             color: #81D4FA; 
         }
         .final-cta-section .price-list strong {
-            color: #E91E63; /* Precio destacado en rosa para contraste */
+            color: #E91E63; 
         }
 
         .final-cta-section .action-button {
-             border: 2px solid #64B5F6; /* Borde azul */
+             border: 2px solid #64B5F6; 
         }
         
     </style>
@@ -603,18 +600,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const greenParticles = 30; // Partículas verdes para las secciones de tecnología
-            const blueParticlesProjectCards = 8; // Partículas azules para las tarjetas de proyecto
-            const blueParticlesFinalCtaInternal = 40; // Partículas azules para el main-container final
+            const greenParticles = 30; 
+            const blueParticlesProjectCards = 8; 
+            const blueParticlesFinalCtaInternal = 40; 
 
-            // Caracteres para el código
-            const greenCodeChars = ['0', '1', '>', '<', '&', '%', '#', 'Z', 'Y', 'X']; // Caracteres para el código verde (simulando código clásico)
-            const blueCodeChars = ['0', '1', 'A', 'B', '!', '@', '*', '{', '}', ';', '/', 'z', 'K', 'L']; // Caracteres para el código azul
+            const greenCodeChars = ['0', '1', '>', '<', '&', '%', '#', 'Z', 'Y', 'X']; 
+            const blueCodeChars = ['0', '1', 'A', 'B', '!', '@', '*', '{', '}', ';', '/', 'z', 'K', 'L']; 
 
             function createParticle(container, charType) {
                 const particle = document.createElement('span');
                 
-                let chars, className, durationFactor, sizeFactor, color, filter;
+                let chars, className, durationFactor, sizeFactor;
 
                 if (charType === 'green') {
                     chars = greenCodeChars;
@@ -623,7 +619,7 @@
                     sizeFactor = 1.2;
                 } else { // 'blue'
                     chars = blueCodeChars;
-                    className = 'code-particle'; // Ya definido como azul
+                    className = 'code-particle'; 
                     durationFactor = 6;
                     sizeFactor = 1;
                 }
@@ -663,7 +659,7 @@
             // 3. Inicializar lluvia de código azul dentro del main-container final
             const finalCtaInternalContainer = document.getElementById('code-final-cta-internal');
             if (finalCtaInternalContainer) {
-                for (let i = 0; i < finalCtaInternalParticles; i++) {
+                for (let i = 0; i < blueParticlesFinalCtaInternal; i++) {
                     createParticle(finalCtaInternalContainer, 'blue');
                 }
             }
@@ -671,3 +667,4 @@
     </script>
 </body>
 </html>
+```http://googleusercontent.com/image_generation_content/21
