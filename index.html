@@ -109,7 +109,7 @@
 
         /*
             -------------------------------------------
-            CONTENEDOR DE PRECIOS Y DISCORD (Solo el de abajo)
+            CONTENEDOR DE PRECIOS Y DISCORD
             -------------------------------------------
         */
         .main-container {
@@ -280,7 +280,7 @@
         
         .green-particle {
             position: absolute;
-            animation: fall-green linear; /* Quitamos infinite para que JS lo maneje */
+            animation: fall-green linear; 
             user-select: none;
             color: rgba(0, 255, 0, 0.7); 
             filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
@@ -297,8 +297,9 @@
             90% {
                 opacity: 0.7;
             }
+            /* CORRECCIÓN: Usamos un valor fijo alto para la caída */
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(1000px) rotate(360deg); 
                 opacity: 0;
             }
         }
@@ -311,7 +312,7 @@
         */
         .project-section {
             padding: 60px 20px;
-            background-color: #000000; /* FONDO NEGRO */
+            background-color: #000000; 
             color: white;
             text-align: center;
             width: 100%;
@@ -326,7 +327,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* OVERLAY PARA FONDO NEGRO */
             background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); 
             z-index: 1;
         }
@@ -426,9 +426,9 @@
         */
         .code-particle {
             position: absolute;
-            animation: fall-code linear; /* Quitamos infinite para que JS lo maneje */
+            animation: fall-code linear; 
             user-select: none;
-            color: rgba(129, 212, 250, 0.5); /* Azul claro semitransparente */
+            color: rgba(129, 212, 250, 0.5); 
         }
 
         @keyframes fall-code {
@@ -442,8 +442,9 @@
             90% {
                 opacity: 0.7;
             }
+            /* CORRECCIÓN: Usamos un valor fijo alto para la caída */
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(1000px) rotate(360deg); 
                 opacity: 0;
             }
         }
@@ -456,7 +457,7 @@
         */
         .final-cta-section {
             padding: 60px 20px;
-            background-color: #000000; /* FONDO NEGRO */
+            background-color: #000000; 
             color: white;
             text-align: center;
             width: 100%;
@@ -472,7 +473,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* OVERLAY PARA FONDO NEGRO */
             background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); 
             z-index: 1;
         }
@@ -600,18 +600,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const greenParticles = 30; // Partículas iniciales para crear el efecto "lleno"
-            const blueParticlesProjectCards = 8; 
-            const blueParticlesFinalCtaInternal = 40; 
-            const particleCreationInterval = 500; // Intervalo para crear nuevas partículas (en ms)
+            const greenParticles = 50; // Más partículas iniciales
+            const blueParticlesProjectCards = 15; // Más partículas iniciales
+            const blueParticlesFinalCtaInternal = 60; // Más partículas iniciales
+            const particleCreationInterval = 250; // Crea nuevas partículas cada 0.25 segundos
 
             const greenCodeChars = ['0', '1', '>', '<', '&', '%', '#', 'Z', 'Y', 'X']; 
             const blueCodeChars = ['0', '1', 'A', 'B', '!', '@', '*', '{', '}', ';', '/', 'z', 'K', 'L']; 
 
             /**
              * Crea una partícula de código y la agrega al contenedor.
-             * @param {HTMLElement} container - El contenedor donde se agregará la partícula.
-             * @param {string} charType - 'green' o 'blue'.
              */
             function createParticle(container, charType) {
                 const particle = document.createElement('span');
@@ -623,7 +621,7 @@
                     className = 'green-particle';
                     durationFactor = 7;
                     sizeFactor = 1.2;
-                } else { // 'blue'
+                } else { 
                     chars = blueCodeChars;
                     className = 'code-particle'; 
                     durationFactor = 6;
@@ -639,13 +637,12 @@
                 const duration = Math.random() * durationFactor + 4;
                 particle.style.animationDuration = `${duration}s`; 
                 
-                // Usamos un retraso negativo para que las primeras partículas se vean cayendo de inmediato.
-                // Esto también ayuda a que la animación "finalice" en un tiempo determinado.
+                // Retraso negativo para que las partículas empiecen a caer inmediatamente.
                 particle.style.animationDelay = `${Math.random() * -duration}s`;
                 
                 container.appendChild(particle);
 
-                // La eliminamos del DOM cuando termina su animación (para que sea reemplazada por setInterval)
+                // Eliminamos la partícula cuando termina su animación.
                 particle.addEventListener('animationend', () => {
                     particle.remove();
                 });
@@ -660,7 +657,7 @@
                     createParticle(container, charType);
                 }
                 
-                // 2. Iniciar el stream constante para un efecto continuo
+                // 2. Iniciar el stream constante para reemplazar las que se van eliminando
                 setInterval(() => {
                     createParticle(container, charType);
                 }, particleCreationInterval); 
