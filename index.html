@@ -109,29 +109,33 @@
 
         /*
             -------------------------------------------
-            CONTENEDOR DE CONTACTO (ESTILO TARJETA)
+            CONTENEDOR DEL BOTÓN DE DISCORD (ÚNICO)
             -------------------------------------------
         */
         .main-container {
             display: flex;
-            justify-content: center; 
-            align-items: center; 
+            flex-direction: row; 
+            flex-wrap: wrap; 
+            justify-content: center; /* Centrar el botón */
+            align-items: center; /* Centrar el botón verticalmente si es necesario */
+            gap: 30px; 
             
-            background-color: transparent; /* Hacemos el fondo transparente */
+            background-color: rgba(255, 255, 255, 0.9); 
             border-radius: 8px;
-            padding: 0;
-            box-shadow: none;
+            padding: 20px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             max-width: 600px; 
             width: 90%; 
             position: relative; 
             overflow: hidden; 
-            min-height: 150px;
         }
         
         .final-cta-section .main-container {
             position: relative; 
             margin: 0 auto;
-            z-index: 2; 
+            transform: none;
+            z-index: auto;
+            min-height: 150px; 
         }
 
         .main-container .code-rain-container-internal {
@@ -145,56 +149,51 @@
             opacity: 0.15; 
         }
 
-        /* NUEVOS ESTILOS PARA LA TARJETA DE CONTACTO */
-        .contact-card {
-            background-color: white;
-            border: 2px solid #64B5F6; /* Borde azul */
-            border-radius: 10px;
-            padding: 30px;
-            text-align: left; /* Alineado a la izquierda como la imagen */
-            color: #333;
-            width: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1; 
-        }
-        
-        .contact-card h3 {
-            color: #64B5F6; /* Título en azul */
-            font-size: 1.5em;
-            margin-top: 0;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-card h3 i {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        .contact-info {
-            line-height: 1.8;
-            font-size: 1.1em;
-        }
-
-        .contact-info strong {
-            color: #000;
-            font-weight: 700;
-        }
-
-        .contact-info a {
-            color: #64B5F6; /* Links en azul */
+        .action-button {
+            /* ESTILOS PARA EL BOTÓN AZUL */
+            background-color: #64B5F6; /* Azul claro */
+            border: 2px solid #81D4FA; /* Borde azul un poco más claro */
+            border-radius: 8px;
+            padding: 15px 20px; 
+            text-align: center;
             text-decoration: none;
-            word-break: break-all;
-            transition: color 0.3s;
+            color: white; /* Texto blanco */
+            font-size: 1.1em; 
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px; 
+            width: 250px; /* Hacemos el botón un poco más grande */
+            position: relative; 
+            z-index: 1;
         }
 
-        .contact-info a:hover {
-            color: #42A5F5;
-            text-decoration: underline;
+        .action-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            background-color: #42A5F5; /* Un azul ligeramente más oscuro al pasar el ratón */
         }
 
+        .action-button .icon {
+            color: white; /* Ícono blanco */
+            font-size: 2em; 
+        }
+
+        /* Media Query para móviles: Centramos el botón en pantallas pequeñas */
+        @media (max-width: 650px) {
+            .main-container {
+                flex-direction: column;
+                gap: 20px; 
+                padding: 15px;
+            }
+            .action-button {
+                width: 100%; 
+                max-width: none;
+            }
+        }
 
         /*
             -------------------------------------------
@@ -209,41 +208,211 @@
             position: relative; 
             flex-grow: 1; 
         }
-        
-        /* (Secciones de código verde y proyectos omitidas para brevedad, solo se muestran los estilos relevantes) */
 
         /*
             -------------------------------------------
-            PARTÍCULAS CÓDIGO AZUL Y VERDE
+            SECCIONES DE CODIGO CAYENDO (VERDE para PYTHON, HTML, CSS)
             -------------------------------------------
         */
-        .green-particle, .code-particle {
+        .code-section {
+            width: 100%;
+            height: 350px; 
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111; 
+            color: #00FF00; 
+            border-top: 5px solid #00FF00;
+            border-bottom: 5px solid #00FF00; 
+        }
+        
+        .code-section h2 {
+            position: relative;
+            z-index: 5;
+            font-size: 3em;
+            text-shadow: 0 0 10px #00FF00, 0 0 20px rgba(0, 255, 0, 0.5); 
+        }
+
+        .code-section .code-rain-container-tech {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; 
+            pointer-events: none; 
+            opacity: 0.3;
+        }
+        
+        .green-particle {
             position: absolute;
             animation: fall-green linear; 
             user-select: none;
-        }
-
-        .green-particle {
             color: rgba(0, 255, 0, 0.7); 
             filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
-            animation: fall-green linear; 
-        }
-
-        .code-particle {
-            color: rgba(129, 212, 250, 0.5); 
-            animation: fall-code linear; 
         }
 
         @keyframes fall-green {
-            /* ... (igual que antes) ... */
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-            100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(1000px) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+
+
+        /*
+            -------------------------------------------
+            SECCIÓN DE PROYECTOS (FONDO NEGRO, CODIGO AZUL)
+            -------------------------------------------
+        */
+        .project-section {
+            padding: 60px 20px;
+            background-color: #000000; 
+            color: white;
+            text-align: center;
+            width: 100%;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .project-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); 
+            z-index: 1;
+        }
+
+        .project-section h2 {
+            font-size: 2.2em;
+            color: #64B5F6; 
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2; 
+        }
+
+        .project-card {
+            background-color: rgba(0, 0, 0, 0.6); 
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 100%; 
+            max-width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; 
+            overflow: hidden;
+            border: 2px solid #64B5F6; 
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card .code-rain-container-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+            pointer-events: none;
+            opacity: 0.2; 
+        }
+
+        .project-card-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #64B5F6; 
+            position: relative;
+            z-index: 1; 
+        }
+
+        .project-card h3 {
+            color: #81D4FA; 
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card p {
+            font-size: 0.9em;
+            color: #BBDEFB; 
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .project-card {
+                width: calc(50% - 30px); 
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .project-card {
+                width: calc(25% - 30px); 
+            }
+        }
+
+        /*
+            -------------------------------------------
+            PARTÍCULAS CÓDIGO AZUL (Usadas en Proyectos y CTA final)
+            -------------------------------------------
+        */
+        .code-particle {
+            position: absolute;
+            animation: fall-code linear; 
+            user-select: none;
+            color: rgba(129, 212, 250, 0.5); 
         }
 
         @keyframes fall-code {
-            /* ... (igual que antes) ... */
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-            100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(1000px) rotate(360deg); 
+                opacity: 0;
+            }
         }
 
 
@@ -352,21 +521,13 @@
             <div class="main-container">
                 <div class="code-rain-container-internal" id="code-final-cta-internal" data-char-type="blue"></div>
 
-                <div class="contact-card">
-                    <h3><i class="fas fa-info-circle"></i> ¡CONTÁCTAME!</h3>
-                    <div class="contact-info">
-                        <p>
-                            Contactame a travez de discord si estas interesado
-                        </p>
-                        <p>
-                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>! Heavxn</strong> <a href="#">[fancynpcs#0000]</a> 
-                        </p>
-                        <p>
-                            <i class="fas fa-envelope" style="color: #e67e22;"></i> <strong>Correo:</strong> <a href="mailto:tunombre@email.com">[heavxndev@gmail.com]</a>
-                        </p>
-                    </div>
+                <a href="URL_DE_TU_DISCORD" class="action-button discord">
+                    <i class="fab fa-discord icon"></i>
+                    <span style="color: white; font-size: 1.2em;">Username</span>
+                    <span style="color: #E3F2FD; font-size: 0.9em;">Contáctame</span>
+                </a>
+                
                 </div>
-            </div>
         </section>
         
     </main>
