@@ -224,7 +224,14 @@
             color: rgba(129, 212, 250, 0.5); 
             animation: fall-code linear; 
         }
-        /* (Keyframes omitidos por brevedad) */
+        @keyframes fall-green {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
+        }
+        @keyframes fall-code {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
+        }
 
 
         /*
@@ -336,14 +343,16 @@
                     <h3><i class="fas fa-info-circle"></i> ¡CONTÁCTAME!</h3>
                     <div class="contact-info-detailed">
                         <p>
-                         Contactame a travez de discord si deseas algo
-                        </p>
+                            ¡Únete a nuestro discord para recibir un soporte mucho más rápido o descuentos únicos!:
                         </p>
                         <p>
-                            <i class="fas fa-envelope" style="color: #e67e22;"></i> <strong>Correo:</strong> <a href="mailto:mineboshnetwork@gmail.com">heavxndev@gmail.com</a>
+                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord:</strong> <a href="https://discord.gg/minebosh" target="_blank">discord.gg/minebosh</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope" style="color: #e67e22;"></i> <strong>Correo:</strong> <a href="mailto:mineboshnetwork@gmail.com">mineboshnetwork@gmail.com</a>
                         </p>
                          <p>
-                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord MD:</strong> fancynpcs_
+                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord MD:</strong> yerson_x
                         </p>
                     </div>
                 </div>
@@ -354,6 +363,7 @@
     </main>
 
     <script>
+        // Código JavaScript para la lluvia de código (code rain)
         document.addEventListener('DOMContentLoaded', () => {
             const greenParticles = 50; 
             const blueParticlesProjectCards = 15; 
