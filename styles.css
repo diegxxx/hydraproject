@@ -1,7 +1,7 @@
 :root {
     --bg-color: #0a0a0a;
     --card-bg: rgba(20, 20, 20, 0.8);
-    --accent-color: #00FF00;
+    --accent-color: #02F4FB; /* Nuevo color aplicado */
     --text-color: #ffffff;
     --text-dim: #b3b3b3;
     --rank-owner: #ff4747;
@@ -23,7 +23,6 @@ body {
     min-height: 100vh;
 }
 
-/* Fondo de Partículas */
 #particles-js {
     position: fixed;
     width: 100%;
@@ -40,7 +39,6 @@ body {
     position: relative;
 }
 
-/* Efecto de Tarjetas (Glassmorphism) */
 .card {
     background: var(--card-bg);
     backdrop-filter: blur(10px);
@@ -58,16 +56,27 @@ body {
     position: absolute;
     left: 0;
     top: 0;
+    /* Efecto mouse actualizado con el nuevo color */
     background: radial-gradient(
-        800px circle at var(--mouse-x) var(--mouse-y), 
-        rgba(0, 255, 0, 0.06), 
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(2, 244, 251, 0.15), 
         transparent 40%
     );
-    z-index: 3;
+    z-index: 1;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-/* Cabecera de Perfil */
+.card:hover::before {
+    opacity: 1;
+}
+
+.card > * {
+    position: relative;
+    z-index: 2;
+}
+
 .profile-card {
     display: flex;
     align-items: center;
@@ -81,7 +90,7 @@ body {
     height: 100px;
     border-radius: 12px;
     border: 2px solid var(--accent-color);
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 15px rgba(2, 244, 251, 0.3);
 }
 
 .nametag {
@@ -124,7 +133,6 @@ body {
     margin-top: 5px;
 }
 
-/* Discord Status */
 .discord-status {
     margin-top: 15px;
     display: flex;
@@ -164,7 +172,6 @@ body {
     font-size: 0.85rem;
 }
 
-/* Navegación */
 .nav-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -191,10 +198,8 @@ body {
 
 .nav-card:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-color);
 }
 
-/* Footer Social */
 .social-links {
     display: flex;
     justify-content: center;
