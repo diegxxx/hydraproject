@@ -1,4 +1,3 @@
-
 :root {
     --bg-color: #0a0a0a;
     --card-bg: rgba(20, 20, 20, 0.8);
@@ -24,6 +23,7 @@ body {
     min-height: 100vh;
 }
 
+/* Fondo de Partículas */
 #particles-js {
     position: fixed;
     width: 100%;
@@ -40,6 +40,7 @@ body {
     position: relative;
 }
 
+/* Efecto de Tarjetas (Glassmorphism) */
 .card {
     background: var(--card-bg);
     backdrop-filter: blur(10px);
@@ -58,25 +59,15 @@ body {
     left: 0;
     top: 0;
     background: radial-gradient(
-        600px circle at var(--mouse-x) var(--mouse-y), 
-        rgba(0, 255, 0, 0.15), 
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(0, 255, 0, 0.06), 
         transparent 40%
     );
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
 }
 
-.card:hover::before {
-    opacity: 1;
-}
-
-.card > * {
-    position: relative;
-    z-index: 2;
-}
-
+/* Cabecera de Perfil */
 .profile-card {
     display: flex;
     align-items: center;
@@ -125,4 +116,106 @@ body {
 }
 
 .rank.owner { background: var(--rank-owner); box-shadow: 0 0 10px var(--rank-owner); }
-.rank.manager { background: var(--rank-manager
+.rank.manager { background: var(--rank-manager); box-shadow: 0 0 10px var(--rank-manager); }
+.rank.dev { background: var(--rank-dev); box-shadow: 0 0 10px var(--rank-dev); }
+
+.profile-description {
+    color: var(--text-dim);
+    margin-top: 5px;
+}
+
+/* Discord Status */
+.discord-status {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.discord-avatar-container {
+    position: relative;
+}
+
+.discord-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.discord-status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 2px solid #141414;
+}
+
+.online { background: #43b581; }
+.idle { background: #faa61a; }
+.dnd { background: #f04747; }
+.offline { background: #747f8d; }
+
+.discord-subtext {
+    font-size: 0.85rem;
+}
+
+/* Navegación */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.nav-card {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.nav-card i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.nav-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+/* Footer Social */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-link {
+    font-size: 1.5rem;
+    color: var(--text-dim);
+    transition: 0.3s;
+}
+
+.social-link:hover {
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 8px var(--accent-color));
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
