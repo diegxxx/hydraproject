@@ -1,139 +1,281 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio ! Heavxn</title>
-    <link rel="icon" href="Favicon/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="styles.css"> 
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HellDev - Portafolio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Stylesheet -->
+<link href="styles.css" rel="stylesheet"/>
+<link href="images/hell.jpg" rel="icon" type="image/x-icon"/>
 </head>
 <body>
-    <nav class="navbar">
-    </nav>
+<!-- Particles.js Container -->
+<div id="particles-js"></div>
 
-    <header class="header-banner">
-        <div class="header-content">
-        </div>
-    </header>
+<div class="container">
+<!-- CABECERA DE PERFIL -->
+<header class="profile-card card">
+    <div class="profile-avatar-container">
+    <img alt="Skin de Minecraft de diegxxx" class="profile-avatar" src="https://minesk.in/b44c9471e81d4435949cb06b9a6693ee" loading="lazy"/>
+    </div>
+<div class="profile-details">
+<div class="nametag" id="nametag">
+<span class="nick" id="nick-label">HellDev</span>
+<div class="rank-selector">
+<select id="rank-select">
+<option value="owner">OWNER</option>
+<option value="manager">MANAGER</option>
+<option value="dev">DEV</option>
+</select>
+<span class="rank owner" id="rank-label">OWNER</span>
+</div>
+</div>
+<!-- DESCRIPCIÓN AÑADIDA -->
+<p class="profile-description">Manager &amp; Developer</p>
+<div class="discord-status">
+<div class="discord-avatar-container">
+<img alt="Avatar de Discord" class="discord-icon" id="discordAvatar" src="https://cdn.discordapp.com/embed/avatars/0.png"/>
+<div class="discord-status-indicator" id="discordStatusIndicator"></div>
+</div>
+<div class="discord-subtext" id="discordSubtext">Cargando...</div>
+</div>
+</div>
+</header>
+<!-- NAVEGACIÓN PRINCIPAL -->
+<nav class="nav-grid">
+<a class="nav-card card" href="aboutme.html"><i class="fas fa-user"></i><span>Sobre mí</span></a>
+<a class="nav-card card" href="projects.html"><i class="fas fa-laptop-code"></i><span>Proyectos</span></a>
+<a class="nav-card card" href="servers.html"><i class="fas fa-server"></i><span>Servidores</span></a>
+<a class="nav-card card" href="reviews.html"><i class="fas fa-star"></i><span>Reseñas</span></a>
+<a class="nav-card card" href="contact.html"><i class="fas fa-envelope"></i><span>Contacto</span></a>
+</nav>
+<!-- ENLACES SOCIALES -->
+<footer class="social-links">
+<a class="social-link" href="https://discord.com/users/852696161738293258" target="_blank"><i class="fab fa-discord"></i></a>
+<a class="social-link" href="https://github.com/HellGrams" target="_blank"><i class="fab fa-github"></i></a>
+</footer>
+</div>
 
-    <main class="main-content">
-        
-        <section class="code-section" id="code-python">
-            <div class="code-rain-container-tech" data-char-type="green"></div> 
-            <h2 onclick="toggleDescription('code-python')">
-                PYTHON <i class="fas fa-chevron-down toggle-icon" id="icon-code-python"></i>
-            </h2>
-            <div class="skill-description-box">
-                <div class="description-content">
-                    Desarrollador de Python con 4 años de experiencia completos. Tengo 3 cursos de Python profesional y he formado parte de algunas plataformas que han cerrado.
-                </div>
-                <div class="skill-image-container">
-                        <img src="https://github.com/diegxxx/hydraproject/blob/main/Pics/Python%20Pics.png?raw=true" alt="Logo de Python"> 
-                    </a>
-                </div>
-            </div>
-        </section>
+<!-- Particles.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 
-        <section class="code-section" id="code-html">
-            <div class="code-rain-container-tech" data-char-type="green"></div> 
-            <h2 onclick="toggleDescription('code-html')">
-                HTML <i class="fas fa-chevron-down toggle-icon" id="icon-code-html"></i>
-            </h2>
-            <div class="skill-description-box">
-                <div class="description-content">
-                    Desarrollador de HTML con 2 años aproximados de experiencia donde busco crear estilos modernos.
-                </div>
-                <div class="skill-image-container">
-                        <img src="https://github.com/diegxxx/hydraproject/blob/main/Pics/HTML%20Pics.png?raw=true" alt="Logo de HTML"> 
-                    </a>
-                </div>
-            </div>
-        </section>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuración de Particles.js ---
+particlesJS('particles-js', {
+    particles: {
+        number: {
+            value: 80,
+            density: {
+                enable: true,
+                value_area: 800
+            }
+        },
+        color: {
+            value: '#00FF00'
+        },
+        shape: {
+            type: 'triangle',
+            stroke: {
+                width: 0,
+                color: '#000000'
+            }
+        },
+        opacity: {
+            value: 0.5,
+            random: true,
+            anim: {
+                enable: true,
+                speed: 1,
+                opacity_min: 0.1,
+                sync: false
+            }
+        },
+        size: {
+            value: 3,
+            random: true,
+            anim: {
+                enable: true,
+                speed: 2,
+                size_min: 0.1,
+                sync: false
+            }
+        },
+        line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#00FF00',
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 2,
+            direction: 'none',
+            random: false,
+            straight: false,
+            out_mode: 'out',
+            bounce: false,
+            attract: {
+                enable: false,
+                rotateX: 600,
+                rotateY: 1200
+            }
+        }
+    },
+    interactivity: {
+        detect_on: 'canvas',
+        events: {
+            onhover: {
+                enable: true,
+                mode: 'grab'
+            },
+            onclick: {
+                enable: true,
+                mode: 'push'
+            },
+            resize: true
+        },
+        modes: {
+            grab: {
+                distance: 140,
+                line_linked: {
+                    opacity: 1
+                }
+            },
+            push: {
+                particles_nb: 4
+            }
+        }
+    },
+    retina_detect: true
+});
 
-        <section class="code-section" id="code-css">
-            <div class="code-rain-container-tech" data-char-type="green"></div> 
-            <h2 onclick="toggleDescription('code-css')">
-                CSS <i class="fas fa-chevron-down toggle-icon" id="icon-code-css"></i>
-            </h2>
-            <div class="skill-description-box">
-                <div class="description-content">
-                    Desarollador (3) De aproximadamente 1 año con experiencia media.
-                </div>
-                <div class="skill-image-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="Logo de CSS"> 
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <section class="project-section">
-            <h2>Proyectos en los que he participado</h2>
-            <div class="project-grid">
-                
-                <div class="project-card">
-                    <div class="code-rain-container-inner" data-char-type="blue"></div>
-                    <img src="https://github.com/diegxxx/hydraproject/blob/main/Logos/MineOrchid.png?raw=true" alt="Logo MineOrchid" class="project-card-logo">
-                    <h3>MineOrchid</h3>
-                    <p>Servidor fundado por mi en el cual le dedique mas de 240h en configuracion y actualmente se encuentra cerrado.</p>
-                </div>
-                
-                <div class="project-card">
-                    <div class="code-rain-container-inner" data-char-type="blue"></div>
-                    <img src="https://github.com/diegxxx/hydraproject/blob/main/Logos/Veanty.jpg?raw=true" alt="Logo VeantyMc" class="project-card-logo">
-                    <h3>VeantyMc</h3>
-                    <p>Servidor de boxpvp con una modalidad de fnafbox.</p>
-                </div>
-                
-                <div class="project-card">
-                    <div class="code-rain-container-inner" data-char-type="blue"></div>
-                    <img src="https://github.com/diegxxx/hydraproject/blob/main/Logos/RustMc.jpg?raw=true" alt="Logo RustMC" class="project-card-logo">
-                    <h3>RustMC</h3>
-                    <p>Servidor de minecraft fundado por mi amigo en el cual fui configurador y founder.</p>
-                </div>
-                
-                <div class="project-card">
-                    <div class="code-rain-container-inner" data-char-type="blue"></div>
-                    <img src="https://github.com/diegxxx/hydraproject/blob/main/Logos/NullSQ%20Renoved.png?raw=true" class="project-card-logo">
-                    <h3>NullSQ Renoved</h3>
-                    <p>Comunidad de desarrolladores especializados en ciberseguridad.</p>
-                </div>
-
-            </div>
-        </section>
-        
-        <section class="final-cta-section">
-            <h2>DISCORD</h2> 
+            // --- Lógica de Discord ---
+            const DISCORD_USER_ID = '734801911760552037';
+            const DISCORD_USERNAME = 'fancynpcs_'; // Tu username
             
-            <div class="main-container">
-                <div class="code-rain-container-internal" id="code-final-cta-internal" data-char-type="blue"></div>
+            const discordElements = {
+                avatar: document.getElementById('discordAvatar'),
+                statusIndicator: document.getElementById('discordStatusIndicator'),
+                subtext: document.getElementById('discordSubtext')
+            };
 
-                <div class="contact-card-detailed">
-                    <h3><i class="fas fa-info-circle"></i> ¡CONTACTAME!</h3>
-                    <div class="contact-info-detailed">
-                        <p>
-                            Contactame a travez de discord para hablar sobre tu proyecto
-                        </p>
-                        <p>
-                            <i class="fas fa-envelope" style="color: #e67e22;"></i> <strong>Correo:</strong> <a href="mailto:heavxndev@gmail.com">heavxndev@gmail.com</a>
-                        </p>
-                         <p>
-                            <i class="fab fa-discord" style="color: #7289da;"></i> <strong>Discord MD:</strong> fancynpcs_
-                        </p>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-        
-    </main>
+            async function loadDiscordProfile() {
+                try {
+                    // Intentar primero con Lanyard
+                    const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
+                    
+                    if (response.ok) {
+                        const json = await response.json();
+                        
+                        if (json.success && json.data) {
+                            const data = json.data;
 
-    <script src="script.js"></script> 
+                            // Actualizar avatar
+                            if (data.discord_user?.avatar) {
+                                const extension = data.discord_user.avatar.startsWith('a_') ? 'gif' : 'png';
+                                discordElements.avatar.src = `https://cdn.discordapp.com/avatars/${DISCORD_USER_ID}/${data.discord_user.avatar}.${extension}?size=128`;
+                            }
+
+                            // Actualizar estado
+                            const status = data.discord_status || 'offline';
+                            discordElements.statusIndicator.className = `discord-status-indicator ${status}`;
+
+                            const statusMap = { 
+                                online: 'En línea', 
+                                idle: 'Ausente', 
+                                dnd: 'No molestar', 
+                                offline: 'Desconectado' 
+                            };
+
+                            let subtextHTML = `<span class="status-dot ${status}"></span> ${statusMap[status]}`;
+
+                            if (data.activities && data.activities.length > 0) {
+                                const mainActivity = data.activities.find(a => a.type === 0) || 
+                                                   data.activities.find(a => a.type === 4) || 
+                                                   data.activities[0];
+                                
+                                if (mainActivity) {
+                                    let activityText = '';
+                                    if (mainActivity.type === 0 && mainActivity.name) {
+                                        activityText = `Jugando a ${mainActivity.name}`;
+                                    } else if (mainActivity.type === 2 && mainActivity.details) {
+                                        activityText = `Escuchando ${mainActivity.details}`;
+                                    } else if (mainActivity.type === 4 && mainActivity.state) {
+                                        activityText = mainActivity.state;
+                                    }
+                                    
+                                    if (activityText) {
+                                        subtextHTML += ` • ${activityText}`;
+                                    }
+                                }
+                            }
+
+                            discordElements.subtext.innerHTML = subtextHTML;
+                            return; // Éxito, salir
+                        }
+                    }
+                    
+                    // Si Lanyard falla, mostrar info estática
+                    throw new Error('Lanyard no disponible');
+
+                } catch (error) {
+                    console.warn('Lanyard no disponible, usando modo estático');
+                    
+                    // Mostrar avatar estático desde Discord CDN
+                    // Nota: necesitarás el hash del avatar real
+                    discordElements.avatar.src = `https://cdn.discordapp.com/embed/avatars/0.png`;
+                    
+                    // Estado desconocido
+                    discordElements.statusIndicator.className = 'discord-status-indicator offline';
+                    
+                    discordElements.subtext.innerHTML = `
+                        <span class="status-dot offline"></span> 
+                        @${DISCORD_USERNAME}
+                        <br>
+                        <small style="font-size:0.75rem; opacity:0.7;">
+                            ⚠️ Para ver estado en tiempo real, únete al servidor de Lanyard: 
+                            <a href="https://discord.gg/lanyard" target="_blank" style="color:var(--accent-color);">discord.gg/lanyard</a>
+                        </small>
+                    `;
+                }
+            }
+
+            // --- Lógica de Rangos (Nametag) ---
+            const rankLabel = document.getElementById('rank-label');
+            const rankSelect = document.getElementById('rank-select');
+
+            function updateRank() {
+                const selectedValue = rankSelect.value;
+                rankLabel.textContent = selectedValue.toUpperCase();
+                rankLabel.className = `rank ${selectedValue}`;
+            }
+
+            rankSelect.addEventListener('change', updateRank);
+
+            // --- Lógica del Starlight Glow Effect ---
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+            // --- Inicialización ---
+            loadDiscordProfile();
+            setInterval(loadDiscordProfile, 30000);
+            updateRank();
+        });
+    </script>
 </body>
 </html>
-
-
-
-
