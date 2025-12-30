@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hell - Manager & Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #0e0e2c, #1c1b38);
+      color: white;
+    }
+
+    .wrapper {
+      max-width: 950px;
+      margin: 50px auto;
+      background-color: #1b1a35;
+      border-radius: 15px;
+      padding: 50px 30px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .title {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #6a84ff;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      margin-top: -10px;
+      color: #ccc;
+    }
+
+    .description {
+      margin-top: 20px;
+      font-size: 1.05em;
+      line-height: 1.6;
+      color: #d3d3d3;
+    }
+
+    .buttons-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .btn {
+      background-color: #1f1e40;
+      border-radius: 10px;
+      padding: 20px 10px;
+      text-align: center;
+      color: #aab4ff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn:hover {
+      background-color: #4b49a9;
+      transform: translateY(-3px);
+      color: #fff;
+    }
+
+    .btn svg {
+      width: 28px;
+      height: 28px;
+      fill: #aab4ff;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover svg {
+      transform: scale(1.2);
+      fill: #fff;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    /* PERFIL LEVITANDO */
+    @keyframes levitar {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    .profile {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      z-index: 10;
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-img-levita {
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+      animation: levitar 2.5s ease-in-out infinite;
+      border: 3px solid #6a84ff;
+      background: #23243a;
+      object-fit: cover;
+    }
+
+    @media (max-width: 700px) {
+      .profile {
+        position: static;
+        margin-bottom: 20px;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Perfil arriba a la derecha con animación de levitar -->
+    <div class="profile">
+    <img src="img/hell.png" alt="Avatar" class="profile-img-levita" />    </div>
+
+    <h1 class="title">Hell</h1>
+    <div class="subtitle">Manager & Developer de Minecraft</div>
+    <p class="description">
+      Desarrollador de plugins y administrador de servidores de Minecraft con más de 3 años de experiencia.
+      Especializado en crear experiencias únicas para comunidades gaming.
+    </p>
+
+    <div class="buttons-grid">
+      </a>
+      <a href="services.html" class="btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 4l2-2 4 4-2 2-4-4zm0 2l4 4-10 10H4v-4L14 6zm-1.5 6.5l2 2-1 1-2-2 1-1z"/></svg>
+        <span>Servicios</span>
+      </a>
+
+      <a href="servers.html" class="btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h18v6H3V3zm0 7h18v6H3v-6zm0 7h18v3H3v-3z"/></svg>
+        <span>Servidores</span>
+      </a>
+
+      <a href="verify.html" class="btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v14l7-3 7 3V5a2 2 0 0 0-2-2z"/></svg>
+        <span>Verify Discord</span>
+      </a>
+    </div>
+
+    <div class="footer">
+      © 2025 hll - Todos los derechos reservados
+    </div>
+  </div>
+</body>
+</html>
